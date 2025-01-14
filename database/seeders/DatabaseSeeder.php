@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'number' => Str('11'),
             'image' => Str('/data/images/bedroom.png'),
         ]);
-        DB::table('bedroomType')->insert([
+        DB::table('bedroom_type')->insert([
             'name' => Str('Artichaut'),
             'description' => Str('Artichaut Chaud'),
             'price' => number_format(254),
