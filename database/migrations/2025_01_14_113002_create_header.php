@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('header', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('backgroundColor');
             $table->string('logo');
             $table->string('icone');
@@ -20,9 +20,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('header');

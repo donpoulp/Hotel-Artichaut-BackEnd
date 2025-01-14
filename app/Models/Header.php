@@ -11,7 +11,7 @@ class Header extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'hotel';
+    protected $table = 'header';
     public $timestamps = true;
 
     protected $fillable = [

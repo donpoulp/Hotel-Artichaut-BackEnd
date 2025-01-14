@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'role' => rand(1,3),
         ]);
         DB::table('bedroom')->insert([
+            'id' => Str::uuid(),
             'number' => Str('11'),
             'image' => Str('/data/images/bedroom.png'),
         ]);
@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(254),
         ]);
         DB::table('footer')->insert([
+            'id' => Str::uuid(),
             'title' => Str('Footer'),
             'text' => Str('Footer Text'),
             'titleReseau' => Str('Reseau'),
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
             'linkReseau' => Str('https://github.com/tristan/tristan'),
         ]);
         DB::table('header')->insert([
+            'id' => Str::uuid(),
             'backgroundColor' => Str('white'),
             'logo' => Str('data/images/logo.png'),
             'icone' => Str('data/images/icone.png'),

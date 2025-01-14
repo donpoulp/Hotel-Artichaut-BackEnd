@@ -11,7 +11,7 @@ class Footer extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'hotel';
+    protected $table = 'footer';
     public $timestamps = true;
 
     protected $fillable = [
@@ -19,6 +19,6 @@ class Footer extends Model
         'text',
         'titleReseau',
         'iconReseau',
-        'linkRseau',
+        'linkReseau',
     ];
 }
