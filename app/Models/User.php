@@ -17,12 +17,12 @@ class User extends model
         'lastName',
         'email',
         'emailBis',
+        'password',
         'phone',
         'phoneBis',
         'role',
     ];
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 

@@ -12,11 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
+            'id' => Str::uuid(),
             'firstName' => Str('Tristan'),
             'lastName' => Str('Chadeuf'),
             'email' => Str('tristan.chadeuf@gmail.com'),
             'emailBis' => Str('tristan.chadeuf@gmail.com'),
-            'password' => Hash::make('password'),
+            'password' => Str('password'),
             'phone' => Str('0102030405'),
             'phoneBis' => Str('0102030405'),
             'role' => rand(1,3),
