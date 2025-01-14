@@ -7,18 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Services extends Model
+class Strongest extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'reservations';
+    protected $table = 'strongest';
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'duration',
-        'price',
-        'time',
-        'quantity',
+        'icon',
+        'text',
+        'backgroundColor',
     ];
 }

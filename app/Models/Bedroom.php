@@ -16,5 +16,6 @@ class Bedroom extends Model
 
     protected $fillable = [
         'number',
+        'image',
     ];
 }

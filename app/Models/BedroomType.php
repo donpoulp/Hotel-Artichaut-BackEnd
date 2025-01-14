@@ -7,18 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Services extends Model
+class BedroomType extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'reservations';
+    protected $table = 'bedroomType';
     public $timestamps = true;
 
     protected $fillable = [
         'name',
-        'duration',
+        'description',
         'price',
-        'time',
-        'quantity',
     ];
 }

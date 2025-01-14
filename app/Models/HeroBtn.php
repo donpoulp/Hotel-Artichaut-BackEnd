@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Services extends Model
+class HeroBtn extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'reservations';
+    protected $table = 'heroBtn';
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'duration',
-        'price',
-        'time',
-        'quantity',
+        'text',
+        'action',
+        'backgroundColor',
+        'textColor',
     ];
 }
