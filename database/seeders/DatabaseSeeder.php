@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'image' => Str('/data/images/bedroom.png'),
         ]);
         DB::table('bedroom_type')->insert([
+            'id' => Str::uuid(),
             'name' => Str('Artichaut'),
             'description' => Str('Artichaut Chaud'),
             'price' => number_format(254),
@@ -46,17 +47,20 @@ class DatabaseSeeder extends Seeder
             'icone' => Str('data/images/icone.png'),
         ]);
         DB::table('hero')->insert([
+            'id' => Str::uuid(),
             'title' => Str('Hero'),
             'description' => Str('Hero description'),
             'image' => Str('/data/images/description.png'),
         ]);
         DB::table('hero_btn')->insert([
+            'id' => Str::uuid(),
             'text' => Str('Button Text'),
             'action' => Str('hotelArtichaut/home'),
             'backgroundColor' => Str('white'),
             'textColor' => Str('white'),
         ]);
         DB::table('hotel')->insert([
+            'id' => Str::uuid(),
             'name' => Str('Hotel Artichaut'),
             'address' => Str('Hotel adresse'),
             'description' => Str('Hotel description'),
@@ -65,16 +69,19 @@ class DatabaseSeeder extends Seeder
             'postalCode' => Str('74000'),
         ]);
         DB::table('news')->insert([
+            'id' => Str::uuid(),
             'title' => Str('News'),
             'description' => Str('News description'),
             'content' => Str('News Content'),
             'image' => Str('/data/images/news.png'),
         ]);
         DB::table('reservation')->insert([
+            'id' => Str::uuid(),
             'startDate' => date('2020-01-01'),
             'endDate' => date('2020-01-02'),
         ]);
         DB::table('services')->insert([
+            'id' => Str::uuid(),
             'name' => Str('Service'),
             'duration' =>number_format(2),
             'price' => number_format(25),

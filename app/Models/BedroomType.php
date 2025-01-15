@@ -11,7 +11,7 @@ class BedroomType extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'bedroomType';
+    protected $table = 'bedroom_type';
     public $timestamps = true;
 
     protected $fillable = [

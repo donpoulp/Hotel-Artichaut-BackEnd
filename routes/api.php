@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\website\bedroomController;
+use App\Http\Controllers\website\bedroomTypeController;
 use App\Http\Controllers\website\footerController;
 use App\Http\Controllers\website\headerController;
+use App\Http\Controllers\website\heroBtnController;
+use App\Http\Controllers\website\hotelController;
 use App\Http\Controllers\website\userController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +46,36 @@ Route::controller(footerController::class)->group(function () {
     Route::post('/footer', [footerController::class, 'PostFooter']);
     Route::put('/footer/{id}', [footerController::class, 'footerUpdate']);
     Route::delete('/footer/{id}', [footerController::class, 'DeleteFooter']);
+});
+//ROUTE API BEDROOM TYPE************************************************************************************************
+Route::controller(bedroomTypeController::class)->group(function () {
+    Route::get('/bedroomType', [bedroomTypeController::class, 'allBedroomType']);
+    Route::get('/bedroomType/{id}', [bedroomTypeController::class, 'bedroomTypeShowid']);
+    Route::post('/bedroomType', [bedroomTypeController::class, 'PostBedroomType']);
+    Route::put('/bedroomType/{id}', [bedroomTypeController::class, 'UpdateBedroomType']);
+    Route::delete('/bedroomType/{id}', [bedroomTypeController::class, 'DeleteBedroomType']);
+});
+//ROUTE API HERO********************************************************************************************************
+Route::controller(heroBtnController::class)->group(function () {
+    Route::get('/hero', [heroBtnController::class, 'allHero']);
+    Route::get('/hero/{id}', [heroBtnController::class, 'heroShowid']);
+    Route::post('/hero', [heroBtnController::class, 'PostHero']);
+    Route::put('/hero/{id}', [heroBtnController::class, 'heroUpdate']);
+    Route::delete('/hero/{id}', [heroBtnController::class, 'DeleteHero']);
+});
+//ROUTE HERO BTN********************************************************************************************************
+Route::controller(heroBtnController::class)->group(function () {
+    Route::get('/heroBtn', [heroBtnController::class, 'allHeroBtn']);
+    Route::get('/heroBtn/{id}', [heroBtnController::class, 'heroBtnShowid']);
+    Route::post('/heroBtn', [heroBtnController::class, 'PostHeroBtn']);
+    Route::put('/heroBtn/{id}', [heroBtnController::class, 'heroBtnUpdate']);
+    Route::delete('/heroBtn/{id}', [heroBtnController::class, 'DeleteHeroBtn']);
+});
+//ROUTE HOTEL***********************************************************************************************************
+Route::controller(hotelController::class)->group(function () {
+    Route::get('/hotel', [hotelController::class, 'allHotel']);
+    Route::get('/hotel/{id}', [hotelController::class, 'hotelShowid']);
+    Route::post('/hotel', [hotelController::class, 'PostHotel']);
+    Route::put('/hotel/{id}', [hotelController::class, 'hotelUpdate']);
+    Route::delete('/hotel/{id}', [hotelController::class, 'DeleteHotel']);
 });

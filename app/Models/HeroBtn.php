@@ -11,7 +11,7 @@ class HeroBtn extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'heroBtn';
+    protected $table = 'hero_btn';
     public $timestamps = true;
 
     protected $fillable = [

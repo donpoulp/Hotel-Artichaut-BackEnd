@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hero_btn', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('text');
             $table->string('action');
             $table->string('backgroundColor');
