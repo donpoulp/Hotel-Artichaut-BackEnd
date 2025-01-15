@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -10,18 +11,23 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+
+        User::factory()
+            ->count(10)
+            ->create();
+
         for ($i = 0; $i < 4; $i++) {
-            DB::table('users')->insert([
-                'id' => Str::uuid(),
-                'firstName' => Str('Tristan'),
-                'lastName' => Str('Chadeuf'),
-                'email' => Str('tristan.chadeuf@gmail.com'),
-                'emailBis' => Str('tristan.chadeuf@gmail.com'),
-                'password' => Str('password'),
-                'phone' => Str('0102030405'),
-                'phoneBis' => Str('0102030405'),
-                'role' => rand(1, 3),
-            ]);
+//            DB::table('users')->insert([
+//                'id' => Str::uuid(),
+//                'firstName' => Str('Tristan'),
+//                'lastName' => Str('Chadeuf'),
+//                'email' => Str('tristan.chadeuf@gmail.com'),
+//                'emailBis' => Str('tristan.chadeuf@gmail.com'),
+//                'password' => Str('password'),
+//                'phone' => Str('0102030405'),
+//                'phoneBis' => Str('0102030405'),
+//                'role' => rand(1, 3),
+//            ]);
             DB::table('bedroom')->insert([
                 'id' => Str::uuid(),
                 'number' => Str('11'),

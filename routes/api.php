@@ -5,20 +5,24 @@ use App\Http\Controllers\website\bedroomTypeController;
 use App\Http\Controllers\website\footerController;
 use App\Http\Controllers\website\headerController;
 use App\Http\Controllers\website\heroBtnController;
+use App\Http\Controllers\website\heroController;
 use App\Http\Controllers\website\hotelController;
+use App\Http\Controllers\website\newsController;
+use App\Http\Controllers\website\reservationController;
+use App\Http\Controllers\website\servicesController;
 use App\Http\Controllers\website\userController;
 use Illuminate\Support\Facades\Route;
 
 
 
 //ROUTE API USERS*******************************************************************************************************
-Route::controller(UserController::class)->group(function () {
+Route::controller(userController::class)->group(function () {
 
-    Route::get('/user', [UserController::class, 'allUsers']);
-    Route::get('/user/{id}', [UserController::class, 'UserShowid']);
-    Route::post('/user', [UserController::class, 'PostUser']);
-    Route::put('/user/{id}', [UserController::class, 'UpdateUser']);
-    Route::delete('/user/{id}', [UserController::class, 'DeleteUser']);
+    Route::get('/user', [userController::class, 'allUsers']);
+    Route::get('/user/{id}', [userController::class, 'UserShowid']);
+    Route::post('/user', [userController::class, 'PostUser']);
+    Route::put('/user/{id}', [userController::class, 'UpdateUser']);
+    Route::delete('/user/{id}', [userController::class, 'DeleteUser']);
 });
 
 //ROUTE API BEDROOM*****************************************************************************************************
@@ -56,12 +60,12 @@ Route::controller(bedroomTypeController::class)->group(function () {
     Route::delete('/bedroomType/{id}', [bedroomTypeController::class, 'DeleteBedroomType']);
 });
 //ROUTE API HERO********************************************************************************************************
-Route::controller(heroBtnController::class)->group(function () {
-    Route::get('/hero', [heroBtnController::class, 'allHero']);
-    Route::get('/hero/{id}', [heroBtnController::class, 'heroShowid']);
-    Route::post('/hero', [heroBtnController::class, 'PostHero']);
-    Route::put('/hero/{id}', [heroBtnController::class, 'heroUpdate']);
-    Route::delete('/hero/{id}', [heroBtnController::class, 'DeleteHero']);
+Route::controller(heroController::class)->group(function () {
+    Route::get('/hero', [heroController::class, 'allHero']);
+    Route::get('/hero/{id}', [heroController::class, 'heroShowid']);
+    Route::post('/hero', [heroController::class, 'PostHero']);
+    Route::put('/hero/{id}', [heroController::class, 'heroUpdate']);
+    Route::delete('/hero/{id}', [heroController::class, 'DeleteHero']);
 });
 //ROUTE HERO BTN********************************************************************************************************
 Route::controller(heroBtnController::class)->group(function () {
@@ -79,3 +83,28 @@ Route::controller(hotelController::class)->group(function () {
     Route::put('/hotel/{id}', [hotelController::class, 'hotelUpdate']);
     Route::delete('/hotel/{id}', [hotelController::class, 'DeleteHotel']);
 });
+//ROUTE NEWS************************************************************************************************************
+Route::controller(newsController::class)->group(function () {
+    Route::get('/news', [newsController::class, 'allNews']);
+    Route::get('/news/{id}', [newsController::class, 'newsShowid']);
+    Route::post('/news', [newsController::class, 'PostNews']);
+    Route::put('/news/{id}', [newsController::class, 'newsUpdate']);
+    Route::delete('/news/{id}', [newsController::class, 'DeleteNews']);
+});
+//ROUTE RESERVATION*****************************************************************************************************
+Route::controller(reservationController::class)->group(function () {
+    Route::get('/reservation', [reservationController::class, 'allReservation']);
+    Route::get('/reservation/{id}', [reservationController::class, 'ReservationShowid']);
+    Route::post('/reservation', [reservationController::class, 'PostReservation']);
+    Route::put('/reservation/{id}', [reservationController::class, 'UpdateReservation']);
+    Route::delete('/reservation/{id}', [reservationController::class, 'DeleteReservation']);
+});
+//ROUTE SERVICES********************************************************************************************************
+Route::controller(servicesController::class)->group(function () {
+    Route::get('/services', [servicesController::class, 'allServices']);
+    Route::get('/services/{id}', [servicesController::class, 'ServicesShowid']);
+    Route::post('/services', [servicesController::class, 'PostServices']);
+    Route::put('/services/{id}', [servicesController::class, 'UpdateServices']);
+    Route::delete('/services/{id}', [servicesController::class, 'DeleteServices']);
+});
+

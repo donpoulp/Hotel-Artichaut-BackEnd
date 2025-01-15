@@ -11,7 +11,7 @@ class Services extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'reservations';
+    protected $table = 'services';
     public $timestamps = true;
 
     protected $fillable = [

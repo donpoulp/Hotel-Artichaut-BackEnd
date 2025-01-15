@@ -12,7 +12,7 @@ class Reservation extends Model
 
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'reservations';
+    protected $table = 'reservation';
     public $timestamps = true;
 
     protected $fillable = [
