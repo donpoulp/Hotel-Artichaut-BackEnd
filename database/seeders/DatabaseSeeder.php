@@ -17,21 +17,10 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         for ($i = 0; $i < 4; $i++) {
-//            DB::table('users')->insert([
-//                'id' => Str::uuid(),
-//                'firstName' => Str('Tristan'),
-//                'lastName' => Str('Chadeuf'),
-//                'email' => Str('tristan.chadeuf@gmail.com'),
-//                'emailBis' => Str('tristan.chadeuf@gmail.com'),
-//                'password' => Str('password'),
-//                'phone' => Str('0102030405'),
-//                'phoneBis' => Str('0102030405'),
-//                'role' => rand(1, 3),
-//            ]);
+//
             DB::table('bedroom')->insert([
                 'id' => Str::uuid(),
                 'number' => Str('11'),
-                'image' => Str('/data/images/bedroom.png'),
             ]);
             DB::table('bedroom_type')->insert([
                 'id' => Str::uuid(),
@@ -57,7 +46,6 @@ class DatabaseSeeder extends Seeder
                 'id' => Str::uuid(),
                 'title' => Str('Hero'),
                 'description' => Str('Hero description'),
-                'image' => Str('/data/images/description.png'),
             ]);
             DB::table('hero_btn')->insert([
                 'id' => Str::uuid(),
@@ -80,7 +68,6 @@ class DatabaseSeeder extends Seeder
                 'title' => Str('News'),
                 'description' => Str('News description'),
                 'content' => Str('News Content'),
-                'image' => Str('/data/images/news.png'),
             ]);
             DB::table('reservation')->insert([
                 'id' => Str::uuid(),
@@ -94,6 +81,10 @@ class DatabaseSeeder extends Seeder
                 'price' => number_format(25),
                 'time' => number_format(3),
                 'quantity' => number_format(2),
+            ]);
+            DB::table('pictures')->insert([
+                'id' => Str::uuid(),
+                'picturePath' => Str('/data/images/picture.png'),
             ]);
         }
     }
