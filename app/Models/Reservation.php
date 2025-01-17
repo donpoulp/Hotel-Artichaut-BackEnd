@@ -20,11 +20,14 @@ class Reservation extends Model
     protected $fillable = [
         'startDate',
         'endDate',
+        'user_id'
     ];
 
     public function user(): BelongsTo{
+
         return $this->belongsTo(User::class);
     }
+
     public function services(): BelongsToMany{
         return $this->belongsToMany(Services::class);
 }

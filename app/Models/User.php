@@ -35,7 +35,7 @@ class User extends model
         ];
     }
 
-    public function reservations(): HasMany
+    public function reservation(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }

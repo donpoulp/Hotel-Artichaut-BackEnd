@@ -315,7 +315,8 @@ Content-Type: application/json
 
 {
     "startDate": "2020-01-01",
-    "endDate": "2020-01-02"
+    "endDate": "2020-01-02",
+    "user_id": "9dfb87fe-949e-4eb4-b9b1-70a82bd0a299"
 }
 
 ###     PUT RESERVATION
@@ -325,7 +326,8 @@ Content-Type: application/json
 
 {
     "startDate": "2020-01-01",
-    "endDate": "2020-01-02"
+    "endDate": "2020-01-02",
+    "user_id": "9dfb87fe-949e-4eb4-b9b1-70a82bd0a299"
 }
 
 ###     DELETE RESERVATION

@@ -10,8 +10,13 @@ namespace App\Http\Controllers\website;
  class userController extends Controller
 {
     public function allUsers(): object{
-        return response()->json(User::all());
+        $users = User::with('reservation')->get();
+
+        return response()->json($users);
     }
+
+
+
      public function UserShowid(Request $request , string $id): object
      {
          $validated = $request->validate([

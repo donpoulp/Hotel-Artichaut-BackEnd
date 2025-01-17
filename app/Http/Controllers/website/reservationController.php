@@ -11,6 +11,7 @@ use Illuminate\Validation\ValidationException;
 class reservationController extends Controller
 {
     public function allReservation(): object{
+
         return response()->json(Reservation::all());
     }
     public function ReservationShowid(Request $request , string $id): object
@@ -40,6 +41,7 @@ class reservationController extends Controller
             $validate = $request->validate([
                 'startDate' => 'required|date|max:20',
                 'endDate' => 'required|date|max:20',
+                'user_id' => 'required',
             ]);
 
 
