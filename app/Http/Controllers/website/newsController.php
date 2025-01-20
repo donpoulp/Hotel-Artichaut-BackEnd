@@ -26,7 +26,7 @@ class newsController extends Controller
             'title' => 'nullable',
             'description' => 'nullable',
             'content' => 'nullable',
-            'image' => 'nullable',
+            'picture_id' => 'nullable',
         ]);
 
         $news = News::findOrFail($id);
@@ -42,7 +42,7 @@ class newsController extends Controller
                 'title' => 'required|string|max:255',
                 'description' => 'required|string|max:255',
                 'content' => 'required|string|max:255',
-                'image' => 'required|string|max:255',
+                'picture_id' => 'nullable',
             ]);
 
 
