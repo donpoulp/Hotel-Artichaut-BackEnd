@@ -4,10 +4,9 @@ namespace App\Http\Controllers\website;
 
 use App\Models\Strongest;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class strongestController extends Controller
+class strongestController
 {
     public function allStrongest(): object{
         return response()->json(Strongest::all());
@@ -24,9 +23,10 @@ class strongestController extends Controller
     public function UpdateStrongest($id, Request $request)
     {
         $updatestrongest = $request->validate([
-            'icon' => 'nullable',
-            'text' => 'nullable',
-            'backgroundColor' => 'nullable',
+            'background_color_1' => 'nullable',
+            'background_opacity_1' => 'nullable',
+            'background_color_2' => 'nullable',
+            'background_opacity_2' => 'nullable'
         ]);
 
         $strongest = Strongest::findOrFail($id);
@@ -39,10 +39,10 @@ class strongestController extends Controller
     {
         try {
             $validate = $request->validate([
-                'icon' => 'required|string|max:50',
-                'text' => 'required|string|max:50',
-                'backgroundColor' => 'required|string|string|max:70',
-
+                'background_color_1' => 'nullable',
+                'background_opacity_1' => 'nullable',
+                'background_color_2' => 'nullable',
+                'background_opacity_2' => 'nullable'
             ]);
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\website\newsController;
 use App\Http\Controllers\website\reservationController;
 use App\Http\Controllers\website\servicesController;
 use App\Http\Controllers\website\strongestController;
+use App\Http\Controllers\website\strongestSectionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -106,6 +107,14 @@ Route::controller(servicesController::class)->group(function () {
     Route::post('/services', [servicesController::class, 'PostServices']);
     Route::put('/services/{id}', [servicesController::class, 'UpdateServices']);
     Route::delete('/services/{id}', [servicesController::class, 'DeleteServices']);
+});
+//ROUTE STRONGEST_SECTION*******************************************************************************************************
+Route::controller(strongestSectionController::class)->group(function () {
+    Route::get('/strongest_section', [strongestSectionController::class, 'allStrongestSection']);
+    Route::get('/strongest_section/{id}', [strongestSectionController::class, 'StrongestSectionShowid']);
+    Route::post('/strongest_section', [strongestSectionController::class, 'PostStrongestSection']);
+    Route::put('/strongest_section/{id}', [strongestSectionController::class, 'UpdateStrongestSection']);
+    Route::delete('/strongest_section/{id}', [strongestSectionController::class, 'DeleteStrongestSection']);
 });
 //ROUTE STRONGEST*******************************************************************************************************
 Route::controller(strongestController::class)->group(function () {

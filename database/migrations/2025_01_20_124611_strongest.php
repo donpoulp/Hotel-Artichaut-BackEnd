@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('strongest', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('icon');
-            $table->string('text');
-            $table->string('backgroundColor');
+            $table->string('background_color_1');
+            $table->string('background_opacity_1');
+            $table->string('background_color_2');
+            $table->string('background_opacity_2');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */

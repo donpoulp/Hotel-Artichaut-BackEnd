@@ -220,15 +220,39 @@ class DatabaseSeeder extends Seeder
             ]);
 
             //STRONGEST*************************************************************************************************
-            for ($i = 0; $i < 3; $i++) {
-                DB::table('strongest')->insert([
-                    'id' => Str::uuid(),
-                    'icon' => Str('image/icon.jpeg'),
-                    'text' => Str('Duis pellentesque ante et tellus ultrices,
+
+            DB::table('strongest')->insert([
+                'id' => Str::uuid(),
+                'background_color_1' => Str('#D8D27D'),
+                'background_opacity_1' => Str('100'),
+                'background_color_2' => Str('#FFFFFF'),
+                'background_opacity_2' => Str('50'),
+            ]);
+
+            //StRONGEST SECTION*********************************************************************
+
+        DB::table('strongest_section')->insert([
+            'id' => Str::uuid(),
+            'icon' => Str('i-ph:bowl-food-thin'),
+            'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
-                    'backgroundColor' => Str('rgba(255,255,255,0.7)'),
-                ]);
-            }
+        ]);
+
+        DB::table('strongest_section')->insert([
+            'id' => Str::uuid(),
+            'icon' => Str('i-ph:house-thin'),
+            'text' => Str('Duis pellentesque ante et tellus ultrices,
+                vitae sodales massa vehicula.
+                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+        ]);
+
+        DB::table('strongest_section')->insert([
+            'id' => Str::uuid(),
+            'icon' => Str('i-ph:door-thin'),
+            'text' => Str('Duis pellentesque ante et tellus ultrices,
+                vitae sodales massa vehicula.
+                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+        ]);
     }
 }
