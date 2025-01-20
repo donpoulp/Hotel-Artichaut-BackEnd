@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class newsController extends Controller
 {
     public function allNews(): object{
-        return response()->json(News::all());
+        $news = News::with('picture')->get();
+        return response()->json($news);
     }
     public function newsShowid(Request $request , string $id): object
     {

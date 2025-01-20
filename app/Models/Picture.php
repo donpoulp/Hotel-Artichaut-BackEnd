@@ -27,8 +27,8 @@ class Picture extends Model
     public function hero():BelongsToMany{
         return $this->belongsToMany(Hero::class);
     }
-    public function news():BelongsToMany{
-        return $this->belongsToMany(News::class);
+    public function news():BelongsTo{
+        return $this->belongsTo(News::class);
     }
     public function reservation():BelongsToMany{
         return $this->belongsToMany(Reservation::class);
