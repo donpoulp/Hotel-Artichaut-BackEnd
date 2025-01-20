@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Models\HeroBtn;
-use App\Models\Hotel;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,56 +12,52 @@ class newsController extends Controller
     public function allNews(): object{
         return response()->json(News::all());
     }
-    public function hotelShowid(Request $request , string $id): object
+    public function newsShowid(Request $request , string $id): object
     {
         $validated = $request->validate([
 
-            $hotelId = Hotel::findOrFail($id)]);
+            $newsId = News::findOrFail($id)]);
 
-        return response()->json([$hotelId]);
+        return response()->json([$newsId]);
     }
-    public function hotelUpdate($id, Request $request)
+    public function newsUpdate($id, Request $request)
     {
-        $hotelUpdate = $request->validate([
-            'name' => 'nullable',
-            'address' => 'nullable',
+        $newsUpdate = $request->validate([
+            'title' => 'nullable',
             'description' => 'nullable',
-            'phone' => 'nullable',
-            'email' => 'nullable',
-            'postalCode' => 'nullable',
+            'content' => 'nullable',
+            'image' => 'nullable',
         ]);
 
-        $hotel = Hotel::findOrFail($id);
-        $hotel->update($hotelUpdate);
+        $news = News::findOrFail($id);
+        $news->update($newsUpdate);
 
-        return response()->json($hotelUpdate);
+        return response()->json($newsUpdate);
 
     }
-    public function PostHotel(Request $request)
+    public function PostNews(Request $request)
     {
         try {
             $validate = $request->validate([
-                'name' => 'required|string|max:255',
-                'address' => 'required|string|max:255',
+                'title' => 'required|string|max:255',
                 'description' => 'required|string|max:255',
-                'phone' => 'required|string|max:255',
-                'email' => 'required|string|max:255',
-                'postalCode' => 'required|string|max:255',
+                'content' => 'required|string|max:255',
+                'image' => 'required|string|max:255',
             ]);
 
 
-            $postHotel = new Hotel($validate);
-            $postHotel->save();
-            return response()->json($postHotel);
+            $postNews = new News($validate);
+            $postNews->save();
+            return response()->json($postNews);
         } catch (ValidationException $exception) {
             return response()->json($exception->getMessage());
         }
     }
 
-    public function DeleteHotel(Request $request, $id)
+    public function DeleteNews(Request $request, $id)
     {
-        $deleteHotel = Hotel::findOrFail($id);
-        $deleteHotel->delete();
-        return response()->json(Hotel::all());
+        $deleteNews = News::findOrFail($id);
+        $deleteNews->delete();
+        return response()->json(News::all());
     }
 }

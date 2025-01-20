@@ -24,7 +24,7 @@ class bedroomTypeController extends Controller
     {
         $updatebedroomType = $request->validate([
             'name' => 'nullable',
-            'description' => 'nullable',
+            'description' => 'nullable|longtext',
             'price' => 'nullable',
         ]);
 
@@ -39,7 +39,7 @@ class bedroomTypeController extends Controller
         try {
             $validate = $request->validate([
                 'name' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
+                'description' => 'required|longtext',
                 'price' => 'required|string|max:255',
             ]);
 

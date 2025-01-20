@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hero_btn', function (Blueprint $table) {
+        Schema::create('strongest', function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('icon');
             $table->string('text');
-            $table->string('action');
             $table->string('backgroundColor');
-            $table->string('textColor');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('hero_btn');
+        Schema::dropIfExists('strongest');
     }
 };

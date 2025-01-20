@@ -5,27 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-class Bedroom extends Model
+class Picture extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'bedroom';
+    protected $table = 'Pictures';
     public $timestamps = true;
 
     protected $fillable = [
-        'number',
+        'id',
+        'PicturePath'
     ];
-    public function reservation():HasMany{
-        return $this->hasMany(Reservation::class);
+    public function bedroom():BelongsToMany{
+        return $this->belongsToMany(Bedroom::class);
     }
-    public function bedroomType():HasMany{
-        return $this->hasMany(BedroomType::class);
+    public function hero():BelongsToMany{
+        return $this->belongsToMany(Hero::class);
     }
-    public function picture():BelongsToMany{
-        return $this->BelongsToMany(Picture::class);
+    public function news():BelongsToMany{
+        return $this->belongsToMany(News::class);
     }
+
 }

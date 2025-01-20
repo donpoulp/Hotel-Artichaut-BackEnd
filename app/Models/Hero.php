@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 
 class Hero extends Model
@@ -17,6 +18,8 @@ class Hero extends Model
     protected $fillable = [
         'title',
         'description',
-        'image',
     ];
+    public function picture():BelongsToMany{
+        return $this->BelongsToMany(Picture::class);
+    }
 }

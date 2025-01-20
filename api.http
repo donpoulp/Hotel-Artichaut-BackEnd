@@ -1,0 +1,454 @@
+@baseUrl = http://127.0.0.1:8000/api/
+
+###     LIST ALL BEDROOM
+
+GET {{baseUrl}}bedroom
+
+###     LIST BY ID
+
+GET {{baseUrl}}bedroom/12464b00-6c32-4c90-ae61-2c0fca029e04
+
+###     POST BEDROOM
+
+POST {{baseUrl}}bedroom
+Content-Type: application/json
+
+{
+	"number": "12",
+    "image":"data/image/image.png"
+}
+
+###     PUT BEDROOM
+
+PUT {{baseUrl}}bedroom/12464b00-6c32-4c90-ae61-2c0fca029e04
+Content-Type: application/json
+
+{
+    "number": "12",
+    "image":"data/image/image.png"
+}
+
+###     DELETE BEDROOM
+
+DELETE{{baseUrl}}bedroom/12464b00-6c32-4c90-ae61-2c0fca029e04
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL BEDROOM TYPE
+
+GET {{baseUrl}}bedroomType
+
+###     LIST BY ID
+
+GET {{baseUrl}}bedroomType/eb0ecbf5-8468-450d-884c-c6813f8214d7
+
+###     POST BEDROOM TYPE
+
+POST {{baseUrl}}bedroomType
+Content-Type: application/json
+
+{
+    "name": "luxe",
+    "description": "Chambre pour enutrof",
+    "price": "546"
+}
+
+###     PUT BEDROOM TYPE
+
+PUT {{baseUrl}}bedroomType/eb0ecbf5-8468-450d-884c-c6813f8214d7
+Content-Type: application/json
+
+{
+    "name": "luxe",
+    "description": "Chambre pour enutrof",
+    "price": "546"
+}
+
+###     DELETE BEDROOM TYPE
+
+DELETE{{baseUrl}}bedroomType/eb0ecbf5-8468-450d-884c-c6813f8214d7
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL FOOTER
+
+GET {{baseUrl}}footer
+
+###     LIST BY ID
+
+GET {{baseUrl}}footer/716e684a-0567-47ef-b316-5008786df9b2
+
+###     POST FOOTER
+
+POST {{baseUrl}}footer
+Content-Type: application/json
+
+{
+    "title": "footer Title",
+    "text":"footer text",
+    "titleReseau":"title reseau",
+    "iconReseau":"icon reseau",
+    "linkReseau":"link reseau"
+}
+
+###     PUT FOOTER
+
+PUT {{baseUrl}}footer/716e684a-0567-47ef-b316-5008786df9b2
+Content-Type: application/json
+
+{
+    "title": "footer Title",
+    "text":"footer text",
+    "titleReseau":"title reseau",
+    "iconReseau":"icon reseau",
+    "linkReseau":"link reseau"
+}
+
+###     DELETE FOOTER
+
+DELETE{{baseUrl}}footer/716e684a-0567-47ef-b316-5008786df9b2
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL HEADER
+
+GET {{baseUrl}}header
+
+###     LIST BY ID
+
+GET {{baseUrl}}header/2f66fd14-a45d-42aa-b36b-e64ee363d300
+
+###     POST HEADER
+
+POST {{baseUrl}}header
+Content-Type: application/json
+
+{
+    "logo": "blabla.png",
+    "icone":"data/image/image.png",
+    "backgroundColor":"white"
+}
+
+###     PUT HEADER
+
+PUT {{baseUrl}}header/2f66fd14-a45d-42aa-b36b-e64ee363d300
+Content-Type: application/json
+
+{
+    "logo": "blabla.png",
+    "icone":"data/image/image.png",
+    "backgroundColor":"white"
+}
+
+###     DELETE HEADER
+
+DELETE{{baseUrl}}header/2f66fd14-a45d-42aa-b36b-e64ee363d300
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL HERO
+
+GET {{baseUrl}}hero
+
+###     LIST BY ID
+
+GET {{baseUrl}}hero/a748be19-8f83-4f03-bdda-dbc9b4cef5d2
+
+###     POST HERO
+
+POST {{baseUrl}}hero
+Content-Type: application/json
+
+{
+    "title": "Home",
+    "description": "Description de la home",
+    "image":"image/home.png"
+}
+
+###     PUT HERO
+
+PUT {{baseUrl}}hero/a748be19-8f83-4f03-bdda-dbc9b4cef5d2
+Content-Type: application/json
+
+{
+    "title": "Home",
+    "description": "Description de la home",
+    "image":"image/home.png"
+}
+
+###     DELETE HERO
+
+DELETE{{baseUrl}}hero/a748be19-8f83-4f03-bdda-dbc9b4cef5d2
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL HERO BTN
+
+GET {{baseUrl}}heroBtn
+
+###     LIST BY ID
+
+GET {{baseUrl}}heroBtn/70730615-99f7-47e0-84db-86d8cc425f13
+
+###     POST HERO BTN
+
+POST {{baseUrl}}heroBtn
+Content-Type: application/json
+
+{
+    "text": "text bouton",
+    "action": "home/bedroom",
+    "backgroundColor":"red",
+    "textColor": "red"
+}
+
+###     PUT HERO BTN
+
+PUT {{baseUrl}}heroBtn/70730615-99f7-47e0-84db-86d8cc425f13
+Content-Type: application/json
+
+{
+    "text": "text bouton",
+    "action": "home/bedroom",
+    "backgroundColor":"red",
+    "textColor": "red"
+}
+
+###     DELETE HERO BTN
+
+DELETE{{baseUrl}}heroBtn/70730615-99f7-47e0-84db-86d8cc425f13
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL HOTEL
+
+GET {{baseUrl}}hotel
+
+###     LIST BY ID
+
+GET {{baseUrl}}hotel/827f99e0-4e18-4898-9c4a-c714bc2ff7ed
+
+###     POST HOTEL
+
+POST {{baseUrl}}hotel
+Content-Type: application/json
+
+{
+    "name": "Hotel Artichaut",
+    "address": "Hotel adresse",
+    "description": "Hotel description",
+    "phone": "0102030405",
+    "email": "hotel@tristan.com",
+    "postalCode": "74000"
+}
+
+###     PUT HOTEL
+
+PUT {{baseUrl}}hotel/827f99e0-4e18-4898-9c4a-c714bc2ff7ed
+Content-Type: application/json
+
+{
+    "name": "Hotel Artichaut",
+    "address": "Hotel adresse",
+    "description": "Hotel description",
+    "phone": "0102030405",
+    "email": "hotel@tristan.com",
+    "postalCode": "74000"
+}
+
+###     DELETE HOTEL
+
+DELETE{{baseUrl}}hotel/827f99e0-4e18-4898-9c4a-c714bc2ff7ed
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL NEWS
+
+GET {{baseUrl}}news
+
+###     LIST BY ID
+
+GET {{baseUrl}}news/691e12c1-1c4c-43f3-8e30-c44a9d228328
+
+###     POST NEWS
+
+POST {{baseUrl}}news
+Content-Type: application/json
+
+{
+    "title": "News",
+    "description": "News description",
+    "content": "News Content",
+    "image": "\/data\/images\/news.png"
+}
+
+###     PUT NEWS
+
+PUT {{baseUrl}}news/691e12c1-1c4c-43f3-8e30-c44a9d228328
+Content-Type: application/json
+
+{
+    "title": "News",
+    "description": "News description",
+    "content": "News Content",
+    "image": "\/data\/images\/news.png"
+}
+
+###     DELETE NEWS
+
+DELETE{{baseUrl}}news/691e12c1-1c4c-43f3-8e30-c44a9d228328
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL RESERVATION
+
+GET {{baseUrl}}reservation
+
+###     LIST BY ID
+
+GET {{baseUrl}}reservation/5905f6c3-dd11-4de6-a417-b2037019d6b8
+
+###     POST RESERVATION
+
+POST {{baseUrl}}reservation
+Content-Type: application/json
+
+{
+    "startDate": "2020-01-01",
+    "endDate": "2020-01-02",
+    "user_id": "9dfb87fe-949e-4eb4-b9b1-70a82bd0a299"
+}
+
+###     PUT RESERVATION
+
+PUT {{baseUrl}}reservation/5905f6c3-dd11-4de6-a417-b2037019d6b8
+Content-Type: application/json
+
+{
+    "startDate": "2020-01-01",
+    "endDate": "2020-01-02",
+    "user_id": "9dfb87fe-949e-4eb4-b9b1-70a82bd0a299"
+}
+
+###     DELETE RESERVATION
+
+DELETE{{baseUrl}}reservation/5905f6c3-dd11-4de6-a417-b2037019d6b8
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL SERVICES
+
+GET {{baseUrl}}services
+
+###     LIST BY ID
+
+GET {{baseUrl}}services/12464b00-6c32-4c90-ae61-2c0fca029e04
+
+###     POST SERVICES
+
+POST {{baseUrl}}services
+Content-Type: application/json
+
+{
+    "name": "Service",
+    "duration": 2,
+    "price": 25,
+    "time": 3,
+    "quantity": 2
+}
+
+###     PUT SERVICES
+
+PUT {{baseUrl}}services/12464b00-6c32-4c90-ae61-2c0fca029e04
+Content-Type: application/json
+
+{
+    "name": "Service",
+    "duration": 2,
+    "price": 25,
+    "time": 3,
+    "quantity": 2
+}
+
+###     DELETE SERVICES
+
+DELETE{{baseUrl}}services/12464b00-6c32-4c90-ae61-2c0fca029e04
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL USERS
+
+GET {{baseUrl}}user
+
+###     LIST BY ID
+
+GET {{baseUrl}}user/d4b912ee-4af7-4cb4-93a9-5ecd5f0186bc
+
+###     POST USERS
+
+POST {{baseUrl}}user
+Content-Type: application/json
+
+{
+    "firstName": "Tristan",
+    "lastName": "Chadeuf",
+    "email": "tristan.chadeuf@gmail.com",
+    "emailBis": "tristan.chadeuf@gmail.com",
+    "password": "password",
+    "phone": "0102030405",
+    "phoneBis": "0102030405",
+    "role": 3
+}
+
+###     PUT USERS
+
+PUT {{baseUrl}}user/d4b912ee-4af7-4cb4-93a9-5ecd5f0186bc
+Content-Type: application/json
+
+{
+    "firstName": "Tristan",
+    "lastName": "Chadeuf",
+    "email": "tristan.chadeuf@gmail.com",
+    "emailBis": "tristan.chadeuf@gmail.com",
+    "password": "password",
+    "phone": "0102030405",
+    "phoneBis": "0102030405",
+    "role": 3
+}
+
+###     DELETE USERS
+
+DELETE{{baseUrl}}user/d4b912ee-4af7-4cb4-93a9-5ecd5f0186bc
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL STRONGEST
+
+GET{{baseUrl}}strongest
+
+###     STRONGEST BY ID
+
+GET{{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
+
+###     POST USERS
+
+POST {{baseUrl}}strongest
+Content-Type: application/json
+
+{
+    "icon": "image/icon.jpeg",
+    "text": "Duis pellentesque ante et tellus ultrices vitae sodales massa vehicula.Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.",
+    "backgroundColor": "rgba(255,255,255,0.7)"
+
+}
+
+###     PUT STRONGEST
+
+PUT{{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
+Content-Type: application/json
+
+{
+    "icon": "image/icon.jpeg",
+    "text": "Duis pellentesque ante et tellus ultrices vitae sodales massa vehicula.Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.",
+    "backgroundColor": "rgba(255,255,255,0.7)"
+}

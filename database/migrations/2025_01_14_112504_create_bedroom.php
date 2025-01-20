@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('bedroom', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('number');
-            $table->string('image');
             $table->timestamps();
         });
     }
