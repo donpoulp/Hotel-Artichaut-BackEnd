@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use function Laravel\Prompts\text;
 
 class DatabaseSeeder extends Seeder
 {
@@ -216,6 +215,7 @@ class DatabaseSeeder extends Seeder
 
             DB::table('pictures')->insert([
                 'id' => Str::uuid(),
+                'name' => Str('Pressing'),
                 'picturePath' => Str('/data/images/picture.png'),
             ]);
 
