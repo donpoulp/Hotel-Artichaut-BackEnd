@@ -2,11 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Bedroom;
-use App\Models\Hero;
-use App\Models\News;
 use App\Models\Picture;
-use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
