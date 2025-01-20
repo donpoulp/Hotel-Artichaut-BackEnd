@@ -18,6 +18,7 @@ class News extends Model
     protected $fillable = [
         'title',
         'description',
+        'picture_id'
     ];
     public function picture():BelongsToMany{
         return $this->BelongsToMany(Picture::class);

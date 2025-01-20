@@ -8,21 +8,23 @@ use App\Http\Controllers\website\heroBtnController;
 use App\Http\Controllers\website\heroController;
 use App\Http\Controllers\website\hotelController;
 use App\Http\Controllers\website\newsController;
+use App\Http\Controllers\website\pictureController;
 use App\Http\Controllers\website\reservationController;
 use App\Http\Controllers\website\servicesController;
 use App\Http\Controllers\website\strongestController;
+use App\Http\Controllers\website\userController;
 use Illuminate\Support\Facades\Route;
 
 
 
 //ROUTE API USERS*******************************************************************************************************
-Route::controller(strongestController::class)->group(function () {
+Route::controller(userController::class)->group(function () {
 
-    Route::get('/user', [strongestController::class, 'allUsers']);
-    Route::get('/user/{id}', [strongestController::class, 'UserShowid']);
-    Route::post('/user', [strongestController::class, 'PostUser']);
-    Route::put('/user/{id}', [strongestController::class, 'UpdateUser']);
-    Route::delete('/user/{id}', [strongestController::class, 'DeleteUser']);
+    Route::get('/user', [userController::class, 'allUsers']);
+    Route::get('/user/{id}', [userController::class, 'UserShowid']);
+    Route::post('/user', [userController::class, 'PostUser']);
+    Route::put('/user/{id}', [userController::class, 'UpdateUser']);
+    Route::delete('/user/{id}', [userController::class, 'DeleteUser']);
 });
 
 //ROUTE API BEDROOM*****************************************************************************************************
@@ -114,4 +116,12 @@ Route::controller(strongestController::class)->group(function () {
     Route::post('/strongest', [strongestController::class, 'PostStrongest']);
     Route::put('/strongest/{id}', [strongestController::class, 'UpdateStrongest']);
     Route::delete('/strongest/{id}', [strongestController::class, 'DeleteStrongest']);
+});
+//ROUTE PICTURE*********************************************************************************************************
+Route::controller(pictureController::class)->group(function (){
+    Route::get('/picture', [pictureController::class, 'allpicture']);
+    Route::get('/strongest/{id}', [pictureController::class, 'PictureShowid']);
+    Route::post('/strongest', [pictureController::class, 'PostPicture']);
+    Route::put('/strongest/{id}', [pictureController::class, 'UpdatePicture']);
+    Route::delete('/strongest/{id}', [pictureController::class, 'DeletePicture']);
 });

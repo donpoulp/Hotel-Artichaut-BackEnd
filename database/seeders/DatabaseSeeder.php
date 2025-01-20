@@ -2,6 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bedroom;
+use App\Models\Hero;
+use App\Models\News;
+use App\Models\Picture;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,17 +27,25 @@ class DatabaseSeeder extends Seeder
                 'number' => Str('11'),
             ]);
 
-//BEDROOM TYPE**********************************************************************************************************
+//PICTURE***************************************************************************************************************
+
+        DB::table('pictures')->insert([
+            'id' => Str::uuid(),
+            'picturePath' => Str('/data/images/picture.png'),
+        ]);
+
+        //BEDROOM TYPE**********************************************************************************************************
 
         DB::table('bedroom_type')->insert([
-            'id' => Str::uuid(),
-            'name' => Str('Suite Royale'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        'id' => Str::uuid(),
+        'name' => Str('Suite Royale'),
+        'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Aliquam faucibus vitae odio et molestie.
             Nunc molestie scelerisque massa et semper. Proin at eleifend erat,
             ac mattis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
-            'price' => number_format(254),
-        ]);
+        'price' => number_format(254),
+        'picture_id' => Picture::all()->random()->id,
+    ]);
 
         DB::table('bedroom_type')->insert([
             'id' => Str::uuid(),
@@ -42,6 +55,7 @@ class DatabaseSeeder extends Seeder
              Proin at eleifend erat, ac mattis sem.
              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'picture_id' => Picture::all()->random()->id,
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -52,6 +66,7 @@ class DatabaseSeeder extends Seeder
         Proin at eleifend erat, ac mattis sem.
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
         'price' => number_format(254),
+            'picture_id' => Picture::all()->random()->id,
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -62,6 +77,7 @@ class DatabaseSeeder extends Seeder
             Proin at eleifend erat, ac mattis sem.
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'picture_id' => Picture::all()->random()->id,
         ]);
 
         //FOOTER********************************************************************************************************
@@ -89,6 +105,7 @@ class DatabaseSeeder extends Seeder
                 located not far from the highest and most beautiful mountains of Haute-Savoie,
                 situated between lakes and mountains,
                 the Hotel offers an exceptional living environment and a wide range of life-size activities.'),
+                'picture_id' => Picture::all()->random()->id,
                 ]);
             //HOTEL*****************************************************************************************************
             DB::table('hotel')->insert([
@@ -110,6 +127,7 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+                    'picture_id' => Picture::all()->random()->id,
                 ]);
 
                 DB::table('news')->insert([
@@ -121,6 +139,7 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+                    'picture_id' => Picture::all()->random()->id,
                 ]);
 
                 DB::table('news')->insert([
@@ -132,6 +151,7 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+                    'picture_id' => Picture::all()->random()->id,
                 ]);
                 //RESERVATION*******************************************************************************************
 
@@ -142,6 +162,7 @@ class DatabaseSeeder extends Seeder
                     'startDate' => date('2020-01-01'),
                     'endDate' => date('2020-01-02'),
                     'user_id' => $user->id,
+                    'picture_id' => Picture::all()->random()->id,
                 ]);
             }
 
@@ -212,12 +233,6 @@ class DatabaseSeeder extends Seeder
                     'time' => number_format(3),
                     'quantity' => number_format(2),
                 ]);
-            //PICTURES**************************************************************************************************
-
-            DB::table('pictures')->insert([
-                'id' => Str::uuid(),
-                'picturePath' => Str('/data/images/picture.png'),
-            ]);
 
             //STRONGEST*************************************************************************************************
             for ($i = 0; $i < 3; $i++) {

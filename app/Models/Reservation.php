@@ -20,7 +20,8 @@ class Reservation extends Model
     protected $fillable = [
         'startDate',
         'endDate',
-        'user_id'
+        'user_id',
+        'picture_id'
     ];
 
     public function user(): BelongsTo{
@@ -31,7 +32,10 @@ class Reservation extends Model
     public function services(): BelongsToMany{
         return $this->belongsToMany(Services::class);
 }
-public function bedrooms(): BelongsToMany{
-        return $this->belongsToMany(Bedroom::class);
+    public function bedroomType(): BelongsToMany{
+            return $this->belongsToMany(BedroomType::class);
 }
+    public function picture():BelongsToMany{
+        return $this->BelongsToMany(Picture::class);
+    }
 }
