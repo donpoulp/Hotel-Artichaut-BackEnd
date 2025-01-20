@@ -421,3 +421,34 @@ Content-Type: application/json
 DELETE{{baseUrl}}user/d4b912ee-4af7-4cb4-93a9-5ecd5f0186bc
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL STRONGEST
+
+GET{{baseUrl}}strongest
+
+###     STRONGEST BY ID
+
+GET{{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
+
+###     POST USERS
+
+POST {{baseUrl}}strongest
+Content-Type: application/json
+
+{
+    "icon": "image/icon.jpeg",
+    "text": "Duis pellentesque ante et tellus ultrices vitae sodales massa vehicula.Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.",
+    "backgroundColor": "rgba(255,255,255,0.7)"
+
+}
+
+###     PUT STRONGEST
+
+PUT{{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
+Content-Type: application/json
+
+{
+    "icon": "image/icon.jpeg",
+    "text": "Duis pellentesque ante et tellus ultrices vitae sodales massa vehicula.Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.",
+    "backgroundColor": "rgba(255,255,255,0.7)"
+}

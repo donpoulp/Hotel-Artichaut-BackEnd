@@ -10,19 +10,19 @@ use App\Http\Controllers\website\hotelController;
 use App\Http\Controllers\website\newsController;
 use App\Http\Controllers\website\reservationController;
 use App\Http\Controllers\website\servicesController;
-use App\Http\Controllers\website\userController;
+use App\Http\Controllers\website\strongestController;
 use Illuminate\Support\Facades\Route;
 
 
 
 //ROUTE API USERS*******************************************************************************************************
-Route::controller(userController::class)->group(function () {
+Route::controller(strongestController::class)->group(function () {
 
-    Route::get('/user', [userController::class, 'allUsers']);
-    Route::get('/user/{id}', [userController::class, 'UserShowid']);
-    Route::post('/user', [userController::class, 'PostUser']);
-    Route::put('/user/{id}', [userController::class, 'UpdateUser']);
-    Route::delete('/user/{id}', [userController::class, 'DeleteUser']);
+    Route::get('/user', [strongestController::class, 'allUsers']);
+    Route::get('/user/{id}', [strongestController::class, 'UserShowid']);
+    Route::post('/user', [strongestController::class, 'PostUser']);
+    Route::put('/user/{id}', [strongestController::class, 'UpdateUser']);
+    Route::delete('/user/{id}', [strongestController::class, 'DeleteUser']);
 });
 
 //ROUTE API BEDROOM*****************************************************************************************************
@@ -107,4 +107,11 @@ Route::controller(servicesController::class)->group(function () {
     Route::put('/services/{id}', [servicesController::class, 'UpdateServices']);
     Route::delete('/services/{id}', [servicesController::class, 'DeleteServices']);
 });
-
+//ROUTE STRONGEST*******************************************************************************************************
+Route::controller(strongestController::class)->group(function () {
+    Route::get('/strongest', [strongestController::class, 'allStrongest']);
+    Route::get('/strongest/{id}', [strongestController::class, 'StrongestShowid']);
+    Route::post('/strongest', [strongestController::class, 'PostStrongest']);
+    Route::put('/strongest/{id}', [strongestController::class, 'UpdateStrongest']);
+    Route::delete('/strongest/{id}', [strongestController::class, 'DeleteStrongest']);
+});

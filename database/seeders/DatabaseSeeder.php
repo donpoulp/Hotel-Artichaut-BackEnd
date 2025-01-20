@@ -94,8 +94,7 @@ class DatabaseSeeder extends Seeder
             DB::table('hotel')->insert([
                 'id' => Str::uuid(),
                 'name' => Str('Hotel Artichaut'),
-                'address' => Str('Hotel adresse'),
-                'description' => Str('Hotel description'),
+                'address' => Str('24 route du Lac'),
                 'phone' => Str('0102030405'),
                 'email' => Str('hotel@tristan.com'),
                 'postalCode' => Str('74000'),
@@ -220,5 +219,16 @@ class DatabaseSeeder extends Seeder
                 'picturePath' => Str('/data/images/picture.png'),
             ]);
 
+            //STRONGEST*************************************************************************************************
+            for ($i = 0; $i < 3; $i++) {
+                DB::table('strongest')->insert([
+                    'id' => Str::uuid(),
+                    'icon' => Str('image/icon.jpeg'),
+                    'text' => Str('Duis pellentesque ante et tellus ultrices,
+                vitae sodales massa vehicula.
+                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+                    'backgroundColor' => Str('rgba(255,255,255,0.7)'),
+                ]);
+            }
     }
 }
