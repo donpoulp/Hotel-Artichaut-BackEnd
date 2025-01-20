@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'picturePath' => Str('/data/images/picture.png'),
         ]);
 
+
         //BEDROOM TYPE**********************************************************************************************************
 
         DB::table('bedroom_type')->insert([
