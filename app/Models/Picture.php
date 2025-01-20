@@ -14,21 +14,23 @@ class Picture extends Model
 {
     use HasFactory, Notifiable, HasUuids;
 
-    protected $table = 'Pictures';
+    protected $table = 'pictures';
     public $timestamps = true;
 
     protected $fillable = [
         'id',
-        'PicturePath'
+        'PicturePath',
     ];
-    public function bedroom():BelongsToMany{
-        return $this->belongsToMany(Bedroom::class);
+    public function bedroomType():BelongsToMany{
+        return $this->belongsToMany(BedroomType::class);
     }
     public function hero():BelongsToMany{
         return $this->belongsToMany(Hero::class);
     }
-    public function news():BelongsToMany{
-        return $this->belongsToMany(News::class);
+    public function news():BelongsTo{
+        return $this->belongsTo(News::class);
     }
-
+    public function reservation():BelongsToMany{
+        return $this->belongsToMany(Reservation::class);
+    }
 }

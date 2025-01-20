@@ -452,3 +452,13 @@ Content-Type: application/json
     "text": "Duis pellentesque ante et tellus ultrices vitae sodales massa vehicula.Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.",
     "backgroundColor": "rgba(255,255,255,0.7)"
 }
+
+###     DELETE STRONGEST
+
+DELETE {{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+###     LIST ALL PICTURE
+
+GET{{baseUrl}}picture
