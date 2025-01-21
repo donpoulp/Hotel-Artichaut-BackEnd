@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             ]);
             //HERO******************************************************************************************************
             DB::table('hero')->insert([
-                'id' => Str::uuid(),
+
                 'title' => Str('Welcome to Hostel Artichaut'),
                 'description' => Str('
                 The Hotel Artichaut is a luxury hotel, founded in 1426,
@@ -234,7 +234,7 @@ class DatabaseSeeder extends Seeder
             //STRONGEST*************************************************************************************************
 
             DB::table('strongest')->insert([
-                'id' => Str::uuid(),
+
                 'background_color_1' => Str('#D8D27D'),
                 'background_opacity_1' => Str('100'),
                 'background_color_2' => Str('#FFFFFF'),

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('strongest', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->id()->primary();
             $table->string('background_color_1');
             $table->string('background_opacity_1');
             $table->string('background_color_2');
