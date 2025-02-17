@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Type\Integer;
 use function Laravel\Prompts\text;
 
 class DatabaseSeeder extends Seeder
@@ -19,14 +20,12 @@ class DatabaseSeeder extends Seeder
             ->create();
 //BEDROOM***************************************************************************************************************
             DB::table('bedroom')->insert([
-                'id' => Str::uuid(),
                 'number' => Str('11'),
             ]);
 
 //PICTURE***************************************************************************************************************
 
         DB::table('pictures')->insert([
-            'id' => Str::uuid(),
             'picturePath' => Str('/data/images/picture.png'),
         ]);
 
@@ -34,7 +33,6 @@ class DatabaseSeeder extends Seeder
         //BEDROOM TYPE**********************************************************************************************************
 
         DB::table('bedroom_type')->insert([
-        'id' => Str::uuid(),
         'name' => Str('Suite Royale'),
         'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Aliquam faucibus vitae odio et molestie.
@@ -45,7 +43,6 @@ class DatabaseSeeder extends Seeder
     ]);
 
         DB::table('bedroom_type')->insert([
-            'id' => Str::uuid(),
             'name' => Str('Suite Artichaut'),
             'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
              Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
@@ -56,7 +53,6 @@ class DatabaseSeeder extends Seeder
 
         ]);
         DB::table('bedroom_type')->insert([
-        'id' => Str::uuid(),
         'name' => Str('Suite X'),
         'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
@@ -67,7 +63,6 @@ class DatabaseSeeder extends Seeder
 
         ]);
         DB::table('bedroom_type')->insert([
-            'id' => Str::uuid(),
             'name' => Str('Classic Rooms'),
             'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
@@ -79,7 +74,6 @@ class DatabaseSeeder extends Seeder
 
         //FOOTER********************************************************************************************************
             DB::table('footer')->insert([
-                'id' => Str::uuid(),
                 'title' => Str('Hôtel Artichaut'),
                 'text' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
                 'titleReseau' => Str('Reseau'),
@@ -88,7 +82,6 @@ class DatabaseSeeder extends Seeder
             ]);
             //HEADER****************************************************************************************************
             DB::table('header')->insert([
-                'id' => Str::uuid(),
                 'backgroundColor' => Str('0D5649/158470'),
                 'logo' => Str('data/images/logo.png'),
                 'icone' => Str('data/images/icone.png'),
@@ -106,7 +99,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             //HOTEL*****************************************************************************************************
             DB::table('hotel')->insert([
-                'id' => Str::uuid(),
                 'name' => Str('Hotel Artichaut'),
                 'address' => Str('24 route du Lac'),
                 'phone' => Str('0102030405'),
@@ -116,7 +108,6 @@ class DatabaseSeeder extends Seeder
             //NEWS******************************************************************************************************
 
                 DB::table('news')->insert([
-                    'id' => Str::uuid(),
                     'title' => Str('Hostel'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -128,7 +119,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('news')->insert([
-                    'id' => Str::uuid(),
                     'title' => Str('Restaurant'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -140,7 +130,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('news')->insert([
-                    'id' => Str::uuid(),
                     'title' => Str('Spa'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -155,7 +144,6 @@ class DatabaseSeeder extends Seeder
             for ($i = 0; $i < 9; $i++) {
                 $user = User::all()->random();
                 DB::table('reservation')->insert([
-                    'id' => Str::uuid(),
                     'startDate' => date('2020-01-01'),
                     'endDate' => date('2020-01-02'),
                     'user_id' => $user->id,
@@ -167,7 +155,6 @@ class DatabaseSeeder extends Seeder
 
 
                 DB::table('services')->insert([
-                    'id' => Str::uuid(),
                     'name' => Str('Pressing'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -180,7 +167,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('services')->insert([
-                    'id' => Str::uuid(),
                     'name' => Str('Pressing'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -193,7 +179,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('services')->insert([
-                    'id' => Str::uuid(),
                     'name' => Str('High-Tech Pack'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -206,7 +191,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('services')->insert([
-                    'id' => Str::uuid(),
                     'name' => Str('Valet'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -219,7 +203,6 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 DB::table('services')->insert([
-                    'id' => Str::uuid(),
                     'name' => Str('Concierge'),
                     'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Aliquam faucibus vitae odio et molestie.
@@ -241,10 +224,9 @@ class DatabaseSeeder extends Seeder
                 'background_opacity_2' => Str('50'),
             ]);
 
-            //StRONGEST SECTION*********************************************************************
+            //STRONGEST SECTION*********************************************************************
 
         DB::table('strongest_section')->insert([
-            'id' => Str::uuid(),
             'icon' => Str('i-ph:bowl-food-thin'),
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
@@ -252,7 +234,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('strongest_section')->insert([
-            'id' => Str::uuid(),
             'icon' => Str('i-ph:house-thin'),
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
@@ -260,11 +241,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('strongest_section')->insert([
-            'id' => Str::uuid(),
             'icon' => Str('i-ph:door-thin'),
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
         ]);
     }
+
+
 }

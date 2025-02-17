@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('strongest_section', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->id()->primary();
             $table->string('icon');
             $table->string('text');
             $table->timestamps();
