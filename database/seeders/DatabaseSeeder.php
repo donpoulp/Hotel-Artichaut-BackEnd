@@ -6,9 +6,6 @@ use App\Models\Picture;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Type\Integer;
-use function Laravel\Prompts\text;
 
 class DatabaseSeeder extends Seeder
 {
