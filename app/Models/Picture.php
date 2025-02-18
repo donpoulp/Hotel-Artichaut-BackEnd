@@ -32,3 +32,4 @@ class Picture extends Model
         return $this->belongsToMany(Reservation::class);
     }
 }
+
