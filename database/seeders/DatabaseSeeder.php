@@ -23,7 +23,103 @@ class DatabaseSeeder extends Seeder
 //PICTURE***************************************************************************************************************
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('/data/images/picture.png'),
+            'picturePath' => Str('/storage/app/public/imageBedroom1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroom2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroom3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomArtichaut1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomArtichaut2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomArtichaut3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomRoyal1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomRoyal2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomRoyal3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomX1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomX2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageBedroomX3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageConciergerie.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageFibre.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageHeroHotel.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageHeroRestaurant.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageHeroSpa.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageHotelPresentation.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageNews1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageNews2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageNews3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageOpenNews1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageOpenNews2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageOpenNews3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageNews1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imagePackTechnologie.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imagePageAccueil.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imagePressing.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageRestaurant.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageSpa1.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageSpa2.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imageSpa3.png'),
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('/storage/app/public/imagevoiturier.png'),
         ]);
 
 
