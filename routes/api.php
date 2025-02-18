@@ -129,4 +129,8 @@ Route::controller(strongestController::class)->group(function () {
 //ROUTE PICTURE*********************************************************************************************************
 Route::controller(pictureController::class)->group(function (){
     Route::get('/picture', [pictureController::class, 'allpicture']);
+    Route::get('/picture/{id}', [pictureController::class, 'PictureShowid']);
+    Route::post('/picture', [pictureController::class, 'PostPicture']);
+    Route::put('/picture/{id}', [pictureController::class, 'UpdatePicture']);
+    Route::delete('/picture/{id}', [pictureController::class, 'DeletePicture']);
 });

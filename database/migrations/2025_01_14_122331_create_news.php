@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->uuid('id')->primary(); // Ajout de primary
+            $table->id()->primary();
             $table->string('title');
             $table->longText('description');
-            $table->foreignUuid('picture_id');// Clé étrangère
+            $table->foreignId('picture_id');
             $table->timestamps();
         });
     }

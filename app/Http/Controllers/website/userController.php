@@ -6,9 +6,26 @@ namespace App\Http\Controllers\website;
  use Illuminate\Http\Request;
  use Illuminate\Routing\Controller;
  use Illuminate\Validation\ValidationException;
+ use OpenApi\Annotations as OA;
 
  class userController extends Controller
 {
+     /**
+      * @OA\Get(
+      *     path="/users",
+      *     tags={"Users"},
+      *     summary="Get a list of all users",
+      *     description="Returns a list of all users with their reservations",
+      *     @OA\Response(
+      *         response=200,
+      *         description="Successful operation",
+      *         @OA\JsonContent(
+      *             type="array",
+      *             @OA\Items(ref="#/components/schemas/User")
+      *         )
+      *     )
+      * )
+      */
     public function allUsers(): object{
         $users = User::with('reservation')->get();
 
