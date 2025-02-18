@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id()->primary();
             $table->date('startDate');
             $table->date('endDate');
-            $table->foreignUuid('user_id');
-            $table->foreignUuid('picture_id');
+            $table->foreignId('user_id');
+            $table->foreignId('picture_id');
             $table->timestamps();
         });
     }
