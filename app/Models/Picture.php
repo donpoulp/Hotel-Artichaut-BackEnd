@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Picture extends Model
 {
-    use HasFactory, Notifiable, HasUuids;
+    use HasFactory, Notifiable;
 
     protected $table = 'pictures';
     public $timestamps = true;
