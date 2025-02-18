@@ -19,7 +19,7 @@ class pictureController extends Controller
     {
         $validated = $request->validate([
 
-            $PictureId = Picture::with('reservation', 'hero','bedroomType', 'news')->findOrFail($id)]);
+            $PictureId = Picture::findOrFail($id)]);
 
         return response()->json([$PictureId]);
     }
