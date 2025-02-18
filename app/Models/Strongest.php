@@ -9,15 +9,16 @@ use Illuminate\Notifications\Notifiable;
 
 class Strongest extends Model
 {
-    use HasFactory, Notifiable, HasUuids;
+    use HasFactory, Notifiable;
 
+    protected $primaryKey = "id";
     protected $table = 'strongest';
     public $timestamps = true;
 
     protected $fillable = [
-        'background_color_1' => 'nullable',
-        'background_opacity_1' => 'nullable',
-        'background_color_2' => 'nullable',
-        'background_opacity_2' => 'nullable'
+        'background_color_1',
+        'background_opacity_1',
+        'background_color_2',
+        'background_opacity_2'
     ];
 }

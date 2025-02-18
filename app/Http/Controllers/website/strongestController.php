@@ -12,13 +12,10 @@ class strongestController
         return response()->json(Strongest::all());
     }
 
-    public function StrongestShowid(Request $request , string $id): object
+    public function StrongestShowid($id): object
     {
-        $validated = $request->validate([
-
-            $strongestId = Strongest::findOrFail($id)]);
-
-        return response()->json([$strongestId]);
+        $strongestId = Strongest::findOrFail($id);
+        return response()->json($strongestId);
     }
     public function UpdateStrongest($id, Request $request)
     {
@@ -28,7 +25,6 @@ class strongestController
             'background_color_2' => 'nullable',
             'background_opacity_2' => 'nullable'
         ]);
-
         $strongest = Strongest::findOrFail($id);
         $strongest->update($updatestrongest);
 
