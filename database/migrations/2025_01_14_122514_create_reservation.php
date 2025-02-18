@@ -17,7 +17,9 @@ return new class extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->foreignId('user_id');
-            $table->foreignId('picture_id');
+            $table->foreignId('bedroom_id');
+            $table->foreignId('service_id');
+            $table->foreignId('status_id');
             $table->timestamps();
         });
     }
