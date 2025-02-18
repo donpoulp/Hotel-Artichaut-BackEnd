@@ -27,103 +27,103 @@ class DatabaseSeeder extends Seeder
 //PICTURE***************************************************************************************************************
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroom1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroom2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroom3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomArtichaut1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomArtichaut2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomArtichaut3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomRoyal1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomRoyal2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomRoyal3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomX1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomX2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageBedroomX3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageConciergerie.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageConciergerie.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageFibre.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageFibre.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageHeroHotel.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroHotel.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageHeroRestaurant.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroRestaurant.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageHeroSpa.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroSpa.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageHotelPresentation.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHotelPresentation.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageNews1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageNews2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageNews3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageOpenNews1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageOpenNews2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageOpenNews3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageNews1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imagePackTechnologie.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePackTechnologie.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imagePageAccueil.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePageAccueil.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imagePressing.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePressing.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageRestaurant.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageRestaurant.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageSpa1.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa1.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageSpa2.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa2.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imageSpa3.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa3.png'),
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000//storage/imagevoiturier.png'),
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagevoiturier.png'),
         ]);
 
 

@@ -13,7 +13,6 @@ class Picture extends Model
     use HasFactory, Notifiable;
 
     protected $table = 'pictures';
-    public $timestamps = true;
 
     protected $fillable = [
         'id',
