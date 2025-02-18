@@ -11,6 +11,7 @@ use App\Http\Controllers\website\newsController;
 use App\Http\Controllers\website\pictureController;
 use App\Http\Controllers\website\reservationController;
 use App\Http\Controllers\website\servicesController;
+use App\Http\Controllers\website\StatusController;
 use App\Http\Controllers\website\strongestController;
 use App\Http\Controllers\website\userController;
 use App\Http\Controllers\website\strongestSectionController;
@@ -133,4 +134,8 @@ Route::controller(pictureController::class)->group(function (){
     Route::post('/picture', [pictureController::class, 'PostPicture']);
     Route::put('/picture/{id}', [pictureController::class, 'UpdatePicture']);
     Route::delete('/picture/{id}', [pictureController::class, 'DeletePicture']);
+});
+//ROUTE STATUS**********************************************************************************************************
+Route::controller(StatusController::class)->group(function () {
+    Route::get('/status', [StatusController::class, 'allStatuses']);
 });

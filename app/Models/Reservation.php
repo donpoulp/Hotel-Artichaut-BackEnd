@@ -20,21 +20,28 @@ class Reservation extends Model
         'startDate',
         'endDate',
         'user_id',
-        'picture_id'
+        'bedroom_id',
+        'service_id',
+        'status_id'
     ];
 
-    public function user(): BelongsTo{
-
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function services(): BelongsToMany{
+    public function services(): BelongsToMany
+    {
         return $this->belongsToMany(Services::class);
-}
-    public function bedroomType(): BelongsToMany{
-            return $this->belongsToMany(BedroomType::class);
-}
-    public function picture():BelongsToMany{
-        return $this->BelongsToMany(Picture::class);
+    }
+
+    public function bedroomType(): BelongsToMany
+    {
+        return $this->belongsToMany(BedroomType::class);
+    }
+
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
     }
 }
