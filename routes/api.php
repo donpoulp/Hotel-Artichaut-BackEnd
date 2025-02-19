@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\website\bedroomController;
+use App\Http\Controllers\website\BedroomController;
 use App\Http\Controllers\website\BedroomTypeController;
 use App\Http\Controllers\website\FooterController;
 use App\Http\Controllers\website\HeaderController;
@@ -30,7 +30,7 @@ Route::controller(UserController::class)->group(function () {
 });
 
 //ROUTE API BEDROOM*****************************************************************************************************
-Route::controller(BedroomTypeController::class)->group(function () {
+Route::controller(BedroomController::class)->group(function () {
 
     Route::get('/bedroom', [BedroomController::class, 'allBedroom']);
     Route::get('/bedroom/{id}', [BedroomController::class, 'bedroomShowid']);

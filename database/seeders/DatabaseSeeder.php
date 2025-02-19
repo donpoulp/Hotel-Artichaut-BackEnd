@@ -10,8 +10,6 @@ use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Psy\Util\Str;
-
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
@@ -342,7 +340,7 @@ class DatabaseSeeder extends Seeder
             'background_opacity_2' => Str('50'),
         ]);
 
-        //STRONGEST SECTION*********************************************************************
+        //STRONGEST SECTION*********************************************************************************************
 
         DB::table('strongest_section')->insert([
             'icon' => Str('i-ph:bowl-food-thin'),
@@ -364,7 +362,43 @@ class DatabaseSeeder extends Seeder
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
         ]);
+
+        //ABOUT*****************************************************************************************************************
+        DB::table('about')->insert([
+            'title' => Str('The hotel'),
+            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus vitae odio et molestie.
+            Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+        ]);
+        DB::table('about')->insert([
+            'title' => Str('Le Chadeuf'),
+            'description' => Str('Ponctuel
+                                                    Sens du détail
+                                                    Déteste la poussière
+                                                    Ponctuel
+                                                    Serviable
+                                                    Ponctuel'),
+        ]);
+        DB::table('about')->insert([
+            'title' => Str('The Sarrazin'),
+            'description' => Str('Adore le luxe
+                                        N’aime pas quand les choses ne sont pas droites parce que du coup ça nuit à l’accessibilité de l’harmonisation du détail
+                                        Serviable'),
+        ]);
+        DB::table('about')->insert([
+            'title' => Str('Mein Raph'),
+            'description' => Str('Passionné de seconde guerre mondiale
+                                        Sens du détail
+                                        A travaillé pour l’une des plus grande marque de voiture (Mercedes)
+                                        Toujours disponible pour rendre service'),
+        ]);
+        DB::table('about')->insert([
+            'title' => Str('The Good Bastien'),
+            'description' => Str('Humain
+                                        Gentil
+                                        Adorable
+                                        Sympa
+                                        Cool'),
+        ]);
     }
-
-
 }
