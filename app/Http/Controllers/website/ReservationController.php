@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Reservation;
+use App\Models\Services;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -11,8 +12,9 @@ use Illuminate\Validation\ValidationException;
 class ReservationController extends Controller
 {
     public function allReservation(): object{
+        $reservation = Reservation::with('services')->get();
+        return response()->json($reservation);
 
-        return response()->json(Reservation::all());
     }
     public function ReservationShowid(Request $request , string $id): object
     {

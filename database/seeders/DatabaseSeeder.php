@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Bedroom;
 use App\Models\Picture;
+use App\Models\Reservation;
 use App\Models\Services;
 use App\Models\Status;
 use App\Models\User;
@@ -322,10 +323,15 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
                 'bedroom_id' => Bedroom::all()->random()->id,
                 'status_id' => Status::all()->random()->id,
-                'service_id' => Services::all()->random()->id,
             ]);
         }
-
+        //PIVOT RESERVATION SERVICE********************************************************************************
+        for ($i = 0; $i < 9; $i++) {
+            DB::table('reservation_services')->insert([
+                'service_id' => Services::all()->random()->id,
+                'reservation_id' => Reservation::all()->random()->id,
+            ]);
+        }
         //STRONGEST*************************************************************************************************
 
         DB::table('strongest')->insert([

@@ -23,7 +23,8 @@ class Services extends Model
         'time',
         'quantity',
     ];
-    public function reservations(): BelongsToMany{
-        return $this->belongsToMany(Reservation::class);
+    public function reservation(): BelongsToMany{
+        return $this->belongsToMany(Reservation::class, 'reservation_services', 'service_id', 'reservation_id');
+
     }
 }
