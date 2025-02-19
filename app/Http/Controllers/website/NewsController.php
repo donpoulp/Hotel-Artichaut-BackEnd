@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class newsController extends Controller
+class NewsController extends Controller
 {
     public function allNews(): object
     {

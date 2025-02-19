@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class pictureController extends Controller
+class PictureController extends Controller
 {
     public function allpicture(): object{
 

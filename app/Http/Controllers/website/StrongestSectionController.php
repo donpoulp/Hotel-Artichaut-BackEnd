@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class strongestSectionController extends Controller
+class StrongestSectionController extends Controller
 {
     public function allStrongestSection(): object{
         return response()->json(StrongestSection::all());

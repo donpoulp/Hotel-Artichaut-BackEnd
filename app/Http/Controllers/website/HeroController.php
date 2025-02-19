@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class heroController extends Controller
+class HeroController extends Controller
 {
     public function allHero(): object{
         return response()->json(Hero::all());

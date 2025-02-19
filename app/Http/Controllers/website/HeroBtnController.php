@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class heroBtnController extends Controller
+class HeroBtnController extends Controller
 {
     public function allHeroBtn(): object{
         return response()->json(HeroBtn::all());

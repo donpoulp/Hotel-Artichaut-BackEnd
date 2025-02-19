@@ -6,7 +6,7 @@ use App\Models\Strongest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class strongestController
+class StrongestController
 {
     public function allStrongest(): object{
         return response()->json(Strongest::all());

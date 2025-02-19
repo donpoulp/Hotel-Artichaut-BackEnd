@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class reservationController extends Controller
+class ReservationController extends Controller
 {
     public function allReservation(): object{
 

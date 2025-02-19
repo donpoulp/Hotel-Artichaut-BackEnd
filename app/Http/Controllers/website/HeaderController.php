@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class headerController extends Controller
+class HeaderController extends Controller
 {
     public function allHeader(): object{
         return response()->json(Header::all());

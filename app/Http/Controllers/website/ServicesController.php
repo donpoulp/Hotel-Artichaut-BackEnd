@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class servicesController extends Controller
+class ServicesController extends Controller
 {
     public function allServices(): object{
         return response()->json(Services::all());

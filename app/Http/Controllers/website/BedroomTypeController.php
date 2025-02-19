@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class bedroomTypeController extends Controller
+class BedroomTypeController extends Controller
 {
     public function allBedroomType(): object{
         return response()->json(BedroomType::all());

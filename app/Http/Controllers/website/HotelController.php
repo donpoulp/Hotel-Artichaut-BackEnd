@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class hotelController extends Controller
+class HotelController extends Controller
 {
     public function allHotel(): object{
         return response()->json(Hotel::all());

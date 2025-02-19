@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 
-class footerController extends Controller
+class FooterController extends Controller
 {
     public function allFooter(): object{
         return response()->json(Footer::all());

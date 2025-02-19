@@ -8,7 +8,7 @@ namespace App\Http\Controllers\website;
  use Illuminate\Validation\ValidationException;
  use OpenApi\Annotations as OA;
 
- class userController extends Controller
+ class UserController extends Controller
 {
      /**
       * @OA\Get(
