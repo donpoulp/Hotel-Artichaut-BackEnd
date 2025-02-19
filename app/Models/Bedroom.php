@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
@@ -24,7 +24,7 @@ class Bedroom extends Model
     public function bedroomType():HasMany{
         return $this->hasMany(BedroomType::class);
     }
-    public function picture():BelongsToMany{
-        return $this->BelongsToMany(Picture::class);
+    public function picture():HasMany{
+        return $this->hasMany(Picture::class,'picture_id');
     }
 }

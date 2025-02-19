@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\website\AboutController;
 use App\Http\Controllers\website\BedroomController;
 use App\Http\Controllers\website\BedroomTypeController;
 use App\Http\Controllers\website\FooterController;
@@ -138,4 +139,14 @@ Route::controller(PictureController::class)->group(function (){
 //ROUTE STATUS**********************************************************************************************************
 Route::controller(StatusController::class)->group(function () {
     Route::get('/status', [StatusController::class, 'allStatuses']);
+});
+
+//ROUTE API ABOUT*******************************************************************************************************
+Route::controller(AboutController::class)->group(function () {
+
+    Route::get('/about', [AboutController::class, 'allAbout']);
+    Route::get('/about/{id}', [AboutController::class, 'AboutShowid']);
+    Route::post('/about', [AboutController::class, 'PostAbout']);
+    Route::put('/about/{id}', [AboutController::class, 'UpdateAbout']);
+    Route::delete('/about/{id}', [AboutController::class, 'DeleteAbout']);
 });

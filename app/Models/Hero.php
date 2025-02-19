@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Hero extends Model
@@ -17,9 +18,9 @@ class Hero extends Model
     protected $fillable = [
         'title',
         'description',
-        'picture_id'
     ];
-    public function picture():BelongsToMany{
-        return $this->BelongsToMany(Picture::class);
+    public function picture():HasMany{
+        return $this->hasMany(Picture::class,'picture_id');
     }
+
 }

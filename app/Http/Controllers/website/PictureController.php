@@ -12,7 +12,9 @@ class PictureController extends Controller
 {
     public function allpicture(): object{
 
-        return response()->json(Picture::all());
+        $picture = Picture::with('bedroom','bedroom_type','news','services','about')->get();
+        return response()->json($picture);
+
     }
 
     public function PictureShowid(Request $request , string $id): object

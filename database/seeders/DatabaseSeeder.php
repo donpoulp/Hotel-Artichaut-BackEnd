@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\About;
 use App\Models\Bedroom;
+use App\Models\BedroomType;
+use App\Models\Hero;
+use App\Models\News;
 use App\Models\Picture;
 use App\Models\Reservation;
 use App\Models\Services;
@@ -14,118 +18,17 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-
         User::factory()
             ->count(10)
             ->create();
+
 //BEDROOM***************************************************************************************************************
-        DB::table('bedroom')->insert([
-            'number' => Str('11'),
-        ]);
+        for ($i = 1; $i < 35; $i++) {
 
-//PICTURE***************************************************************************************************************
-
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageConciergerie.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageFibre.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroHotel.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroRestaurant.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroSpa.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHotelPresentation.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePackTechnologie.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePageAccueil.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePressing.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageRestaurant.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa1.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa2.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa3.png'),
-        ]);
-        DB::table('pictures')->insert([
-            'picturePath' => Str('http://127.0.0.1:8000/storage/imagevoiturier.png'),
-        ]);
-
-
+            DB::table('bedroom')->insert([
+                'number' => Str($i),
+            ]);
+        }
         //BEDROOM TYPE**********************************************************************************************************
 
         DB::table('bedroom_type')->insert([
@@ -135,7 +38,6 @@ class DatabaseSeeder extends Seeder
             Nunc molestie scelerisque massa et semper. Proin at eleifend erat,
             ac mattis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
-            'picture_id' => Picture::all()->random()->id,
         ]);
 
         DB::table('bedroom_type')->insert([
@@ -145,7 +47,6 @@ class DatabaseSeeder extends Seeder
              Proin at eleifend erat, ac mattis sem.
              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
-            'picture_id' => Picture::all()->random()->id,
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -155,7 +56,6 @@ class DatabaseSeeder extends Seeder
         Proin at eleifend erat, ac mattis sem.
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
-            'picture_id' => Picture::all()->random()->id,
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -165,7 +65,6 @@ class DatabaseSeeder extends Seeder
             Proin at eleifend erat, ac mattis sem.
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
-            'picture_id' => Picture::all()->random()->id,
         ]);
 
         //FOOTER********************************************************************************************************
@@ -191,7 +90,6 @@ class DatabaseSeeder extends Seeder
                 located not far from the highest and most beautiful mountains of Haute-Savoie,
                 situated between lakes and mountains,
                 the Hotel offers an exceptional living environment and a wide range of life-size activities.'),
-            'picture_id' => Picture::all()->random()->id,
         ]);
         //HOTEL*****************************************************************************************************
         DB::table('hotel')->insert([
@@ -211,7 +109,6 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'picture_id' => Picture::all()->random()->id,
         ]);
 
         DB::table('news')->insert([
@@ -222,7 +119,6 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'picture_id' => Picture::all()->random()->id,
         ]);
 
         DB::table('news')->insert([
@@ -233,7 +129,6 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'picture_id' => Picture::all()->random()->id,
         ]);
 
         //STATUS***********************************************************************************************
@@ -399,6 +294,312 @@ class DatabaseSeeder extends Seeder
                                         Adorable
                                         Sympa
                                         Cool'),
+        ]);
+        //PICTURE***************************************************************************************************************
+
+        $hero = Hero::all()->random();
+        $bedroom = Bedroom::all()->random();
+        $bedroomType = BedroomType::all()->random();
+        $news = News::all()->random();
+        $services = Services::all()->random();
+        $about = About::all()->random();
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageConciergerie.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageFibre.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroHotel.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroRestaurant.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroSpa.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageHotelPresentation.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePackTechnologie.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePageAccueil.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagePressing.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageRestaurant.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa1.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa2.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa3.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
+        ]);
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/imagevoiturier.png'),
+            'hero_id' => $hero->id,
+            'bedroom_id' => $bedroom->id,
+            'bedroomtype_id' => $bedroomType->id,
+            'news_id' => $news->id,
+            'services_id' => $services->id,
+            'about_id' => $about->id,
         ]);
     }
 }

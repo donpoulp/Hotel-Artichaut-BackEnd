@@ -42,18 +42,18 @@ class AboutController extends Controller
             ]);
 
 
-            $postHero = new About($validate);
-            $postHero->save();
-            return response()->json($postHero);
+            $postAbout = new About($validate);
+            $postAbout->save();
+            return response()->json($postAbout);
         } catch (ValidationException $exception) {
             return response()->json($exception->getMessage());
         }
     }
 
-    public function DeleteHero(Request $request, $id)
+    public function DeleteAbout(Request $request, $id)
     {
-        $deleteHero = Hero::findOrFail($id);
-        $deleteHero->delete();
-        return response()->json(Hero::all());
+        $deleteAbout = About::findOrFail($id);
+        $deleteAbout->delete();
+        return response()->json(About::all());
     }
 }

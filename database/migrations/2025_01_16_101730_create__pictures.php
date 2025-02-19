@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('pictures', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('picturePath');
+            $table->foreignId('hero_id')->nullable();
+            $table->foreignId('bedroom_id')->nullable();
+            $table->foreignId('bedroomtype_id')->nullable();
+            $table->foreignId('news_id')->nullable();
+            $table->foreignId('services_id')->nullable();
+            $table->foreignId('about_id')->nullable();
             $table->timestamps();
         });
     }

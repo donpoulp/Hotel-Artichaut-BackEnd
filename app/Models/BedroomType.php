@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,9 +19,8 @@ class BedroomType extends Model
         'name',
         'description',
         'price',
-        'picture_id'
     ];
-    public function bedroom():HasMany{
-        return $this->hasMany(Bedroom::class);
+    public function picture():HasMany{
+        return $this->hasMany(Picture::class,'picture_id');
     }
 }

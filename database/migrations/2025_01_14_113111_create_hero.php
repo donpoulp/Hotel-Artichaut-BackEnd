@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('title');
             $table->longText('description');
-            $table->foreignId('picture_id');
             $table->timestamps();
         });
     }
