@@ -7,7 +7,6 @@ use App\Models\Bedroom;
 use App\Models\BedroomType;
 use App\Models\Hero;
 use App\Models\News;
-use App\Models\Picture;
 use App\Models\Reservation;
 use App\Models\Services;
 use App\Models\Status;
