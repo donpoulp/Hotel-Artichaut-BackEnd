@@ -11,7 +11,7 @@ class newsController extends Controller
 {
     public function allNews(): object
     {
-        return response()->json(News::with('picture')->get());
+        return response()->json(News::all());
     }
     public function newsShowid(Request $request , string $id): object
     {
