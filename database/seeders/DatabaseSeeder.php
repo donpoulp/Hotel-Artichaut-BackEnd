@@ -13,6 +13,8 @@ use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Psy\Util\Str;
+
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
@@ -73,12 +75,19 @@ class DatabaseSeeder extends Seeder
             'titleReseau' => Str('Reseau'),
             'iconReseau' => Str('/data/images/footer.png'),
             'linkReseau' => Str('https://github.com/tristan/tristan'),
+            'background_color'=>Str('0D5649'),
+            'background_opacity'=>Str('072527')
         ]);
         //HEADER****************************************************************************************************
         DB::table('header')->insert([
             'backgroundColor' => Str('0D5649/158470'),
             'logo' => Str('data/images/logo.png'),
             'icone' => Str('data/images/icone.png'),
+            'background_color_1'=>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'fondus_color_2'=>Str('158470'),
+            'fondus_opacity_2'=>Str('072527'),
+
         ]);
         //HERO******************************************************************************************************
         DB::table('hero')->insert([
@@ -108,6 +117,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'background_color'=>Str('EDE798'),
+            'background_opacity'=>Str('D9D9D9'),
         ]);
 
         DB::table('news')->insert([
@@ -118,6 +129,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'background_color'=>Str('EDE798'),
+            'background_opacity'=>Str('D9D9D9')
         ]);
 
         DB::table('news')->insert([
@@ -128,6 +141,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'background_color'=>Str('EDE798'),
+            'background_opacity'=>Str('D9D9D9')
         ]);
 
         //STATUS***********************************************************************************************
@@ -155,6 +170,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
 
         DB::table('services')->insert([
@@ -167,6 +188,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
 
         DB::table('services')->insert([
@@ -179,6 +206,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
 
         DB::table('services')->insert([
@@ -191,6 +224,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
 
         DB::table('services')->insert([
@@ -203,6 +242,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
 
         //RESERVATION*******************************************************************************************
@@ -263,7 +308,14 @@ class DatabaseSeeder extends Seeder
             'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus vitae odio et molestie.
             Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
+
         DB::table('about')->insert([
             'title' => Str('Le Chadeuf'),
             'description' => Str('Ponctuel
@@ -272,20 +324,41 @@ class DatabaseSeeder extends Seeder
                                                     Ponctuel
                                                     Serviable
                                                     Ponctuel'),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
+
         DB::table('about')->insert([
             'title' => Str('The Sarrazin'),
             'description' => Str('Adore le luxe
                                         N’aime pas quand les choses ne sont pas droites parce que du coup ça nuit à l’accessibilité de l’harmonisation du détail
                                         Serviable'),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
+
         DB::table('about')->insert([
             'title' => Str('Mein Raph'),
             'description' => Str('Passionné de seconde guerre mondiale
                                         Sens du détail
                                         A travaillé pour l’une des plus grande marque de voiture (Mercedes)
                                         Toujours disponible pour rendre service'),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
+
         DB::table('about')->insert([
             'title' => Str('The Good Bastien'),
             'description' => Str('Humain
@@ -293,7 +366,14 @@ class DatabaseSeeder extends Seeder
                                         Adorable
                                         Sympa
                                         Cool'),
+            'background_color_1' =>Str('0D5649'),
+            'background_opacity_1'=>Str('072527'),
+            'backgroundText_color_1'=>Str('726F42'),
+            'backgroundText_opacity_1'=>Str('D8D27D'),
+            'backgroundText_color_2'=>Str('726F42'),
+            'backgroundText_opacity_2'=>Str('D8D27D'),
         ]);
+
         //PICTURE***************************************************************************************************************
 
         $hero = Hero::all()->random();

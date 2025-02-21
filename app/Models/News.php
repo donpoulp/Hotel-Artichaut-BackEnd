@@ -19,6 +19,8 @@ class News extends Model
     protected $fillable = [
         'title',
         'description',
+        'background_color',
+        'background_opacity',
     ];
     public function picture():HasMany{
         return $this->hasMany(Picture::class,'picture_id');

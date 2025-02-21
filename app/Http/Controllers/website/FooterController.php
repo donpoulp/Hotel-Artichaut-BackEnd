@@ -29,6 +29,8 @@ class FooterController extends Controller
             'titleReseau' => 'nullable',
             'iconReseau' => 'nullable',
             'linkReseau' => 'nullable',
+            'background_color'=>'nullable',
+            'background_opacity'=>'nullable',
         ]);
 
         $footer = Footer::findOrFail($id);
@@ -46,6 +48,8 @@ class FooterController extends Controller
                 'titleReseau' => 'required|string|max:255',
                 'iconReseau' => 'required|string|max:255',
                 'linkReseau' => 'required|string|max:255',
+                'background_color'=>'nullable',
+                'background_opacity'=>'nullable',
             ]);
 
 

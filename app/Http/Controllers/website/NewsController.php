@@ -28,6 +28,8 @@ class NewsController extends Controller
             'description' => 'nullable',
             'content' => 'nullable',
             'picture_id' => 'nullable',
+            'background_color'=>'nullable',
+            'background_opacity'=>'nullable',
         ]);
 
         $news = News::findOrFail($id);
@@ -44,6 +46,8 @@ class NewsController extends Controller
                 'description' => 'required|string|max:255',
                 'content' => 'required|string|max:255',
                 'picture_id' => 'nullable',
+                'background_color'=>'nullable',
+                'background_opacity'=>'nullable',
             ]);
 
 

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,6 +17,12 @@ class About extends Model
         'id',
         'title',
         'description',
+        'background_color_1',
+        'background_opacity_1',
+        'backgroundText_color_1',
+        'backgroundText_opacity_1',
+        'backgroundText_color_2',
+        'backgroundText_opacity_2',
     ];
     public function picture():HasMany{
         return $this->hasMany(Picture::class,'picture_id');

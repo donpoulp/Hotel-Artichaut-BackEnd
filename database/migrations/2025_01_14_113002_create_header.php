@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('backgroundColor');
             $table->string('logo');
             $table->string('icone');
+            $table->string('background_color_1');
+            $table->string('background_opacity_1');
+            $table->string('fondus_color_2');
+            $table->string('fondus_opacity_2');
             $table->timestamps();
         });
     }

@@ -19,6 +19,12 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('time');
             $table->integer('quantity');
+            $table->string('background_color_1');
+            $table->string('background_opacity_1');
+            $table->string('backgroundText_color_1');
+            $table->string('backgroundText_opacity_1');
+            $table->string('backgroundText_color_2');
+            $table->string('backgroundText_opacity_2');
             $table->timestamps();
         });
     }
