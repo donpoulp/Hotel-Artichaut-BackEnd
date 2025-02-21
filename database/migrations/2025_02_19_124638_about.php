@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('title');
             $table->longText('description');
+            $table->string('background_color_1');
+            $table->string('background_opacity_1');
+            $table->string('backgroundText_color_1');
+            $table->string('backgroundText_opacity_1');
+            $table->string('backgroundText_color_2');
+            $table->string('backgroundText_opacity_2');
             $table->timestamps();
         });
     }

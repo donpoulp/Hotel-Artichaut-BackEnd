@@ -17,14 +17,15 @@ class Bedroom extends Model
 
     protected $fillable = [
         'number',
+        'bedroom_type_id',
     ];
     public function reservation():HasMany{
         return $this->hasMany(Reservation::class);
     }
-    public function bedroomType():HasMany{
-        return $this->hasMany(BedroomType::class);
-    }
     public function picture():HasMany{
         return $this->hasMany(Picture::class,'picture_id');
+    }
+    public function bedroomtype():BelongsTo{
+        return $this->belongsTo(BedroomType::class,'bedroom_type_id');
     }
 }

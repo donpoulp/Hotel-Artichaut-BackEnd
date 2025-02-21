@@ -16,6 +16,9 @@ class Header extends Model
     protected $fillable = [
         'logo',
         'icone',
-        'backgroundColor',
+        'background_color_1',
+        'background_opacity_1',
+        'fondus_color_2',
+        'fondus_opacity_2'
     ];
 }

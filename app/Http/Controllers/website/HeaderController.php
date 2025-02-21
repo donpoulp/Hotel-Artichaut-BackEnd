@@ -23,9 +23,12 @@ class HeaderController extends Controller
     public function headerUpdate($id, Request $request)
     {
         $headerUpdate = $request->validate([
-            'backgroundColor' => 'nullable',
             'logo' => 'nullable',
             'icone' => 'nullable',
+            'background_color_1'=>'nullable',
+            'background_opacity_1'=>'nullable',
+            'fondus_color_2'=>'nullable',
+            'fondus_opacity_2'=>'nullable'
         ]);
 
         $header = Header::findOrFail($id);
@@ -38,9 +41,13 @@ class HeaderController extends Controller
     {
         try {
             $validate = $request->validate([
-                'backgroundColor' => 'required|string|max:255',
-                'logo' => 'required|string|max:255',
-                'icone' => 'required|string|max:255',
+                'logo' => 'nullable',
+                'icone' => 'nullable',
+                'background_color_1'=>'nullable',
+                'background_opacity_1'=>'nullable',
+                'fondus_color_2'=>'nullable',
+                'fondus_opacity_2'=>'nullable'
+
             ]);
 
 

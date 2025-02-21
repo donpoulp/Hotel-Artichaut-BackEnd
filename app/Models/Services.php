@@ -23,6 +23,12 @@ class Services extends Model
         'price',
         'time',
         'quantity',
+        'background_color_1',
+        'background_opacity_1',
+        'backgroundText_color_1',
+        'backgroundText_opacity_1',
+        'backgroundText_color_2',
+        'backgroundText_opacity_2',
     ];
     public function reservation(): BelongsToMany{
         return $this->belongsToMany(Reservation::class, 'reservation_services', 'service_id', 'reservation_id');

@@ -19,5 +19,7 @@ class Footer extends Model
         'titleReseau',
         'iconReseau',
         'linkReseau',
+        'background_color',
+        'background_opacity',
     ];
 }

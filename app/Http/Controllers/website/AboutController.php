@@ -25,6 +25,13 @@ class AboutController extends Controller
         $aboutUpdate = $request->validate([
             'title' => 'nullable',
             'description' => 'nullable',
+            'background_color_1' => 'nullable',
+            'background_opacity_1' => 'nullable',
+            'backgroundText_color_1' => 'nullable',
+            'backgroundText_opacity_1' => 'nullable',
+            'backgroundText_color_2' => 'nullable',
+            'backgroundText_opacity_2' => 'nullable',
+
         ]);
 
         $about = About::findOrFail($id);
@@ -39,6 +46,12 @@ class AboutController extends Controller
             $validate = $request->validate([
                 'title' => 'required|string|max:255',
                 'description' => 'required|string|max:255',
+                'background_color_1' => 'nullable',
+                'background_opacity_1' => 'nullable',
+                'backgroundText_color_1' => 'nullable',
+                'backgroundText_opacity_1' => 'nullable',
+                'backgroundText_color_2' => 'nullable',
+                'backgroundText_opacity_2' => 'nullable',
             ]);
 
 

@@ -21,7 +21,8 @@ class PictureController extends Controller
     {
         $validated = $request->validate([
 
-            $PictureId = Picture::findOrFail($id)]);
+
+            $PictureId = Picture::with('bedroom')->findOrFail($id)]);
 
         return response()->json([$PictureId]);
     }
