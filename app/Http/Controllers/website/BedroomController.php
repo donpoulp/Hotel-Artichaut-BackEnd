@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Bedroom;
-use App\Models\BedroomType;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
