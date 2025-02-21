@@ -11,9 +11,9 @@ use App\Models\Reservation;
 use App\Models\Services;
 use App\Models\Status;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Psy\Util\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,15 +23,7 @@ class DatabaseSeeder extends Seeder
             ->count(10)
             ->create();
 
-//BEDROOM***************************************************************************************************************
-        for ($i = 1; $i < 35; $i++) {
-
-            DB::table('bedroom')->insert([
-                'number' => Str($i),
-            ]);
-        }
         //BEDROOM TYPE**********************************************************************************************************
-
         DB::table('bedroom_type')->insert([
             'name' => Str('Suite Royale'),
             'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -39,6 +31,8 @@ class DatabaseSeeder extends Seeder
             Nunc molestie scelerisque massa et semper. Proin at eleifend erat,
             ac mattis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('bedroom_type')->insert([
@@ -48,6 +42,8 @@ class DatabaseSeeder extends Seeder
              Proin at eleifend erat, ac mattis sem.
              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -57,6 +53,9 @@ class DatabaseSeeder extends Seeder
         Proin at eleifend erat, ac mattis sem.
         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+
 
         ]);
         DB::table('bedroom_type')->insert([
@@ -66,8 +65,20 @@ class DatabaseSeeder extends Seeder
             Proin at eleifend erat, ac mattis sem.
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
             'price' => number_format(254),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
+        //BEDROOM***************************************************************************************************************
+        for ($i = 1; $i < 35; $i++) {
+            $bedroomType = BedroomType::all()->random();
+            DB::table('bedroom')->insert([
+                'number' => Str($i),
+                'bedroom_type_id' => $bedroomType->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+        }
         //FOOTER********************************************************************************************************
         DB::table('footer')->insert([
             'title' => Str('Hôtel Artichaut'),
@@ -76,7 +87,9 @@ class DatabaseSeeder extends Seeder
             'iconReseau' => Str('/data/images/footer.png'),
             'linkReseau' => Str('https://github.com/tristan/tristan'),
             'background_color'=>Str('0D5649'),
-            'background_opacity'=>Str('072527')
+            'background_opacity'=>Str('072527'),
+             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //HEADER****************************************************************************************************
         DB::table('header')->insert([
@@ -87,6 +100,8 @@ class DatabaseSeeder extends Seeder
             'background_opacity_1'=>Str('072527'),
             'fondus_color_2'=>Str('158470'),
             'fondus_opacity_2'=>Str('072527'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
         ]);
         //HERO******************************************************************************************************
@@ -98,6 +113,8 @@ class DatabaseSeeder extends Seeder
                 located not far from the highest and most beautiful mountains of Haute-Savoie,
                 situated between lakes and mountains,
                 the Hotel offers an exceptional living environment and a wide range of life-size activities.'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //HOTEL*****************************************************************************************************
         DB::table('hotel')->insert([
@@ -106,6 +123,8 @@ class DatabaseSeeder extends Seeder
             'phone' => Str('0102030405'),
             'email' => Str('hotel@tristan.com'),
             'postalCode' => Str('74000'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //NEWS******************************************************************************************************
 
@@ -119,6 +138,8 @@ class DatabaseSeeder extends Seeder
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
             'background_color'=>Str('EDE798'),
             'background_opacity'=>Str('D9D9D9'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('news')->insert([
@@ -130,7 +151,9 @@ class DatabaseSeeder extends Seeder
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
             'background_color'=>Str('EDE798'),
-            'background_opacity'=>Str('D9D9D9')
+            'background_opacity'=>Str('D9D9D9'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('news')->insert([
@@ -142,7 +165,9 @@ class DatabaseSeeder extends Seeder
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
             'background_color'=>Str('EDE798'),
-            'background_opacity'=>Str('D9D9D9')
+            'background_opacity'=>Str('D9D9D9'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //STATUS***********************************************************************************************
@@ -176,6 +201,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('services')->insert([
@@ -194,6 +221,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('services')->insert([
@@ -212,6 +241,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('services')->insert([
@@ -230,6 +261,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('services')->insert([
@@ -248,6 +281,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //RESERVATION*******************************************************************************************
@@ -260,6 +295,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
                 'bedroom_id' => Bedroom::all()->random()->id,
                 'status_id' => Status::all()->random()->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
         //PIVOT RESERVATION SERVICE********************************************************************************
@@ -267,6 +304,8 @@ class DatabaseSeeder extends Seeder
             DB::table('reservation_services')->insert([
                 'service_id' => Services::all()->random()->id,
                 'reservation_id' => Reservation::all()->random()->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
         //STRONGEST*************************************************************************************************
@@ -277,6 +316,8 @@ class DatabaseSeeder extends Seeder
             'background_opacity_1' => Str('100'),
             'background_color_2' => Str('#FFFFFF'),
             'background_opacity_2' => Str('50'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //STRONGEST SECTION*********************************************************************************************
@@ -286,6 +327,8 @@ class DatabaseSeeder extends Seeder
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('strongest_section')->insert([
@@ -293,6 +336,8 @@ class DatabaseSeeder extends Seeder
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('strongest_section')->insert([
@@ -300,6 +345,8 @@ class DatabaseSeeder extends Seeder
             'text' => Str('Duis pellentesque ante et tellus ultrices,
                 vitae sodales massa vehicula.
                 Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //ABOUT*****************************************************************************************************************
@@ -314,6 +361,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('about')->insert([
@@ -330,6 +379,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('about')->insert([
@@ -343,6 +394,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('about')->insert([
@@ -357,6 +410,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('about')->insert([
@@ -372,6 +427,8 @@ class DatabaseSeeder extends Seeder
             'backgroundText_opacity_1'=>Str('D8D27D'),
             'backgroundText_color_2'=>Str('726F42'),
             'backgroundText_opacity_2'=>Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //PICTURE***************************************************************************************************************
@@ -390,6 +447,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('pictures')->insert([
@@ -400,6 +459,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom3.png'),
@@ -409,6 +470,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut1.png'),
@@ -418,6 +481,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut2.png'),
@@ -427,6 +492,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut3.png'),
@@ -436,6 +503,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal1.png'),
@@ -445,6 +514,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal2.png'),
@@ -454,6 +525,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal3.png'),
@@ -463,6 +536,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX1.png'),
@@ -472,6 +547,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX2.png'),
@@ -481,6 +558,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX3.png'),
@@ -490,6 +569,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageConciergerie.png'),
@@ -499,6 +580,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageFibre.png'),
@@ -508,6 +591,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroHotel.png'),
@@ -517,6 +602,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroRestaurant.png'),
@@ -526,6 +613,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroSpa.png'),
@@ -535,6 +624,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHotelPresentation.png'),
@@ -544,6 +635,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
@@ -553,6 +646,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews2.png'),
@@ -562,6 +657,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews3.png'),
@@ -571,6 +668,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews1.png'),
@@ -580,6 +679,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews2.png'),
@@ -589,6 +690,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews3.png'),
@@ -598,6 +701,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
@@ -607,6 +712,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePackTechnologie.png'),
@@ -616,6 +723,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePageAccueil.png'),
@@ -625,6 +734,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePressing.png'),
@@ -634,6 +745,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageRestaurant.png'),
@@ -643,6 +756,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa1.png'),
@@ -652,6 +767,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa2.png'),
@@ -661,6 +778,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa3.png'),
@@ -670,6 +789,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagevoiturier.png'),
@@ -679,6 +800,8 @@ class DatabaseSeeder extends Seeder
             'news_id' => $news->id,
             'services_id' => $services->id,
             'about_id' => $about->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bedroom', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('number');
+            $table->foreignId('bedroom_type_id');
             $table->timestamps();
         });
     }
