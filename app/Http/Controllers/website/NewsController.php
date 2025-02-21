@@ -55,6 +55,7 @@ class NewsController extends Controller
             $postNews->save();
             return response()->json($postNews);
         } catch (ValidationException $exception) {
+
             return response()->json($exception->getMessage());
         }
     }
