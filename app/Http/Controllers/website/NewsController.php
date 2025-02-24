@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\News;
+use App\Models\Picture;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -11,7 +12,9 @@ class NewsController extends Controller
 {
     public function allNews(): object
     {
-        return response()->json(News::all());
+
+        $news = News::with('picture')->get();
+        return response()->json($news);
     }
     public function newsShowid(Request $request , string $id): object
     {

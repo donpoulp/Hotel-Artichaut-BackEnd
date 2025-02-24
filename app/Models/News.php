@@ -23,6 +23,6 @@ class News extends Model
         'background_opacity',
     ];
     public function picture():HasMany{
-        return $this->hasMany(Picture::class,'picture_id');
+        return $this->hasMany(Picture::class);
     }
 }
