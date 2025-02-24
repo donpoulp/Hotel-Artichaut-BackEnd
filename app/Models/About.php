@@ -25,7 +25,7 @@ class About extends Model
         'backgroundText_opacity_2',
     ];
     public function picture():HasMany{
-        return $this->hasMany(Picture::class,'picture_id');
+        return $this->hasMany(Picture::class);
     }
 }
 

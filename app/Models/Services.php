@@ -35,6 +35,6 @@ class Services extends Model
 
     }
     public function picture():HasMany{
-        return $this->hasMany(Picture::class, 'picture_id');
+        return $this->hasMany(Picture::class);
     }
 }

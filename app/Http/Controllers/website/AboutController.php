@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class AboutController extends Controller
 {
     public function allAbout(): object{
-        return response()->json(About::all());
+        $picture = About::with('picture')->get();
+        return response()->json($picture);
     }
     public function aboutShowid(Request $request , string $id): object
     {

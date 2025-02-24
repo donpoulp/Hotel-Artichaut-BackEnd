@@ -20,7 +20,7 @@ class Hero extends Model
         'description',
     ];
     public function picture():HasMany{
-        return $this->hasMany(Picture::class,'picture_id');
+        return $this->hasMany(Picture::class);
     }
 
 }

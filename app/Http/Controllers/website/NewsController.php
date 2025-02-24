@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\News;
-use App\Models\Picture;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;

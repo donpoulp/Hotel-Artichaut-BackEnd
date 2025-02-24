@@ -23,7 +23,7 @@ class Bedroom extends Model
         return $this->hasMany(Reservation::class);
     }
     public function picture():HasMany{
-        return $this->hasMany(Picture::class,'picture_id');
+        return $this->hasMany(Picture::class);
     }
     public function bedroomtype():BelongsTo{
         return $this->belongsTo(BedroomType::class,'bedroom_type_id');

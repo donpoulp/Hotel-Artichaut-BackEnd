@@ -10,8 +10,8 @@ use Illuminate\Validation\ValidationException;
 class BedroomController extends Controller
 {
     public function allBedroom(): object{
-        $bedroom = Bedroom::with('bedroomType')->get();
-        return response()->json($bedroom);
+        $picture = Bedroom::with('bedroomType','picture')->get();
+        return response()->json($picture);
     }
     public function bedroomShowid(Request $request , string $id): object
     {

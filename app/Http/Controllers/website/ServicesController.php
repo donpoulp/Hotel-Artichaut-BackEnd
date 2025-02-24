@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class ServicesController extends Controller
 {
     public function allServices(): object{
-        return response()->json(Services::all());
+        $picture = Services::with('picture')->get();
+        return response()->json($picture);
     }
     public function ServicesShowid(Request $request , string $id): object
     {

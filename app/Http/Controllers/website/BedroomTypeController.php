@@ -11,7 +11,9 @@ use Illuminate\Validation\ValidationException;
 class BedroomTypeController extends Controller
 {
     public function allBedroomType(): object{
+
         return response()->json(BedroomType::all());
+
     }
     public function bedroomTypeShowid(Request $request , string $id): object
     {
