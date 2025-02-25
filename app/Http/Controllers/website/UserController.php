@@ -7,6 +7,7 @@ namespace App\Http\Controllers\website;
  use Illuminate\Routing\Controller;
  use Illuminate\Validation\ValidationException;
  use OpenApi\Annotations as OA;
+ use Illuminate\Support\Facades\Hash;
 
  class UserController extends Controller
 {
@@ -68,15 +69,19 @@ namespace App\Http\Controllers\website;
                  'firstName' => 'required|string|max:20',
                  'lastName' => 'required|string|max:20',
                  'email' => 'required|string|email|max:70',
-                 'emailBis' => 'required|string|email|max:70',
-                 'password' => 'string|max:20',
+                 'emailBis' => 'nullable|string|email|max:70',
+                 'password' => 'required|string|max:20',
                  'phone' => 'required|string|max:10',
-                 'phoneBis' => 'required|string|max:10',
-                 'role' => 'required|int|max:15',
+                 'phoneBis' => 'nullable|string|max:10',
+                 'role' => 'nullable|int|max:15',
              ]);
 
+             if (!isset($validate['role'])){
+                 $validate['role'] = 0;
+             }
 
              $postcustomer = new User($validate);
+
              $postcustomer->save();
              return response()->json($postcustomer);
          } catch (ValidationException $exception) {
