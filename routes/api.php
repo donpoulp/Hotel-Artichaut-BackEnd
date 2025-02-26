@@ -153,6 +153,4 @@ Route::controller(AboutController::class)->group(function () {
 });
 //ROUTE AUTH USER*******************************************************************************************************
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/me', [AuthController::class, 'actualUser'])->middleware('auth:sanctum');

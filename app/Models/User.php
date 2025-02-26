@@ -18,13 +18,13 @@ class User extends Authenticatable
         'lastName',
         'email',
         'emailBis',
-        'password',
         'phone',
         'phoneBis',
         'role',
     ];
     protected $hidden = [
         'remember_token',
+        'password',
     ];
 
 

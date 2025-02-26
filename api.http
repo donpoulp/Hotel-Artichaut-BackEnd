@@ -462,3 +462,13 @@ DELETE {{baseUrl}}strongest/aecec5dd-a48a-4bb4-b757-fcdfecbcc555
 ###     LIST ALL PICTURE
 
 GET{{baseUrl}}picture
+
+###
+
+POST{{baseUrl}}login
+Content-Type: application/json
+
+{
+    "email" :"rylan61@example.net" ,
+    "password" :"Q8+3dR}E$gh\/m"
+}

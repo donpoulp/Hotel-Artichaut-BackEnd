@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         $validatedData = $request->validate([
             'firstName' => 'required',
             'email' => 'required',
@@ -40,7 +39,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if(Auth::attempt($request->only('email', 'password'))) {
+        if(!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Invalid login details'], 401);
         }
 

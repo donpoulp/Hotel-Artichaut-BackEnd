@@ -14,6 +14,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +23,18 @@ class DatabaseSeeder extends Seeder
         User::factory()
             ->count(10)
             ->create();
-
+        DB::table('users')->insert([
+            'firstname' => Str('Tristan'),
+            'lastname' => Str('Chadeuf'),
+            'email' => Str('tristanChadeuf@gmail.com'),
+            'emailBis' => Str('tristanChadeuf2@gmail.com'),
+            'password' => Hash::make('password'),
+            'phone' => fake()->phoneNumber,
+            'phoneBis' => fake()->phoneNumber,
+            'role' => fake()->randomNumber(1, 3),
+            'created_at' => fake()->dateTime,
+            'updated_at' => fake()->dateTime,
+        ]);
         //BEDROOM TYPE**********************************************************************************************************
         DB::table('bedroom_type')->insert([
             'name' => Str('Suite Royale'),
