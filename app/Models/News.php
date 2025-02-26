@@ -17,8 +17,10 @@ class News extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
-        'description',
+        'titleFr',
+        'titleEn',
+        'descriptionFr',
+        'descriptionEn',
         'background_color',
         'background_opacity',
     ];

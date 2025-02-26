@@ -15,8 +15,10 @@ class Hero extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
-        'description',
+        'titleFr',
+        'titleEn',
+        'descriptionFr',
+        'descriptionEn',
     ];
     public function picture():HasMany{
         return $this->hasMany(Picture::class);

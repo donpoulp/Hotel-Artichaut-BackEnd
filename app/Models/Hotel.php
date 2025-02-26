@@ -14,7 +14,8 @@ class Hotel extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
+        'nameFr',
+        'nameEn',
         'address',
         'phone',
         'email',

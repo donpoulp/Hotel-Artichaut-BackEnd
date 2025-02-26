@@ -15,10 +15,11 @@ class BedroomType extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'description',
+        'nameFr',
+        'nameEn',
+        'descriptionFr',
+        'descriptionEn',
         'price',
-
     ];
     public function picture():HasMany{
         return $this->hasMany(Picture::class);

@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,52 +32,56 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber,
             'phoneBis' => fake()->phoneNumber,
-            'role' => fake()->randomNumber(1, 3),
+            'role' => fake()->randomNumber(1,3),
             'created_at' => fake()->dateTime,
             'updated_at' => fake()->dateTime,
         ]);
         //BEDROOM TYPE**********************************************************************************************************
         DB::table('bedroom_type')->insert([
-            'name' => Str('Suite Royale'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aliquam faucibus vitae odio et molestie.
-            Nunc molestie scelerisque massa et semper. Proin at eleifend erat,
-            ac mattis sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
-            'price' => number_format(254),
+            'nameFr' => Str('Suite Royale'),
+            'nameEn' => Str('Royal Suite'),
+            'descriptionFr' => Str('Culminant au dernier étage de l’hôtel,
+            nos Suites Royale allient modernité et douceur de vivre.;'),
+            'descriptionEn'=>Str('Culminating on the top floor of the hotel,
+            our Royale Suites combine modernity and the sweetness of life.'),
+            'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('bedroom_type')->insert([
-            'name' => Str('Suite Artichaut'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-             Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
-             Proin at eleifend erat, ac mattis sem.
-             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
-            'price' => number_format(254),
+            'nameFr' => Str('Suite Artichaut'),
+            'nameEn' => Str('Artichoke Suite'),
+            'descriptionFr' => Str('Laissez-vous séduire par le cadre envoûtant des Suites Exécutives,
+             au design contemporain, élégant et lumineux avec vue sur la baie de Annecy.'),
+            'descriptionEn'=>Str('Let yourself be seduced by the captivating setting of the Executive Suites,
+             with their contemporary, elegant and bright design overlooking the bay of Annecy.'),
+            'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
         ]);
         DB::table('bedroom_type')->insert([
-            'name' => Str('Suite X'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
-        Proin at eleifend erat, ac mattis sem.
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
-            'price' => number_format(254),
+            'nameFr' => Str('Suite X'),
+            'nameEn' => Str('X Suite'),
+            'descriptionFr' => Str("Ces suites luxueuses à l'élégance épurée ont chacune leur identité
+             propre grâce à un style très personnel."),
+            'descriptionEn'=>Str("These luxurious suites with refined elegance each
+            have their own identity thanks to a very personal style."),
+            'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
 
         ]);
         DB::table('bedroom_type')->insert([
-            'name' => Str('Classic Rooms'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aliquam faucibus vitae odio et molestie. Nunc molestie scelerisque massa et semper.
-            Proin at eleifend erat, ac mattis sem.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;'),
-            'price' => number_format(254),
+            'nameFr' => Str('Chambre Classique'),
+            'nameEn' => Str('Classic Bedroom'),
+            'descriptionFr' => Str("Ces chambres à l’élégance moderne disposent
+             d’une salle de bains avec douche ou baignoire. "),
+            'descriptionEn'=> Str("These modernly elegant rooms have a bathroom
+             with a shower or bathtub."),
+            'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -93,8 +98,10 @@ class DatabaseSeeder extends Seeder
         }
         //FOOTER********************************************************************************************************
         DB::table('footer')->insert([
-            'title' => Str('Hôtel Artichaut'),
-            'text' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+            'titleFr' => Str('Hôtel Artichaut'),
+            'titleEn' => Str('Hostel Artichoke'),
+            'textFr' => Str('En esperant bientot vous rencontrez'),
+            'textEn' => Str('Hoping to meet you soon'),
             'titleReseau' => Str('Reseau'),
             'iconReseau' => Str('/data/images/footer.png'),
             'linkReseau' => Str('https://github.com/tristan/tristan'),
@@ -118,19 +125,21 @@ class DatabaseSeeder extends Seeder
         ]);
         //HERO******************************************************************************************************
         DB::table('hero')->insert([
-
-            'title' => Str('Welcome to Hostel Artichaut'),
-            'description' => Str('
-                The Hotel Artichaut is a luxury hotel, founded in 1426,
-                located not far from the highest and most beautiful mountains of Haute-Savoie,
-                situated between lakes and mountains,
-                the Hotel offers an exceptional living environment and a wide range of life-size activities.'),
+            'titleFr'=>Str("Bienvenue à l'Hotel Artichaut"),
+            'titleEn' => Str('Welcome to Hostel Artichoke'),
+            'descriptionFr' => Str("
+               Implanté au coeur d'un site exceptionnel dans l'environnement idyllique de la ville d’Annecy,
+                l’Impérial Palace, hôtel 4 étoiles, offre une vue imprenable sur le lac d’Annecy. "),
+            'descriptionEn'=>Str("
+              Located in the heart of an exceptional site in the idyllic environment of the city of Annecy,
+              the Impérial Palace, a 4-star hotel, offers a breathtaking view of Lake Annecy."),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //HOTEL*****************************************************************************************************
         DB::table('hotel')->insert([
-            'name' => Str('Hotel Artichaut'),
+            'nameFr' => Str('Hotel Artichaut'),
+            'nameEn' => Str('Hostel Artichoke'),
             'address' => Str('24 route du Lac'),
             'phone' => Str('0102030405'),
             'email' => Str('hotel@tristan.com'),
@@ -141,13 +150,12 @@ class DatabaseSeeder extends Seeder
         //NEWS******************************************************************************************************
 
         DB::table('news')->insert([
-            'title' => Str('Hostel'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper.
-                    Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-                    Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'titleFr' => Str('Hotel'),
+            'titleEn'=>Str('Hostel'),
+            'descriptionFr' => Str('Au cours de votre séjour, vous aurez l’opportunité de déguster une cuisine raffinée,
+             créative et de grande qualité dans l’un de nos restaurants donnant sur le lac d’Annecy'),
+            'descriptionEn'=>Str("During your stay, you will have the opportunity to taste refined,
+             creative and high quality cuisine in one of our restaurants overlooking Lake Annecy."),
             'background_color'=>Str('EDE798'),
             'background_opacity'=>Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -155,13 +163,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('news')->insert([
-            'title' => Str('Restaurant'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper.
-                    Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-                    Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'titleFr' => Str('Restaurant'),
+            'titleEn'=>  Str('Restaurant'),
+            'descriptionFr' => Str('Au cours de votre séjour, vous aurez l’opportunité de déguster une cuisine raffinée,
+             créative et de grande qualité dans l’un de nos restaurants donnant sur le lac d’Annecy'),
+            'descriptionEn'=>Str("During your stay, you will have the opportunity to taste refined,
+             creative and high quality cuisine in one of our restaurants overlooking Lake Annecy."),
             'background_color'=>Str('EDE798'),
             'background_opacity'=>Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -169,13 +176,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('news')->insert([
-            'title' => Str('Spa'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper.
-                    Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-                    Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
+            'titleFr' => Str('Spa'),
+            'titleEn'=>Str('Spa'),
+            'descriptionFr' => Str('Au cours de votre séjour, vous aurez l’opportunité de déguster une cuisine raffinée,
+             créative et de grande qualité dans l’un de nos restaurants donnant sur le lac d’Annecy'),
+            'descriptionEn'=>Str("During your stay, you will have the opportunity to taste refined,
+             creative and high quality cuisine in one of our restaurants overlooking Lake Annecy."),
             'background_color'=>Str('EDE798'),
             'background_opacity'=>Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -198,11 +204,14 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('services')->insert([
-            'name' => Str('Pressing'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'nameFr' => Str('Pressing'),
+            'nameEn' => Str('Dry Cleaning'),
+            'descriptionFr' => Str('Le Cristal Service dispense des rituels de beauté issus de traditions
+             ancestrales et imaginés par Phytomer et Alpeor dans une atmosphère
+              intimiste et apaisante : une véritable invitation au voyage sensoriel vous attend...'),
+            'descriptionEn'=>Str("The Cristal Service provides beauty rituals from ancestral
+             traditions and imagined by Phytomer and Alpeor in an intimate and soothing atmosphere:
+             a true invitation to a sensory journey awaits you..."),
             'duration' => number_format(2),
             'price' => number_format(25),
             'time' => number_format(3),
@@ -218,11 +227,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('services')->insert([
-            'name' => Str('Pressing'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'nameFr' => Str('Pack Fibre'),
+            'nameEn' => Str('High pack Fiber'),
+            'descriptionFr' => Str('Le Cristal Service dispense des rituels de beauté issus de traditions
+             ancestrales et imaginés par Phytomer et Alpeor dans une atmosphère
+              intimiste et apaisante : une véritable invitation au voyage sensoriel vous attend...'),
+            'descriptionEn'=>Str("The Cristal Service provides beauty rituals from ancestral
+             traditions and imagined by Phytomer and Alpeor in an intimate and soothing atmosphere:
+             a true invitation to a sensory journey awaits you..."),
             'duration' => number_format(2),
             'price' => number_format(25),
             'time' => number_format(3),
@@ -238,11 +250,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('services')->insert([
-            'name' => Str('High-Tech Pack'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'nameFr' => Str('Pack Tech'),
+            'nameEn' => Str('High-Tech Pack'),
+            'descriptionFr' => Str('Le Cristal Service dispense des rituels de beauté issus de traditions
+             ancestrales et imaginés par Phytomer et Alpeor dans une atmosphère
+              intimiste et apaisante : une véritable invitation au voyage sensoriel vous attend...'),
+            'descriptionEn'=>Str("The Cristal Service provides beauty rituals from ancestral
+             traditions and imagined by Phytomer and Alpeor in an intimate and soothing atmosphere:
+             a true invitation to a sensory journey awaits you..."),
             'duration' => number_format(2),
             'price' => number_format(25),
             'time' => number_format(3),
@@ -258,11 +273,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('services')->insert([
-            'name' => Str('Valet'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'nameFr' => Str('Valet'),
+            'nameEn' => Str('Valet'),
+            'descriptionFr' => Str('Le Cristal Service dispense des rituels de beauté issus de traditions
+             ancestrales et imaginés par Phytomer et Alpeor dans une atmosphère
+              intimiste et apaisante : une véritable invitation au voyage sensoriel vous attend...'),
+            'descriptionEn'=>Str("The Cristal Service provides beauty rituals from ancestral
+             traditions and imagined by Phytomer and Alpeor in an intimate and soothing atmosphere:
+             a true invitation to a sensory journey awaits you..."),
             'duration' => number_format(2),
             'price' => number_format(25),
             'time' => number_format(3),
@@ -278,11 +296,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('services')->insert([
-            'name' => Str('Concierge'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'nameFr' => Str('Concierge'),
+            'nameEn' => Str('Concierge'),
+            'descriptionFr' => Str('Le Cristal Service dispense des rituels de beauté issus de traditions
+             ancestrales et imaginés par Phytomer et Alpeor dans une atmosphère
+              intimiste et apaisante : une véritable invitation au voyage sensoriel vous attend...'),
+            'descriptionEn'=>Str("The Cristal Service provides beauty rituals from ancestral
+             traditions and imagined by Phytomer and Alpeor in an intimate and soothing atmosphere:
+             a true invitation to a sensory journey awaits you..."),
             'duration' => number_format(2),
             'price' => number_format(25),
             'time' => number_format(3),
@@ -336,27 +357,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('strongest_section')->insert([
             'icon' => Str('i-ph:bowl-food-thin'),
-            'text' => Str('Duis pellentesque ante et tellus ultrices,
-                vitae sodales massa vehicula.
-                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'textFr' => Str("Tout au long de l'année,
+             notre établissement 4 étoiles vous garantit un séjour grand luxe"),
+            'textEn' => Str('All year round, our 4-star establishment guarantees you a luxurious stay'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('strongest_section')->insert([
             'icon' => Str('i-ph:house-thin'),
-            'text' => Str('Duis pellentesque ante et tellus ultrices,
-                vitae sodales massa vehicula.
-                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'textFr' => Str("Tout au long de l'année,
+             notre établissement 4 étoiles vous garantit un séjour grand luxe"),
+            'textEn' => Str('All year round, our 4-star establishment guarantees you a luxurious stay'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('strongest_section')->insert([
             'icon' => Str('i-ph:door-thin'),
-            'text' => Str('Duis pellentesque ante et tellus ultrices,
-                vitae sodales massa vehicula.
-                Sed mi nisl, mattis non vulputate ut, ultrices malesuada tortor.'),
+            'textFr' => Str("Tout au long de l'année,
+             notre établissement 4 étoiles vous garantit un séjour grand luxe"),
+            'textEn' => Str('All year round, our 4-star establishment guarantees you a luxurious stay'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
