@@ -9,6 +9,8 @@ use Illuminate\Validation\ValidationException;
 
 class AboutController extends Controller
 {
+
+
     public function allAbout(): object{
         $picture = About::with('picture')->get();
         return response()->json($picture);
@@ -32,7 +34,6 @@ class AboutController extends Controller
             'backgroundText_opacity_1' => 'nullable',
             'backgroundText_color_2' => 'nullable',
             'backgroundText_opacity_2' => 'nullable',
-
         ]);
 
         $about = About::findOrFail($id);

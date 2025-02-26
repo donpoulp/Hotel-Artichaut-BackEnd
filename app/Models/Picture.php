@@ -44,6 +44,7 @@ class Picture extends Model
     public function about():BelongsTo{
         return $this->belongsTo(About::class);
     }
+
 }
 
 
