@@ -24,6 +24,7 @@ class Reservation extends Model
         'status_id'
     ];
 
+    //RELATION**********************************************************************************************************
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

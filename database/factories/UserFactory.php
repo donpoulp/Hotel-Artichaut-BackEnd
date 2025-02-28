@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber,
             'phoneBis' => fake()->phoneNumber,
-            'role' => fake()->randomNumber(1, 3),
+            'is_admin' => 0,
             'created_at' => fake()->dateTime,
             'updated_at' => fake()->dateTime,
         ];

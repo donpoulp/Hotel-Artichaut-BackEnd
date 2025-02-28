@@ -20,7 +20,7 @@ class User extends Authenticatable
         'emailBis',
         'phone',
         'phoneBis',
-        'role',
+        'is_admin',
     ];
     protected $hidden = [
         'remember_token',

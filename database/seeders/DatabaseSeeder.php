@@ -15,7 +15,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,11 +31,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber,
             'phoneBis' => fake()->phoneNumber,
-            'role' => fake()->randomNumber(1,3),
+            'is_admin' => 1,
             'created_at' => fake()->dateTime,
             'updated_at' => fake()->dateTime,
         ]);
-        //BEDROOM TYPE**********************************************************************************************************
+        //BEDROOM TYPE**************************************************************************************************
         DB::table('bedroom_type')->insert([
             'nameFr' => Str('Suite Royale'),
             'nameEn' => Str('Royal Suite'),
@@ -837,4 +836,5 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
+
 }
