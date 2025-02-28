@@ -19,7 +19,9 @@ return new class extends Migration
             $table->foreignId('bedroomtype_id')->nullable();
             $table->foreignId('news_id')->nullable();
             $table->foreignId('services_id')->nullable();
-            $table->foreignId('about_id')->nullable();
+            $table->foreignId('about_section_id')->nullable();
+            $table->foreignId('about_description_id')->nullable();
+            $table->foreignId('teams_id')->nullable();
             $table->timestamps();
         });
     }

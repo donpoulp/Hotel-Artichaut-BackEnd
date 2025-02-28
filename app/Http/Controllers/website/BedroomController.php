@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Bedroom;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -11,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class BedroomController extends Controller
 {
     public function allBedroom(): object{
-        return response()->json(Bedroom::all());
+        $picture = Bedroom::with('bedroomType','picture')->get();
+        return response()->json($picture);
     }
     public function bedroomShowid(Request $request , string $id): object
     {

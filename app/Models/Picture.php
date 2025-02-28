@@ -22,11 +22,13 @@ class Picture extends Model
         'bedroomtype_id',
         'news_id',
         'services_id',
-        'about_id',
+        'about_section_id',
+        'about_description_id',
+        'teams_id'
 
     ];
 
-    public function bedroom_type(): BelongsTo{
+    public function bedroomtype(): BelongsTo{
         return $this->belongsTo(BedroomType::class);
     }
     public function hero():BelongsTo{
@@ -41,9 +43,16 @@ class Picture extends Model
     public function bedroom():BelongsTo{
         return $this->belongsTo(Bedroom::class);
     }
-    public function about():BelongsTo{
-        return $this->belongsTo(About::class);
+    public function about_section():BelongsTo{
+        return $this->belongsTo(AboutSection::class);
     }
+    public function about_description():BelongsTo{
+        return $this->belongsTo(AboutSection::class);
+    }
+    public function teams():BelongsTo{
+        return $this->belongsTo(Teams::class);
+    }
+
 }
 
 

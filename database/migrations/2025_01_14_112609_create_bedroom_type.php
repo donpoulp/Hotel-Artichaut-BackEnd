@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('bedroom_type', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name');
-            $table->longText('description');
+            $table->string('nameFr');
+            $table->string('nameEn');
+            $table->longText('descriptionFr');
+            $table->longText('descriptionEn');
             $table->integer('price');
             $table->timestamps();
         });

@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class ServicesController extends Controller
 {
     public function allServices(): object{
-        return response()->json(Services::all());
+        $picture = Services::with('picture')->get();
+        return response()->json($picture);
     }
     public function ServicesShowid(Request $request , string $id): object
     {
@@ -28,6 +29,12 @@ class ServicesController extends Controller
             'price' => 'nullable',
             'time' => 'nullable',
             'quantity' => 'nullable',
+            'background_color_1'=> 'nullable',
+            'background_opacity_1'=> 'nullable',
+            'backgroundText_color_1'=> 'nullable',
+            'backgroundText_opacity_1'=> 'nullable',
+            'backgroundText_color_2'=> 'nullable',
+            'backgroundText_opacity_2'=> 'nullable',
         ]);
 
         $Services = Services::findOrFail($id);
@@ -45,6 +52,12 @@ class ServicesController extends Controller
                 'price' => 'required|int|max:200',
                 'time' => 'required|int|max:20',
                 'quantity' => 'required|int|max:20',
+                'background_color_1'=> 'nullable',
+                'background_opacity_1'=> 'nullable',
+                'backgroundText_color_1'=> 'nullable',
+                'backgroundText_opacity_1'=> 'nullable',
+                'backgroundText_color_2'=> 'nullable',
+                'backgroundText_opacity_2'=> 'nullable',
             ]);
 
             $postServices = new Services($validate);

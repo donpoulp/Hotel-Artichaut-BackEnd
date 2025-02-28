@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Models\Header;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -11,15 +10,16 @@ use Illuminate\Validation\ValidationException;
 class HeroController extends Controller
 {
     public function allHero(): object{
-        return response()->json(Hero::all());
+        $picture = Hero::with('picture')->get();
+        return response()->json($picture);
     }
     public function heroShowid(Request $request , string $id): object
     {
         $validated = $request->validate([
 
-            $heroId = Hero::findOrFail($id)]);
+            $heroId = Hero::findOrFail($id)->with('picture')->get()]);
 
-        return response()->json([$heroId]);
+        return response()->json($heroId);
     }
     public function heroUpdate($id, Request $request)
     {

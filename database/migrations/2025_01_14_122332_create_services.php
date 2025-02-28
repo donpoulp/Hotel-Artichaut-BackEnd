@@ -13,12 +13,20 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name');
-            $table->longText('description');
+            $table->string('nameFr');
+            $table->string('nameEn');
+            $table->longText('descriptionFr');
+            $table->longText('descriptionEn');
             $table->integer('duration');
             $table->integer('price');
             $table->integer('time');
             $table->integer('quantity');
+            $table->string('background_color_1');
+            $table->string('background_opacity_1');
+            $table->string('backgroundText_color_1');
+            $table->string('backgroundText_opacity_1');
+            $table->string('backgroundText_color_2');
+            $table->string('backgroundText_opacity_2');
             $table->timestamps();
         });
     }

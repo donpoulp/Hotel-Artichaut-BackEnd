@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('footer', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('title');
-            $table->string('text');
+            $table->string('titleFr');
+            $table->string('titleEn');
+            $table->string('textFr');
+            $table->string('textEn');
             $table->string('titleReseau');
             $table->string('iconReseau');
             $table->string('linkReseau');
+            $table->string('background_color');
+            $table->string('background_opacity');
             $table->timestamps();
         });
     }

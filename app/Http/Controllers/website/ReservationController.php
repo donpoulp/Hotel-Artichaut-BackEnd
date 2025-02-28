@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Reservation;
-use App\Models\Services;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
+
+
 
 class ReservationController extends Controller
 {
@@ -37,6 +37,23 @@ class ReservationController extends Controller
         return response()->json($updateReservation);
 
     }
+
+//    public function checkReservation(){
+//
+//        $startDate = $this->allReservation()->startDate;
+//        $endDate = $this->allReservation()->endDate;
+//        $isAvailable = true;
+//
+//        if ($startDate > $endDate) {
+//            $isAvailable = false;
+//        }elseif ($startDate = $endDate) {
+//            $isAvailable = false;
+//        }elseif ($startDate > $endDate) {
+//            $isAvailable = false;
+//        }
+//        return $isAvailable;
+//    }
+
     public function PostReservation(Request $request)
     {
         try {
@@ -45,7 +62,6 @@ class ReservationController extends Controller
                 'endDate' => 'required|date|max:20',
                 'user_id' => 'required',
             ]);
-
 
             $postReservation = new Reservation($validate);
             $postReservation->save();

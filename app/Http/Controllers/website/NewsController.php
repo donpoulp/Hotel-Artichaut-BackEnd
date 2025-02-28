@@ -11,7 +11,9 @@ class NewsController extends Controller
 {
     public function allNews(): object
     {
-        return response()->json(News::with('picture')->get());
+
+        $news = News::with('picture')->get();
+        return response()->json($news);
     }
     public function newsShowid(Request $request , string $id): object
     {
@@ -28,6 +30,8 @@ class NewsController extends Controller
             'description' => 'nullable',
             'content' => 'nullable',
             'picture_id' => 'nullable',
+            'background_color'=>'nullable',
+            'background_opacity'=>'nullable',
         ]);
 
         $news = News::findOrFail($id);
@@ -44,6 +48,8 @@ class NewsController extends Controller
                 'description' => 'required|string|max:255',
                 'content' => 'required|string|max:255',
                 'picture_id' => 'nullable',
+                'background_color'=>'nullable',
+                'background_opacity'=>'nullable',
             ]);
 
 
@@ -51,6 +57,7 @@ class NewsController extends Controller
             $postNews->save();
             return response()->json($postNews);
         } catch (ValidationException $exception) {
+
             return response()->json($exception->getMessage());
         }
     }

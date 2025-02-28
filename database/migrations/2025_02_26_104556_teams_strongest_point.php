@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bedroom', function (Blueprint $table) {
+        Schema::create('teams_strongest_point', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('number');
-            $table->foreignId('bedroom_type_id');
+            $table->foreignId('teams_id');
+            $table->longText('text')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bedroom');
+        Schema::dropIfExists('teams_strongest_point');
     }
 };

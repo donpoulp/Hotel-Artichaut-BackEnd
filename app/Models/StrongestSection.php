@@ -15,6 +15,7 @@ class StrongestSection extends Model
 
     protected $fillable = [
         'icon',
-        'text',
+        'textFr',
+        'textEn',
     ];
 }

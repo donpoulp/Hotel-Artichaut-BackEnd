@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\website\AboutController;
+use App\Http\Controllers\website\AboutDescriptionController;
+use App\Http\Controllers\website\AboutSectionController;
 use App\Http\Controllers\website\BedroomController;
 use App\Http\Controllers\website\BedroomTypeController;
 use App\Http\Controllers\website\FooterController;
@@ -14,8 +17,8 @@ use App\Http\Controllers\website\ReservationController;
 use App\Http\Controllers\website\ServicesController;
 use App\Http\Controllers\website\StatusController;
 use App\Http\Controllers\website\StrongestController;
-use App\Http\Controllers\website\UserController;
 use App\Http\Controllers\website\StrongestSectionController;
+use App\Http\Controllers\website\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -143,10 +146,26 @@ Route::controller(StatusController::class)->group(function () {
 
 //ROUTE API ABOUT*******************************************************************************************************
 Route::controller(AboutController::class)->group(function () {
-
     Route::get('/about', [AboutController::class, 'allAbout']);
-    Route::get('/about/{id}', [AboutController::class, 'AboutShowid']);
-    Route::post('/about', [AboutController::class, 'PostAbout']);
-    Route::put('/about/{id}', [AboutController::class, 'UpdateAbout']);
-    Route::delete('/about/{id}', [AboutController::class, 'DeleteAbout']);
+//    Route::get('/about/{id}', [AboutController::class, 'AboutShowid']);
+//    Route::post('/about', [AboutController::class, 'PostAbout']);
+    Route::put('/about/{id}', [AboutController::class, 'aboutUpdate']);
+//    Route::delete('/about/{id}', [AboutController::class, 'DeleteAbout']);
 });
+
+//ROUTE API ABOUT_SECTION*******************************************************************************************************
+Route::controller(AboutSectionController::class)->group(function () {
+    Route::get('/about_section', [AboutSectionController::class, 'allAboutSection']);
+});
+
+//ROUTE API ABOUT_DESCRIPTION*******************************************************************************************************
+Route::controller(AboutDescriptionController::class)->group(function () {
+    Route::get('/about_description', [AboutDescriptionController::class, 'allAboutDescription']);
+    Route::get('/about_description/{id}', [AboutDescriptionController::class, 'getAboutDescriptionByAboutSectionId']);
+    Route::put('/about_description/{id}', [AboutDescriptionController::class, 'putAboutDescription']);
+
+});
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+//Route::get('/verifUser', [AuthController::class, 'actualUser']);

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Picture;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -12,8 +11,7 @@ class PictureController extends Controller
 {
     public function allpicture(): object{
 
-        $picture = Picture::with('bedroom','bedroom_type','news','services','about')->get();
-        return response()->json($picture);
+        return response()->json(Picture::all());
 
     }
 
@@ -21,7 +19,8 @@ class PictureController extends Controller
     {
         $validated = $request->validate([
 
-            $PictureId = Picture::findOrFail($id)]);
+
+            $PictureId = Picture::with('bedroom')->findOrFail($id)]);
 
         return response()->json([$PictureId]);
     }

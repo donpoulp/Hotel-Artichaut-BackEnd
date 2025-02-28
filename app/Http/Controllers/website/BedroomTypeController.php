@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\BedroomType;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -10,7 +11,9 @@ use Illuminate\Validation\ValidationException;
 class BedroomTypeController extends Controller
 {
     public function allBedroomType(): object{
+
         return response()->json(BedroomType::all());
+
     }
     public function bedroomTypeShowid(Request $request , string $id): object
     {

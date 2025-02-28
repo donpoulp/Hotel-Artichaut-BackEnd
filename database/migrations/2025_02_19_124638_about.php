@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('title');
-            $table->longText('description');
+            $table->string('background_color');
+            $table->string('background_opacity');
             $table->timestamps();
         });
     }

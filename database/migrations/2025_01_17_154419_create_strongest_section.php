@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('strongest_section', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('icon');
-            $table->string('text');
+            $table->string('textFr');
+            $table->string('textEn');
             $table->timestamps();
         });
     }

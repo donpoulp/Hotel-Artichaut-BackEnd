@@ -14,10 +14,14 @@ class Footer extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
-        'text',
+        'titleFr',
+        'titleEn',
+        'textFr',
+        'textEn',
         'titleReseau',
         'iconReseau',
         'linkReseau',
+        'background_color',
+        'background_opacity',
     ];
 }
