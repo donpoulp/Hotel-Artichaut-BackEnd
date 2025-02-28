@@ -15,17 +15,12 @@ class About extends Model
 
     protected $fillable = [
         'id',
-        'title',
-        'description',
-        'background_color_1',
-        'background_opacity_1',
-        'backgroundText_color_1',
-        'backgroundText_opacity_1',
-        'backgroundText_color_2',
-        'backgroundText_opacity_2',
+        'background_color',
+        'background_opacity',
     ];
-    public function picture():HasMany{
-        return $this->hasMany(Picture::class);
+
+    public function about_section():HasMany{
+        return $this->hasMany(AboutSection::class);
     }
 }
 

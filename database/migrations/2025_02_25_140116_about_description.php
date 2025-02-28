@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('about_description', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('background_color');
-            $table->string('background_opacity');
+            $table->foreignId('about_section_id');
+            $table->string('title');
+            $table->longText('description')->nullable();
+            $table->longText('background_color')->nullable();
+            $table->longText('background_opacity')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about');
+        Schema::dropIfExists('about_description');
     }
 };

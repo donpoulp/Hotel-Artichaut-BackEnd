@@ -17,9 +17,9 @@ class HeroController extends Controller
     {
         $validated = $request->validate([
 
-            $heroId = Hero::findOrFail($id)]);
+            $heroId = Hero::findOrFail($id)->with('picture')->get()]);
 
-        return response()->json([$heroId]);
+        return response()->json($heroId);
     }
     public function heroUpdate($id, Request $request)
     {

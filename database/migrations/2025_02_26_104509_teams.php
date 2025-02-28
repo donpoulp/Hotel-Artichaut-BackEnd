@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('background_color');
-            $table->string('background_opacity');
+            $table->foreignId('about_description_id');
+            $table->string('name');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about');
+        Schema::dropIfExists('teams');
     }
 };

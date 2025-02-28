@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\About;
+use App\Models\AboutDescription;
+use App\Models\AboutSection;
 use App\Models\Bedroom;
 use App\Models\BedroomType;
 use App\Models\Hero;
@@ -10,6 +12,7 @@ use App\Models\News;
 use App\Models\Reservation;
 use App\Models\Services;
 use App\Models\Status;
+use App\Models\Teams;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -86,9 +89,9 @@ class DatabaseSeeder extends Seeder
             'titleReseau' => Str('Reseau'),
             'iconReseau' => Str('/data/images/footer.png'),
             'linkReseau' => Str('https://github.com/tristan/tristan'),
-            'background_color'=>Str('0D5649'),
-            'background_opacity'=>Str('072527'),
-             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'background_color' => Str('0D5649'),
+            'background_opacity' => Str('072527'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //HEADER****************************************************************************************************
@@ -96,10 +99,10 @@ class DatabaseSeeder extends Seeder
             'backgroundColor' => Str('0D5649/158470'),
             'logo' => Str('data/images/logo.png'),
             'icone' => Str('data/images/icone.png'),
-            'background_color_1'=>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'fondus_color_2'=>Str('158470'),
-            'fondus_opacity_2'=>Str('072527'),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'fondus_color_2' => Str('158470'),
+            'fondus_opacity_2' => Str('072527'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 
@@ -136,8 +139,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'background_color'=>Str('EDE798'),
-            'background_opacity'=>Str('D9D9D9'),
+            'background_color' => Str('EDE798'),
+            'background_opacity' => Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -150,8 +153,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'background_color'=>Str('EDE798'),
-            'background_opacity'=>Str('D9D9D9'),
+            'background_color' => Str('EDE798'),
+            'background_opacity' => Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -164,8 +167,8 @@ class DatabaseSeeder extends Seeder
                     Proin at eleifend erat, ac mattis sem.
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
                     Nullam condimentum tincidunt augue, vel convallis sapien imperdiet sit amet.'),
-            'background_color'=>Str('EDE798'),
-            'background_opacity'=>Str('D9D9D9'),
+            'background_color' => Str('EDE798'),
+            'background_opacity' => Str('D9D9D9'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -195,32 +198,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-
-        DB::table('services')->insert([
-            'name' => Str('Pressing'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam faucibus vitae odio et molestie.
-                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
-            'duration' => number_format(2),
-            'price' => number_format(25),
-            'time' => number_format(3),
-            'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'backgroundText_color_1' => Str('726F42'),
+            'backgroundText_opacity_1' => Str('D8D27D'),
+            'backgroundText_color_2' => Str('726F42'),
+            'backgroundText_opacity_2' => Str('D8D27D'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -235,12 +218,32 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'backgroundText_color_1' => Str('726F42'),
+            'backgroundText_opacity_1' => Str('D8D27D'),
+            'backgroundText_color_2' => Str('726F42'),
+            'backgroundText_opacity_2' => Str('D8D27D'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('services')->insert([
+            'name' => Str('High speed fiber'),
+            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aliquam faucibus vitae odio et molestie.
+                    Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+            'duration' => number_format(2),
+            'price' => number_format(25),
+            'time' => number_format(3),
+            'quantity' => number_format(2),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'backgroundText_color_1' => Str('726F42'),
+            'backgroundText_opacity_1' => Str('D8D27D'),
+            'backgroundText_color_2' => Str('726F42'),
+            'backgroundText_opacity_2' => Str('D8D27D'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -255,12 +258,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'backgroundText_color_1' => Str('726F42'),
+            'backgroundText_opacity_1' => Str('D8D27D'),
+            'backgroundText_color_2' => Str('726F42'),
+            'backgroundText_opacity_2' => Str('D8D27D'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -275,12 +278,12 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'background_color_1' => Str('0D5649'),
+            'background_opacity_1' => Str('072527'),
+            'backgroundText_color_1' => Str('726F42'),
+            'backgroundText_opacity_1' => Str('D8D27D'),
+            'backgroundText_color_2' => Str('726F42'),
+            'backgroundText_opacity_2' => Str('D8D27D'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -350,456 +353,816 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //ABOUT*****************************************************************************************************************
+//        DB::table('about')->insert([
+//            'title' => Str('The hotel'),
+//            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus vitae odio et molestie.
+//            Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
+//            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
+//            'background_color_1' => Str('0D5649'),
+//            'background_opacity_1' => Str('072527'),
+//            'backgroundText_color_1' => Str('726F42'),
+//            'backgroundText_opacity_1' => Str('D8D27D'),
+//            'backgroundText_color_2' => Str('726F42'),
+//            'backgroundText_opacity_2' => Str('D8D27D'),
+//            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+//            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+//        ]);
+//
+//        DB::table('about')->insert([
+//            'title' => Str('Le Chadeuf'),
+//            'description' => Str('Ponctuel
+//                                                    Sens du détail
+//                                                    Déteste la poussière
+//                                                    Ponctuel
+//                                                    Serviable
+//                                                    Ponctuel'),
+//            'background_color_1' => Str('0D5649'),
+//            'background_opacity_1' => Str('072527'),
+//            'backgroundText_color_1' => Str('726F42'),
+//            'backgroundText_opacity_1' => Str('D8D27D'),
+//            'backgroundText_color_2' => Str('726F42'),
+//            'backgroundText_opacity_2' => Str('D8D27D'),
+//            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+//            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+//        ]);
+//
+//        DB::table('about')->insert([
+//            'title' => Str('The Sarrazin'),
+//            'description' => Str('Adore le luxe
+//                                        N’aime pas quand les choses ne sont pas droites parce que du coup ça nuit à l’accessibilité de l’harmonisation du détail
+//                                        Serviable'),
+//            'background_color_1' => Str('0D5649'),
+//            'background_opacity_1' => Str('072527'),
+//            'backgroundText_color_1' => Str('726F42'),
+//            'backgroundText_opacity_1' => Str('D8D27D'),
+//            'backgroundText_color_2' => Str('726F42'),
+//            'backgroundText_opacity_2' => Str('D8D27D'),
+//            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+//            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+//        ]);
+//
+//        DB::table('about')->insert([
+//            'title' => Str('Mein Raph'),
+//            'description' => Str('Passionné de seconde guerre mondiale
+//                                        Sens du détail
+//                                        A travaillé pour l’une des plus grande marque de voiture (Mercedes)
+//                                        Toujours disponible pour rendre service'),
+//            'background_color_1' => Str('0D5649'),
+//            'background_opacity_1' => Str('072527'),
+//            'backgroundText_color_1' => Str('726F42'),
+//            'backgroundText_opacity_1' => Str('D8D27D'),
+//            'backgroundText_color_2' => Str('726F42'),
+//            'backgroundText_opacity_2' => Str('D8D27D'),
+//            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+//            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+//        ]);
+//
+//        DB::table('about')->insert([
+//            'title' => Str('The Good Bastien'),
+//            'description' => Str('Humain
+//                                        Gentil
+//                                        Adorable
+//                                        Sympa
+//                                        Cool'),
+//            'background_color_1' => Str('0D5649'),
+//            'background_opacity_1' => Str('072527'),
+//            'backgroundText_color_1' => Str('726F42'),
+//            'backgroundText_opacity_1' => Str('D8D27D'),
+//            'backgroundText_color_2' => Str('726F42'),
+//            'backgroundText_opacity_2' => Str('D8D27D'),
+//            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+//            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+//        ]);
+
+        /// ABOUT ////////////////////////////////////////////////////////////////
         DB::table('about')->insert([
-            'title' => Str('The hotel'),
-            'description' => Str('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus vitae odio et molestie.
-            Nunc molestie scelerisque massa et semper. Proin at eleifend erat, ac mattis sem.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae'),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'background_color' => Str('#D8D27D'),
+            'background_opacity' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('about')->insert([
-            'title' => Str('Le Chadeuf'),
-            'description' => Str('Ponctuel
-                                                    Sens du détail
-                                                    Déteste la poussière
-                                                    Ponctuel
-                                                    Serviable
-                                                    Ponctuel'),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+        /// ABOUT_SECTON ////////////////////////////////////////////////////////////////
+        DB::table('about_section')->insert([
+            'about_id' => About::findOrFail(1)->id,
+            'title' => Str('Hostel'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_section')->insert([
+            'about_id' => About::findOrFail(1)->id,
+            'title' => Str('Restaurant'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_section')->insert([
+            'about_id' => About::findOrFail(1)->id,
+            'title' => Str('SPA'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('about')->insert([
-            'title' => Str('The Sarrazin'),
-            'description' => Str('Adore le luxe
-                                        N’aime pas quand les choses ne sont pas droites parce que du coup ça nuit à l’accessibilité de l’harmonisation du détail
-                                        Serviable'),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+        /// ABOUT_DESCRIPTION ////////////////////////////////////////////////////////////////
+        DB::table('about_description')->insert([
+            'about_section_id' => AboutSection::findOrFail(1)->id,
+            'title' => Str('History of Artichaut'),
+            'description' => Str('The Artichaut Hotel is a luxury hotel, founded in 1426 located not far from the highest and most beautiful mountains of Haute-Savoie, located between lakes and mountains, the Hotel offers an exceptional living environment and a wide range of life-size activities.The Artichaut Hotel is a luxury hotel, founded in 1426 located not far from the highest and most beautiful mountains of Haute-Savoie, located between lakes and mountains, the Hotel offers an exceptional living environment and a wide range of life-size activities.'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_description')->insert([
+            'about_section_id' => AboutSection::findOrFail(1)->id,
+            'title' => Str('Our Team'),
+            'background_color' => Str('#072527'),
+            'background_opacity' => Str('100'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_description')->insert([
+            'about_section_id' => AboutSection::findOrFail(2)->id,
+            'title' => Str('Restaurant & Bar'),
+            'description' => Str("The Hôtel Artichaut, an essential stopover for gastronomy, offers you its exceptional restaurant: L'Artic Show, which has been awarded a star in the Michelin Guide."),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_description')->insert([
+            'about_section_id' => AboutSection::findOrFail(2)->id,
+            'title' => Str("L'Artic Show"),
+            'description' => Str("The Hôtel Artichaut, an essential stopover for gastronomy, offers you its exceptional restaurant: L'Artic Show, which has been awarded a star in the Michelin Guide."),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('about_description')->insert([
+            'about_section_id' => AboutSection::findOrFail(3)->id,
+            'title' => Str('SPA & Well-being'),
+            'description' => Str("Nestled at the foot of the mountains, our 1,200 m² spa is a unique haven in the region. During your stay, you'll enjoy access to seven treatment rooms, indoor and outdoor pools, a hammam, sauna, hot tubs, a yoga studio, a fitness room, and a beauty salon."),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('about')->insert([
-            'title' => Str('Mein Raph'),
-            'description' => Str('Passionné de seconde guerre mondiale
-                                        Sens du détail
-                                        A travaillé pour l’une des plus grande marque de voiture (Mercedes)
-                                        Toujours disponible pour rendre service'),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+        /// TEAMS ////////////////////////////////////////////////////////////////
+        DB::table('teams')->insert([
+            'about_description_id' => AboutDescription::findOrFail(2)->id,
+            'name' => Str('Le Chadeuf'),
+            'description' => Str('“Chef d’orchestre des lieux, il fait danser l’hôtel sur ses ordres. Mais ne ratez pas une note, il pourrait vous faire disparaître… dans la cave à vin.”'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams')->insert([
+            'about_description_id' => AboutDescription::findOrFail(2)->id,
+            'name' => Str('The Sarrazin'),
+            'description' => Str('"Homme de l’ombre au regard perçant, il voit tout, sait tout. Y compris pourquoi votre femme n’a pas quitté la chambre ce matin."'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams')->insert([
+            'about_description_id' => AboutDescription::findOrFail(2)->id,
+            'name' => Str('Mein Raph'),
+            'description' => Str('"Maître du planning et des plans machiavéliques, rien ne lui échappe. Sauf peut-être votre petit déjeuner si vous osez arriver en retard."'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams')->insert([
+            'about_description_id' => AboutDescription::findOrFail(2)->id,
+            'name' => Str('The good Bastien'),
+            'description' => Str('“je bz tout.”'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('about')->insert([
-            'title' => Str('The Good Bastien'),
-            'description' => Str('Humain
-                                        Gentil
-                                        Adorable
-                                        Sympa
-                                        Cool'),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+        /// TEAMS_STRONGEST_POINT ////////////////////////////////////////////////////////////////
+        /// CHADEUF
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Ponctuel'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Sens du détail'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Déteste la poussière'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Ponctuel'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Serviable'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(1)->id,
+            'text' => Str('Ponctuel'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        /// SARRAZIN
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(2)->id,
+            'text' => Str('Adore le luxe'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(2)->id,
+            'text' => Str('N’aime pas quand les choses ne sont pas droites parce que du coup ça nuit à l’accessibilité de l’harmonisation du détail'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(2)->id,
+            'text' => Str('Serviable'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(2)->id,
+            'text' => Str('Sa femme l’a quittée et depuis il se noie dans l’alcool pour oublier'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        /// Raph
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(3)->id,
+            'text' => Str('Passionné de seconde guerre mondiale'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(3)->id,
+            'text' => Str('Sens du détail'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(3)->id,
+            'text' => Str('A travaillé pour l’une des plus grande marque de voiture (Mercedes)'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(3)->id,
+            'text' => Str('Toujours disponible pour trouver des finals solutions'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        // Bastien
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(4)->id,
+            'text' => Str('Humain'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(4)->id,
+            'text' => Str('Gentil'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(4)->id,
+            'text' => Str('Adorable'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(4)->id,
+            'text' => Str('Sympa'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('teams_strongest_point')->insert([
+            'teams_id' => Teams::findOrFail(4)->id,
+            'text' => Str('Cool'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         //PICTURE***************************************************************************************************************
 
-        $hero = Hero::all()->random();
-        $bedroom = Bedroom::all()->random();
-        $bedroomType = BedroomType::all()->random();
-        $news = News::all()->random();
-        $services = Services::all()->random();
-        $about = About::all()->random();
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroom3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomArtichaut3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomRoyal3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageBedroomX3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageConciergerie.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => Services::findOrFail(5)->id,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageFibre.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => Services::findOrFail(3)->id,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroHotel.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => AboutSection::findOrFail(1)->id,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroRestaurant.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => AboutSection::findOrFail(2)->id,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHeroSpa.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => AboutSection::findOrFail(3)->id,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageHotelPresentation.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => AboutDescription::findOrFail(1)->id,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(1)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(2)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(3)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(1)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(2)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageOpenNews3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => News::findOrFail(3)->id,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageNews1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePackTechnologie.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => Services::findOrFail(2)->id,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePageAccueil.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => Hero::findOrFail(1)->id,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagePressing.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => Services::findOrFail(1)->id,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageRestaurant.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => AboutDescription::findOrFail(4)->id,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa1.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => AboutDescription::findOrFail(5)->id,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa2.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => AboutDescription::findOrFail(5)->id,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imageSpa3.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => AboutDescription::findOrFail(5)->id,
+            'teams_id' => null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
         DB::table('pictures')->insert([
             'picturePath' => Str('http://127.0.0.1:8000/storage/imagevoiturier.png'),
-            'hero_id' => $hero->id,
-            'bedroom_id' => $bedroom->id,
-            'bedroomtype_id' => $bedroomType->id,
-            'news_id' => $news->id,
-            'services_id' => $services->id,
-            'about_id' => $about->id,
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => Services::findOrFail(4)->id,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/Tristan.png'),
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => Teams::findOrFail(1)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/Moumen.png'),
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => Teams::findOrFail(2)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/Raph.png'),
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => Teams::findOrFail(3)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        DB::table('pictures')->insert([
+            'picturePath' => Str('http://127.0.0.1:8000/storage/Bastien.png'),
+            'hero_id' => null,
+            'bedroom_id' => null,
+            'bedroomtype_id' => null,
+            'news_id' => null,
+            'services_id' => null,
+            'about_section_id' => null,
+            'about_description_id' => null,
+            'teams_id' => Teams::findOrFail(4)->id,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
