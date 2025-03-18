@@ -26,6 +26,6 @@ class Bedroom extends Model
         return $this->hasMany(Picture::class);
     }
     public function bedroomtype():BelongsTo{
-        return $this->belongsTo(BedroomType::class,'bedroom_type_id');
+        return $this->belongsTo(BedroomType::class);
     }
 }

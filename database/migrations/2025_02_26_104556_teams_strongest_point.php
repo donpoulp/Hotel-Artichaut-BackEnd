@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('teams_strongest_point', function (Blueprint $table) {
             $table->id()->primary();
             $table->foreignId('teams_id');
-            $table->longText('text')->nullable();
+            $table->longText('textEn')->nullable();
+            $table->longText('textFr')->nullable();
             $table->timestamps();
         });
     }
