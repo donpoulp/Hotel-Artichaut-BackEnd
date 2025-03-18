@@ -21,6 +21,7 @@ class User extends Authenticatable
         'phone',
         'phoneBis',
         'is_admin',
+        'password',
     ];
     protected $hidden = [
         'remember_token',
