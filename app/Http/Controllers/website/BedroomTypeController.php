@@ -12,7 +12,8 @@ class BedroomTypeController extends Controller
 {
     public function allBedroomType(): object{
 
-        return response()->json(BedroomType::all());
+        $icons = BedroomType::with('icon')->get();
+        return response()->json($icons);
 
     }
     public function bedroomTypeShowid(Request $request , string $id): object

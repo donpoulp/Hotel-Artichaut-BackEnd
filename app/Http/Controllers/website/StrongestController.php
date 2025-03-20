@@ -9,7 +9,8 @@ use Illuminate\Validation\ValidationException;
 class StrongestController
 {
     public function allStrongest(): object{
-        return response()->json(Strongest::all());
+        $icons = Strongest::with('icon')->get();
+        return response()->json($icons);
     }
 
     public function StrongestShowid($id): object

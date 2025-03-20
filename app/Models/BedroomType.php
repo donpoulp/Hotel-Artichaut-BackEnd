@@ -27,4 +27,7 @@ class BedroomType extends Model
     public function bedroom():HasMany{
         return $this->hasMany(Bedroom::class,'bedroom_id');
     }
+    public function icon():HasMany{
+        return $this->hasMany(Icon::class);
+    }
 }

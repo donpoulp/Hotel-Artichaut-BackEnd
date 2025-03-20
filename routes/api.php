@@ -11,6 +11,7 @@ use App\Http\Controllers\website\HeaderController;
 use App\Http\Controllers\website\HeroBtnController;
 use App\Http\Controllers\website\HeroController;
 use App\Http\Controllers\website\HotelController;
+use App\Http\Controllers\website\IconController;
 use App\Http\Controllers\website\NewsController;
 use App\Http\Controllers\website\PictureController;
 use App\Http\Controllers\website\ReservationController;
@@ -166,6 +167,17 @@ Route::controller(AboutDescriptionController::class)->group(function () {
 
 });
 
+//ROUTE AUTH************************************************************************************************************
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 //Route::get('/verifUser', [AuthController::class, 'actualUser']);
+
+//ROUTE ICON************************************************************************************************************
+Route::controller(iconController::class)->group(function () {
+
+    Route::get('/icon', [IconController::class, 'allIcon']);
+    Route::get('/icon/{id}', [IconController::class, 'iconShowid']);
+    Route::post('/icon', [IconController::class, 'postIcon']);
+    Route::put('/icon/{id}', [IconController::class, 'iconUpdate']);
+    Route::delete('/icon/{id}', [IconController::class, 'deleteIcon']);
+});

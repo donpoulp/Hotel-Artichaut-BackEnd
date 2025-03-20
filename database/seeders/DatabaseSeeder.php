@@ -7,17 +7,21 @@ use App\Models\AboutDescription;
 use App\Models\AboutSection;
 use App\Models\Bedroom;
 use App\Models\BedroomType;
+use App\Models\Footer;
+use App\Models\Header;
 use App\Models\Hero;
 use App\Models\News;
 use App\Models\Reservation;
 use App\Models\Services;
 use App\Models\Status;
+use App\Models\Strongest;
 use App\Models\Teams;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Psy\Util\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -1195,6 +1199,107 @@ class DatabaseSeeder extends Seeder
             'about_section_id' => null,
             'about_description_id' => null,
             'teams_id' => Teams::findOrFail(4)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        //ICONS*************************************************************************************************************
+        DB::table('icon')->insert([
+            'name'=>Str('Petit Bonhomme header'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/contacts_product.png'),
+            'link'=>Str('X'),
+            'footer_id'=> null,
+            'header_id'=>Header::findOrfail(1)->id,
+            'bedroom_type_id'=>null,
+            'strongest_id'=>null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('Calendrier'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/calendar.png'),
+            'link'=>Str('X'),
+            'footer_id'=> null,
+            'header_id'=>null,
+            'bedroom_type_id'=>BedroomType::findOrfail(4)->id,
+            'strongest_id'=>null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('facebook'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/facebook.png'),
+            'link'=>Str('https://www.facebook.com'),
+            'footer_id'=> Footer::findOrfail(1)->id,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=>null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('Strongest en forme de maison'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/home_app_logo.png'),
+            'link'=>Str('X'),
+            'footer_id'=> null,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=>Strongest::findOrfail(1)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('Instagram'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/Instagram.png'),
+            'link'=>Str('https://www.instagram.com/'),
+            'footer_id'=> Footer::findOrfail(1)->id,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=>null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('room service'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/room_service.png'),
+            'link'=>Str('X'),
+            'footer_id'=>null,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=> Strongest::findOrfail(1)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('Icone strongest en forme de porte'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/sensor_door.png'),
+            'link'=>Str('X'),
+            'footer_id'=>null,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=> Strongest::findOrfail(1)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('Shopping bag'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/shopping_bag.png'),
+            'link'=>Str('X'),
+            'footer_id'=>null,
+            'header_id'=>Header::findOrfail(1)->id,
+            'bedroom_type_id'=>BedroomType::findOrfail(4)->id,
+            'strongest_id'=> null,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('icon')->insert([
+            'name'=>Str('X'),
+            'iconPath'=>Str('http://127.0.0.1:8000/storage/X.png'),
+            'link'=>Str('https://x.com'),
+            'footer_id'=> Footer::findOrfail(1)->id,
+            'header_id'=>null,
+            'bedroom_type_id'=>null,
+            'strongest_id'=>null,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

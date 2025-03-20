@@ -10,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class HeaderController extends Controller
 {
     public function allHeader(): object{
-        return response()->json(Header::all());
+        $icon=Header::with('icon')->get();
+        return response()->json($icon);
     }
     public function headerShowid(Request $request , string $id): object
     {

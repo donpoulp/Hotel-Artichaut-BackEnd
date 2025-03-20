@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Header extends Model
@@ -21,4 +22,7 @@ class Header extends Model
         'fondus_color_2',
         'fondus_opacity_2'
     ];
+    public function icon():HasMany{
+        return $this->hasMany(Icon::class);
+    }
 }
