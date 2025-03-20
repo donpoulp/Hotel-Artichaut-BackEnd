@@ -25,6 +25,6 @@ class BedroomType extends Model
         return $this->hasMany(Picture::class, "bedroomtype_id");
     }
     public function bedroom():HasMany{
-        return $this->hasMany(Bedroom::class);
+        return $this->hasMany(Bedroom::class,"bedroom_type_id");
     }
 }
