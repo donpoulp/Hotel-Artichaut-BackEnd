@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Models\Bedroom;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
