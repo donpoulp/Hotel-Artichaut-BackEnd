@@ -19,6 +19,8 @@ class BedroomType extends Model
         'nameEn',
         'descriptionFr',
         'descriptionEn',
+        'background_color',
+        'background_opacity',
         'price',
     ];
     public function picture():HasMany{

@@ -21,8 +21,10 @@ class AboutDescriptionController
 
     public function putAboutDescription(int $id, Request $request):object{
         $aboutUpdate = $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
+            'titleEn' => 'nullable',
+            'titleFr' => 'nullable',
+            'descriptionEn' => 'nullable',
+            'descriptionFr' => 'nullable',
             'background_color' => 'nullable',
             'background_opacity' => 'nullable',
         ]);
@@ -30,6 +32,7 @@ class AboutDescriptionController
         $about = AboutDescription::findOrFail($id);
         $about->update($aboutUpdate);
 
-        return response()->json($aboutUpdate);
+
+        return response()->json($about);
     }
 }

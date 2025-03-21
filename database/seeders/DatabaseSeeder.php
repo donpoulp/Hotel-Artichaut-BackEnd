@@ -46,6 +46,8 @@ class DatabaseSeeder extends Seeder
             nos Suites Royale allient modernité et douceur de vivre.;'),
             'descriptionEn'=>Str('Culminating on the top floor of the hotel,
             our Royale Suites combine modernity and the sweetness of life.'),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
             'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -58,6 +60,8 @@ class DatabaseSeeder extends Seeder
              au design contemporain, élégant et lumineux avec vue sur la baie de Annecy.'),
             'descriptionEn'=>Str('Let yourself be seduced by the captivating setting of the Executive Suites,
              with their contemporary, elegant and bright design overlooking the bay of Annecy.'),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
             'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -70,6 +74,8 @@ class DatabaseSeeder extends Seeder
              propre grâce à un style très personnel."),
             'descriptionEn'=>Str("These luxurious suites with refined elegance each
             have their own identity thanks to a very personal style."),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
             'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -83,6 +89,8 @@ class DatabaseSeeder extends Seeder
              d’une salle de bains avec douche ou baignoire. "),
             'descriptionEn'=> Str("These modernly elegant rooms have a bathroom
              with a shower or bathtub."),
+            'background_color' => Str('#F0F0E8'),
+            'background_opacity' => Str('100'),
             'price' => number_format(254.00),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -218,12 +226,10 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' => Str('0D5649'),
-            'background_opacity_1' => Str('072527'),
-            'backgroundText_color_1' => Str('726F42'),
-            'backgroundText_opacity_1' => Str('D8D27D'),
-            'backgroundText_color_2' => Str('726F42'),
-            'backgroundText_opacity_2' => Str('D8D27D'),
+            'backgroundText_color_1' => Str('#D8D27D'),
+            'backgroundText_opacity_1' => Str('30'),
+            'backgroundText_color_2' => Str('#726F42'),
+            'backgroundText_opacity_2' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -241,12 +247,10 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' => Str('0D5649'),
-            'background_opacity_1' => Str('072527'),
-            'backgroundText_color_1' => Str('726F42'),
-            'backgroundText_opacity_1' => Str('D8D27D'),
-            'backgroundText_color_2' => Str('726F42'),
-            'backgroundText_opacity_2' => Str('D8D27D'),
+            'backgroundText_color_1' => Str('#D8D27D'),
+            'backgroundText_opacity_1' => Str('30'),
+            'backgroundText_color_2' => Str('#726F42'),
+            'backgroundText_opacity_2' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -264,12 +268,10 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'backgroundText_color_1' => Str('#D8D27D'),
+            'backgroundText_opacity_1' => Str('30'),
+            'backgroundText_color_2' => Str('#726F42'),
+            'backgroundText_opacity_2' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -287,12 +289,10 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'backgroundText_color_1' => Str('#D8D27D'),
+            'backgroundText_opacity_1' => Str('30'),
+            'backgroundText_color_2' => Str('#726F42'),
+            'backgroundText_opacity_2' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -310,12 +310,10 @@ class DatabaseSeeder extends Seeder
             'price' => number_format(25),
             'time' => number_format(3),
             'quantity' => number_format(2),
-            'background_color_1' =>Str('0D5649'),
-            'background_opacity_1'=>Str('072527'),
-            'backgroundText_color_1'=>Str('726F42'),
-            'backgroundText_opacity_1'=>Str('D8D27D'),
-            'backgroundText_color_2'=>Str('726F42'),
-            'backgroundText_opacity_2'=>Str('D8D27D'),
+            'backgroundText_color_1' => Str('#D8D27D'),
+            'backgroundText_opacity_1' => Str('30'),
+            'backgroundText_color_2' => Str('#726F42'),
+            'backgroundText_opacity_2' => Str('100'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
