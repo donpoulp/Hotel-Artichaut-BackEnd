@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id()->primary();
             $table->foreignId('about_description_id');
             $table->string('name');
-            $table->longText('description')->nullable();
+            $table->longText('descriptionEn')->nullable();
+            $table->longText('descriptionFr')->nullable();
             $table->timestamps();
         });
     }

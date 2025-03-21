@@ -26,7 +26,8 @@ class StrongestSectionController extends Controller
     {
         $updatestrongest = $request->validate([
             'icon' => 'nullable',
-            'text' => 'nullable',
+            'textEn' => 'nullable',
+            'textFr' => 'nullable',
         ]);
 
         $strongest = StrongestSection::findOrFail($id);

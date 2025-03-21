@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 class BedroomController extends Controller
 {
     public function allBedroom(): object{
-        $picture = Bedroom::with('bedroomType','picture')->get();
+        $picture = Bedroom::with('bedroom_type','picture')->get();
         return response()->json($picture);
     }
     public function bedroomShowid(Request $request , string $id): object
@@ -19,13 +19,13 @@ class BedroomController extends Controller
 
             $bedroomId = Bedroom::findOrFail($id)]);
 
-        return response()->json([$bedroomId]);
+        return response()->json($bedroomId);
     }
     public function UpdateBedroom($id, Request $request)
     {
         $updatebedroom = $request->validate([
-            'number' => 'nullable',
-            'image' => 'nullable',
+            'number' => 'required|string|max:255',
+            'bedroom_type_id' => 'required|int',
         ]);
 
         $bedroom = Bedroom::findOrFail($id);
@@ -36,19 +36,14 @@ class BedroomController extends Controller
     }
     public function PostBedroom(Request $request)
     {
-        try {
-            $validate = $request->validate([
-                'number' => 'required|string|max:255',
-                'image' => 'required|string|max:255',
-            ]);
+        $validate = $request->validate([
+            'number' => 'required|string|unique:bedroom|max:255',
+            'bedroom_type_id' => 'required|int',
+        ]);
 
-
-            $postBedroom = new Bedroom($validate);
-            $postBedroom->save();
-            return response()->json($postBedroom);
-        } catch (ValidationException $exception) {
-            return response()->json($exception->getMessage());
-        }
+        $postBedroom = new Bedroom($validate);
+        $postBedroom->save();
+        return response()->json($postBedroom);
     }
 
     public function DeleteBedroom(Request $request, $id)

@@ -12,24 +12,25 @@ class BedroomTypeController extends Controller
 {
     public function allBedroomType(): object{
 
-        $icons = BedroomType::with('icon')->get();
+        $icons = BedroomType::with('icon', 'picture')->get();
         return response()->json($icons);
 
     }
-    public function bedroomTypeShowid(Request $request , string $id): object
+    public function bedroomTypeShowid (string $id): object
     {
-        $validated = $request->validate([
-
-            $bedroomTypeId = BedroomType::findOrFail($id)]);
-
-        return response()->json([$bedroomTypeId]);
+        $bedroomTypeId = BedroomType::with('picture')->findOrFail($id);
+        return response()->json($bedroomTypeId);
     }
     public function UpdateBedroomType($id, Request $request)
     {
         $updatebedroomType = $request->validate([
-            'name' => 'nullable',
-            'description' => 'nullable|longtext',
+            'nameEn' => 'nullable',
+            'descriptionEN' => 'nullable',
+            'nameFr' => 'nullable',
+            'descriptionFr' => 'nullable',
             'price' => 'nullable',
+            'background_color' => 'nullable',
+            'background_opacity' => 'nullable',
         ]);
 
         $bedroomType = BedroomType::findOrFail($id);
