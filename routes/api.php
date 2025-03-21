@@ -159,6 +159,7 @@ Route::controller(AboutController::class)->group(function () {
 //ROUTE API ABOUT_SECTION*******************************************************************************************************
 Route::controller(AboutSectionController::class)->group(function () {
     Route::get('/about_section', [AboutSectionController::class, 'allAboutSection']);
+    Route::put('/about_section/{id}', [AboutSectionController::class, 'putAboutSection']);
 });
 
 //ROUTE API ABOUT_DESCRIPTION*******************************************************************************************************

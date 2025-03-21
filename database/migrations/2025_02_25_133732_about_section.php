@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('about_section', function (Blueprint $table) {
             $table->id()->primary();
             $table->foreignId('about_id');
-            $table->string('title');
+            $table->string('titleFr');
+            $table->string('titleEn');
             $table->timestamps();
         });
     }

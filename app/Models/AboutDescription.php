@@ -17,8 +17,10 @@ class AboutDescription extends Model
     protected $fillable = [
         'id',
         'about_section_id',
-        'title',
-        'description',
+        'titleEn',
+        'titleFr',
+        'descriptionEn',
+        'descriptionFr',
         'background_color',
         'background_opacity',
     ];

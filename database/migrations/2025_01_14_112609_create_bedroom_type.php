@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('nameEn');
             $table->longText('descriptionFr');
             $table->longText('descriptionEn');
+            $table->string('background_color');
+            $table->string('background_opacity');
             $table->integer('price');
             $table->timestamps();
         });

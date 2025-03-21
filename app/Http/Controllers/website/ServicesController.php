@@ -13,18 +13,20 @@ class ServicesController extends Controller
         $picture = Services::with('picture')->get();
         return response()->json($picture);
     }
-    public function ServicesShowid(Request $request , string $id): object
+    public function ServicesShowid(string $id): object
     {
-        $validated = $request->validate([
 
-            $ServicesId = Services::findOrFail($id)]);
+        $ServicesId = Services::findOrFail($id);
 
-        return response()->json([$ServicesId]);
+        return response()->json($ServicesId);
     }
     public function UpdateServices($id, Request $request)
     {
         $updateServices = $request->validate([
-            'name' => 'nullable',
+            'nameEn' => 'nullable',
+            'nameFr' => 'nullable',
+            'descriptionEn' => 'nullable',
+            'descriptionFr' => 'nullable',
             'duration' => 'nullable',
             'price' => 'nullable',
             'time' => 'nullable',
@@ -47,13 +49,14 @@ class ServicesController extends Controller
     {
         try {
             $validate = $request->validate([
-                'name' => 'required|string|max:20',
+                'nameEn' => 'nullable|string|max:22',
+                'nameFr' => 'nullable|string|max:22',
+                'descriptionEn' => 'nullable|string',
+                'descriptionFr' => 'nullable|string',
                 'duration' => 'required|int|max:20',
                 'price' => 'required|int|max:200',
                 'time' => 'required|int|max:20',
                 'quantity' => 'required|int|max:20',
-                'background_color_1'=> 'nullable',
-                'background_opacity_1'=> 'nullable',
                 'backgroundText_color_1'=> 'nullable',
                 'backgroundText_opacity_1'=> 'nullable',
                 'backgroundText_color_2'=> 'nullable',

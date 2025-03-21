@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('about_description', function (Blueprint $table) {
             $table->id()->primary();
             $table->foreignId('about_section_id');
-            $table->string('title');
-            $table->longText('description')->nullable();
+            $table->string('titleEn');
+            $table->string('titleFr');
+            $table->longText('descriptionEn')->nullable();
+            $table->longText('descriptionFr')->nullable();
             $table->longText('background_color')->nullable();
             $table->longText('background_opacity')->nullable();
             $table->timestamps();

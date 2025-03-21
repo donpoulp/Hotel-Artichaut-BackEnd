@@ -25,7 +25,7 @@ class Bedroom extends Model
     public function picture():HasMany{
         return $this->hasMany(Picture::class);
     }
-    public function bedroomtype():BelongsTo{
-        return $this->belongsTo(BedroomType::class,'bedroom_type_id');
+    public function bedroom_type():BelongsTo{
+        return $this->belongsTo(BedroomType::class);
     }
 }
