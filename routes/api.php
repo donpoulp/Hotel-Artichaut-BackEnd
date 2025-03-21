@@ -107,6 +107,8 @@ Route::controller(ReservationController::class)->group(function () {
     Route::post('/reservation', [ReservationController::class, 'PostReservation']);
     Route::put('/reservation/{id}', [ReservationController::class, 'UpdateReservation']);
     Route::delete('/reservation/{id}', [ReservationController::class, 'DeleteReservation']);
+    Route::get('/dates', [ReservationController::class, 'checkReservation']);
+    //Route::post('/test', [ReservationController::class, 'Test']);
 });
 //ROUTE SERVICES********************************************************************************************************
 Route::controller(ServicesController::class)->group(function () {
@@ -170,7 +172,6 @@ Route::controller(AboutDescriptionController::class)->group(function () {
 //ROUTE AUTH************************************************************************************************************
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-//Route::get('/verifUser', [AuthController::class, 'actualUser']);
 
 //ROUTE ICON************************************************************************************************************
 Route::controller(iconController::class)->group(function () {
@@ -181,3 +182,4 @@ Route::controller(iconController::class)->group(function () {
     Route::put('/icon/{id}', [IconController::class, 'iconUpdate']);
     Route::delete('/icon/{id}', [IconController::class, 'deleteIcon']);
 });
+

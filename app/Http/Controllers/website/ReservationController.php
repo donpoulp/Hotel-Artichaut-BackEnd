@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\website;
 
+use App\Models\Bedroom;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
-
 
 
 class ReservationController extends Controller
@@ -37,25 +37,42 @@ class ReservationController extends Controller
         return response()->json($updateReservation);
 
     }
-
-//    public function checkReservation(){
+//    public function Test(Request $request){
 //
-//        $startDate = $this->allReservation()->startDate;
-//        $endDate = $this->allReservation()->endDate;
-//        $isAvailable = true;
+//        $bedroom = Bedroom::all();
+//        $reservation = Reservation::all();
+//        $startReservation = Reservation::all()->pluck('startDate');
+//        $endReservation = Reservation::all()->pluck('endDate');
 //
-//        if ($startDate > $endDate) {
-//            $isAvailable = false;
-//        }elseif ($startDate = $endDate) {
-//            $isAvailable = false;
-//        }elseif ($startDate > $endDate) {
-//            $isAvailable = false;
+//        try {
+//            $validated = $request->validate([
+//                'startDate' => 'nullable',
+//                'endDate' => 'nullable',
+//            ]);
+//
+//            foreach ($startReservation as $reservationList) {
+//            if($startReservation->contains($reservationList)){
+//                return response()->json('error');
+//
+//            }elseif ($endReservation->contains($reservationList)){
+//                return response()->json('error');
+//
+//            }
+//
+//            }
+//
+//            $postReservation = new Reservation($validated);
+//            $postReservation->save();
+//            return response()->json($postReservation);
+//
+//        }catch (ValidationException $e){
+//            return response()->json($e->getMessage());
 //        }
-//        return $isAvailable;
 //    }
 
     public function PostReservation(Request $request)
     {
+
         try {
             $validate = $request->validate([
                 'startDate' => 'required|date|max:20',
@@ -63,9 +80,18 @@ class ReservationController extends Controller
                 'user_id' => 'required',
             ]);
 
-            $postReservation = new Reservation($validate);
-            $postReservation->save();
-            return response()->json($postReservation);
+            if ( $validate['startDate'] > $validate['endDate']
+                ||
+                $validate['startDate'] = $validate['endDate']
+            ){
+                $message = "Date Invalide";
+                return response()->json($message);
+            }
+
+                $postReservation = new Reservation($validate);
+                $postReservation->save();
+                return response()->json($postReservation);
+
         } catch (ValidationException $exception) {
             return response()->json($exception->getMessage());
         }
