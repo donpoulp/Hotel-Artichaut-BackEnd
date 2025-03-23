@@ -17,7 +17,8 @@ class AboutSection extends Model
     protected $fillable = [
         'id',
         'about_id',
-        'title',
+        'titleEn',
+        'titleFr'
     ];
 
     public function picture():HasMany{

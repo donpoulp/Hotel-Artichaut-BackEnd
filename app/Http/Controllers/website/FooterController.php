@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Footer;
-use App\Models\Header;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -11,7 +10,8 @@ use Illuminate\Validation\ValidationException;
 class FooterController extends Controller
 {
     public function allFooter(): object{
-        return response()->json(Footer::all());
+        $icon=Footer::with('icon')->get();
+        return response()->json($icon);
     }
     public function footerShowid(Request $request , string $id): object
     {

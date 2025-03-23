@@ -11,7 +11,6 @@ class NewsController extends Controller
 {
     public function allNews(): object
     {
-
         $news = News::with('picture')->get();
         return response()->json($news);
     }
@@ -26,9 +25,10 @@ class NewsController extends Controller
     public function newsUpdate($id, Request $request)
     {
         $newsUpdate = $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'content' => 'nullable',
+            'titleEn' => 'nullable',
+            'descriptionEn' => 'nullable',
+            'titleFr' => 'nullable',
+            'descriptionFr' => 'nullable',
             'picture_id' => 'nullable',
             'background_color'=>'nullable',
             'background_opacity'=>'nullable',

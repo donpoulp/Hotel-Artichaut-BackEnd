@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('icon', function (Blueprint $table) {
             $table->id()->primary();
-            $table->foreignId('about_description_id');
             $table->string('name');
-            $table->longText('descriptionEn')->nullable();
-            $table->longText('descriptionFr')->nullable();
+            $table->string('iconPath');
+            $table->string('link');
+            $table->foreignId('footer_id')->nullable();
+            $table->foreignId('header_id')->nullable();
+            $table->foreignId('bedroom_type_id')->nullable();
+            $table->foreignId('strongest_id')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teams');
+        Schema::dropIfExists('icon');
     }
 };

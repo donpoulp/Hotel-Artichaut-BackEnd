@@ -21,7 +21,8 @@ class Reservation extends Model
         'endDate',
         'user_id',
         'bedroom_id',
-        'status_id'
+        'status_id',
+        'price'
     ];
 
     //RELATION**********************************************************************************************************

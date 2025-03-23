@@ -19,12 +19,17 @@ class BedroomType extends Model
         'nameEn',
         'descriptionFr',
         'descriptionEn',
+        'background_color',
+        'background_opacity',
         'price',
     ];
     public function picture():HasMany{
-        return $this->hasMany(Picture::class);
+        return $this->hasMany(Picture::class, "bedroomtype_id");
     }
     public function bedroom():HasMany{
-        return $this->hasMany(Bedroom::class,'bedroom_id');
+        return $this->hasMany(Bedroom::class,"bedroom_type_id");
+    }
+    public function icon():HasMany{
+        return $this->hasMany(Icon::class);
     }
 }

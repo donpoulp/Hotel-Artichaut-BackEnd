@@ -28,7 +28,7 @@ class Picture extends Model
 
     ];
 
-    public function bedroomtype(): BelongsTo{
+    public function bedroomType(): BelongsTo{
         return $this->belongsTo(BedroomType::class);
     }
     public function hero():BelongsTo{
