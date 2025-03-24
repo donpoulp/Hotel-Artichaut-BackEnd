@@ -174,6 +174,8 @@ Route::controller(AboutDescriptionController::class)->group(function () {
 //ROUTE AUTH************************************************************************************************************
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+//Route::get('/verifUser', [AuthController::class, 'actualUser']);
 
 //ROUTE ICON************************************************************************************************************
 Route::controller(iconController::class)->group(function () {
@@ -184,4 +186,5 @@ Route::controller(iconController::class)->group(function () {
     Route::put('/icon/{id}', [IconController::class, 'iconUpdate']);
     Route::delete('/icon/{id}', [IconController::class, 'deleteIcon']);
 });
+
 
