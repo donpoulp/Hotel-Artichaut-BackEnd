@@ -20,7 +20,7 @@ class Reservation extends Model
         'startDate',
         'endDate',
         'user_id',
-        'bedroom_id',
+        'bedroom_type_id',
         'status_id',
         'price'
     ];
@@ -36,9 +36,9 @@ class Reservation extends Model
         return $this->belongsToMany(Services::class, 'reservation_services', 'reservation_id', 'service_id');
     }
 
-    public function bedroomType(): BelongsToMany
+    public function bedroomType(): BelongsTo
     {
-        return $this->belongsToMany(BedroomType::class);
+        return $this->belongsTo(BedroomType::class);
     }
 
     public function status(): BelongsTo

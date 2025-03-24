@@ -108,7 +108,8 @@ Route::controller(ReservationController::class)->group(function () {
     Route::put('/reservation/{id}', [ReservationController::class, 'UpdateReservation']);
     Route::delete('/reservation/{id}', [ReservationController::class, 'DeleteReservation']);
     Route::get('/dates', [ReservationController::class, 'checkReservation']);
-    //Route::post('/test', [ReservationController::class, 'Test']);
+    Route::post('/calculPrice', [ReservationController::class, 'CalculPrice']);
+    Route::post('/checkBedroom/{id}/{userId}',[ReservationController::class, 'checkBedroom']);
 });
 //ROUTE SERVICES********************************************************************************************************
 Route::controller(ServicesController::class)->group(function () {
