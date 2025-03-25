@@ -18,7 +18,7 @@ class BedroomTypeController extends Controller
     }
     public function bedroomTypeShowid (string $id): object
     {
-        $bedroomTypeId = BedroomType::with('picture')->findOrFail($id);
+        $bedroomTypeId = BedroomType::with('bedroom', 'picture')->findOrFail($id);
         return response()->json($bedroomTypeId);
     }
     public function UpdateBedroomType($id, Request $request)

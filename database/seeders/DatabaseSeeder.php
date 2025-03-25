@@ -330,8 +330,9 @@ class DatabaseSeeder extends Seeder
                 'startDate' => date('2020-01-01'),
                 'endDate' => date('2020-01-02'),
                 'user_id' => $user->id,
-                'bedroom_id' => Bedroom::all()->random()->id,
+                'bedroom_type_id' => BedroomType::all()->random()->id,
                 'status_id' => Status::all()->random()->id,
+                'price' => number_format(25),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

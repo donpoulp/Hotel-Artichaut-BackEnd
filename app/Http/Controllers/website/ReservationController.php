@@ -3,20 +3,27 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Bedroom;
+use App\Models\BedroomType;
 use App\Models\Reservation;
+use App\Models\Services;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
+use App\Traits\ReservationTrait;
 
 class ReservationController extends Controller
 {
-    public function allReservation(): object{
+    use ReservationTrait;
+    public function allReservation(): object
+    {
         $reservation = Reservation::with('services')->get();
         return response()->json($reservation);
 
     }
-    public function ReservationShowid(Request $request , string $id): object
+
+    public function ReservationShowid(Request $request, string $id): object
     {
         $validated = $request->validate([
 
@@ -24,6 +31,7 @@ class ReservationController extends Controller
 
         return response()->json([$ReservationId]);
     }
+
     public function UpdateReservation($id, Request $request)
     {
         $updateReservation = $request->validate([
@@ -37,60 +45,32 @@ class ReservationController extends Controller
         return response()->json($updateReservation);
 
     }
-//    public function Test(Request $request){
-//
-//        $bedroom = Bedroom::all();
-//        $reservation = Reservation::all();
-//        $startReservation = Reservation::all()->pluck('startDate');
-//        $endReservation = Reservation::all()->pluck('endDate');
-//
-//        try {
-//            $validated = $request->validate([
-//                'startDate' => 'nullable',
-//                'endDate' => 'nullable',
-//            ]);
-//
-//            foreach ($startReservation as $reservationList) {
-//            if($startReservation->contains($reservationList)){
-//                return response()->json('error');
-//
-//            }elseif ($endReservation->contains($reservationList)){
-//                return response()->json('error');
-//
-//            }
-//
-//            }
-//
-//            $postReservation = new Reservation($validated);
-//            $postReservation->save();
-//            return response()->json($postReservation);
-//
-//        }catch (ValidationException $e){
-//            return response()->json($e->getMessage());
-//        }
-//    }
 
     public function PostReservation(Request $request)
     {
-
         try {
             $validate = $request->validate([
-                'startDate' => 'required|date|max:20',
-                'endDate' => 'required|date|max:20',
-                'user_id' => 'required',
+                'startDate' => 'required|date',
+                'endDate' => 'required|date',
+                'price' => 'required|numeric',
+                'status_id' => 'required|numeric',
+                'bedroom_type_id' => 'required',
+                'user_id' => 'required|numeric',
             ]);
 
-            if ( $validate['startDate'] > $validate['endDate']
-                ||
-                $validate['startDate'] = $validate['endDate']
-            ){
-                $message = "Date Invalide";
-                return response()->json($message);
-            }
+            if($this->checkBedroom($validate)){
+                $startDate = explode("T", $validate['startDate']);
+                $endDate = explode("T", $validate['endDate']);
+                $validate['startDate'] = $startDate[0];
+                $validate['endDate'] = $endDate[0];
 
-                $postReservation = new Reservation($validate);
-                $postReservation->save();
-                return response()->json($postReservation);
+                $newReservation = new Reservation($validate);
+                $newReservation->save();
+
+                return response()->json("Reservation crée avec succes");
+            }else{
+                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
+            }
 
         } catch (ValidationException $exception) {
             return response()->json($exception->getMessage());
