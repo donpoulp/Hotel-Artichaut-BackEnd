@@ -24,8 +24,10 @@ class HeroController extends Controller
     public function heroUpdate($id, Request $request)
     {
         $heroUpdate = $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
+            'titleEn' => 'nullable',
+            'titleFr' => 'nullable',
+            'descriptionEn' => 'nullable',
+            'descriptionFr' => 'nullable',
             'image' => 'nullable',
         ]);
 
