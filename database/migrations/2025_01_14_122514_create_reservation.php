@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id()->primary();
             $table->date('startDate');
             $table->date('endDate');
+            $table->integer('price');
             $table->foreignId('user_id');
             $table->foreignId('bedroom_type_id');
             $table->foreignId('status_id');
