@@ -332,6 +332,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
                 'bedroom_type_id' => BedroomType::all()->random()->id,
                 'status_id' => Status::all()->random()->id,
+                'price' => number_format(25),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

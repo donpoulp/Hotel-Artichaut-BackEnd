@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Http\Controllers\MailController;
 use App\Models\Bedroom;
 use App\Models\BedroomType;
 use App\Models\Reservation;
@@ -12,10 +11,11 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
+use App\Traits\ReservationTrait;
 
 class ReservationController extends Controller
 {
+    use ReservationTrait;
     public function allReservation(): object
     {
         $reservation = Reservation::with('services')->get();
@@ -46,99 +46,42 @@ class ReservationController extends Controller
 
     }
 
-    public function CalculPrice(Request $request)
-    {
-        try {
-            $validated = $request->validate([
-                'startDate' => 'nullable',
-                'endDate' => 'nullable',
-                'user_id' => 'nullable',
-                'bedroom_type_id' => 'nullable',
-                'service_id' => 'nullable|array',
-                'service_id.*' => 'exists:services,id'
-            ]);
-
-            $startDate = Carbon::parse($validated['startDate']);
-            $endDate = Carbon::parse($validated['endDate']);
-            $price = BedroomType::findOrfail($validated['bedroom_type_id'])->price;
-
-            $totalServicePrice = 0;
-
-            if (isset($validated['service_id'])) {
-                foreach ($validated['service_id'] as $serviceId) {
-                    $service = Services::findOrfail($serviceId);
-                    $totalServicePrice += $service->price;
-                }
-            }
-
-            $days = $startDate->diffInDays($endDate);
-
-            $bedroomPrice = ($price * $days) + $totalServicePrice;
-
-            $postReservation = new Reservation($validated);
-            $postReservation->save();
-
-            return response()->json($bedroomPrice);
-
-        } catch (ValidationException $e) {
-            return response()->json($e->getMessage());
-        }
-    }
-
-    public function checkBedroom(Request $request, string $id, string $userId)
-    {
-        try {
-            $validated = $request->validate([
-                'startDate' => 'nullable',
-                'endDate' => 'nullable',
-            ]);
-        }catch (ValidationException $e) {
-            return response()->json($e->getMessage());
-        }
-
-        $reservation = Reservation::where('bedroom_type_id' ,$id)
-            ->where('startDate', '>=', $validated['startDate'])
-            ->where('endDate','<=',$validated['endDate'])
-            ->get();
-
-        $bedroom = Bedroom::where('bedroom_type_id' ,$id)->get();
-        if ($bedroom->count() == $reservation->count()) {
-            return response()->json('pas de chambre dispo');
-        }else{
-
-            $newReservation = new Reservation($validated);
-            $newReservation->user_id =$userId;
-            $newReservation->bedroom_type_id =$id;
-            $newReservation->startDate=$validated['startDate'];
-            $newReservation->endDate=$validated['endDate'];
-            $newReservation->save();
-
-        }
-        return response()->json($newReservation);
-
-    }
-
     public function PostReservation(Request $request)
     {
-
         try {
             $validate = $request->validate([
-                'startDate' => 'required|date|max:20',
-                'endDate' => 'required|date|max:20',
-                'user_id' => 'required',
+                'startDate' => 'required|date',
+                'endDate' => 'required|date',
+                'price' => 'required|numeric',
+                'status_id' => 'required|numeric',
+                'bedroom_type_id' => 'required',
+                'user_id' => 'required|numeric',
+                'services' => 'nullable|array',
             ]);
 
-            if ( $validate['startDate'] > $validate['endDate']
-                ||
-                $validate['startDate'] = $validate['endDate']
-            ){
-                $message = "Date Invalide";
-                return response()->json($message);
-            }
+            if($this->checkBedroom($validate)){
+                $startDate = explode("T", $validate['startDate']);
+                $endDate = explode("T", $validate['endDate']);
+                $validate['startDate'] = $startDate[0];
+                $validate['endDate'] = $endDate[0];
 
-                $postReservation = new Reservation($validate);
-                $postReservation->save();
-                return response()->json($postReservation);
+                $newReservation = Reservation::create([
+                    'startDate' => $validate['startDate'],
+                    'endDate' => $validate['endDate'],
+                    'price' => $validate['price'],
+                    'status_id' => $validate['status_id'],
+                    'bedroom_type_id' => $validate['bedroom_type_id'],
+                    'user_id' => $validate['user_id'],
+                ]);
+
+                if (!empty($validate['services'])) {
+                    $newReservation->services()->attach($validate['services']);
+                }
+
+                return response()->json("Reservation crée avec succes");
+            }else{
+                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
+            }
 
         } catch (ValidationException $exception) {
             return response()->json($exception->getMessage());
