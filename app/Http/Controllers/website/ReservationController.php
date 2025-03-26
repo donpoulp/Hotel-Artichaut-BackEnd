@@ -56,6 +56,7 @@ class ReservationController extends Controller
                 'status_id' => 'required|numeric',
                 'bedroom_type_id' => 'required',
                 'user_id' => 'required|numeric',
+                'services' => 'nullable|array',
             ]);
 
             if($this->checkBedroom($validate)){
@@ -64,8 +65,18 @@ class ReservationController extends Controller
                 $validate['startDate'] = $startDate[0];
                 $validate['endDate'] = $endDate[0];
 
-                $newReservation = new Reservation($validate);
-                $newReservation->save();
+                $newReservation = Reservation::create([
+                    'startDate' => $validate['startDate'],
+                    'endDate' => $validate['endDate'],
+                    'price' => $validate['price'],
+                    'status_id' => $validate['status_id'],
+                    'bedroom_type_id' => $validate['bedroom_type_id'],
+                    'user_id' => $validate['user_id'],
+                ]);
+
+                if (!empty($validate['services'])) {
+                    $newReservation->services()->attach($validate['services']);
+                }
 
                 return response()->json("Reservation crée avec succes");
             }else{
