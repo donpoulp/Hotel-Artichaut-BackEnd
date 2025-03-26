@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\website;
 
+ use App\Mail\OrderShipped;
  use App\Models\User;
  use Illuminate\Http\Request;
  use Illuminate\Routing\Controller;
+ use Illuminate\Support\Facades\Mail;
  use Illuminate\Validation\ValidationException;
  use OpenApi\Annotations as OA;
  use Illuminate\Support\Facades\Hash;
@@ -79,11 +81,8 @@ namespace App\Http\Controllers\website;
              if (!isset($validate['role'])){
                  $validate['role'] = 0;
              }
-
              $postcustomer = new User($validate);
-
              $postcustomer->save();
-             return response()->json($postcustomer);
          } catch (ValidationException $exception) {
              return response()->json($exception->getMessage());
          }

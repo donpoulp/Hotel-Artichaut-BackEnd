@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\About;
 use App\Models\AboutDescription;
 use App\Models\AboutSection;
-use App\Models\Bedroom;
 use App\Models\BedroomType;
 use App\Models\Footer;
 use App\Models\Header;
@@ -21,7 +20,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Psy\Util\Str;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'firstname' => Str('Tristan'),
             'lastname' => Str('Chadeuf'),
-            'email' => Str('tristanChadeuf@gmail.com'),
+            'email' => Str('tristan.chadeuf@gmail.com'),
             'emailBis' => Str('tristanChadeuf2@gmail.com'),
             'password' => Hash::make('password'),
             'phone' => fake()->phoneNumber,
@@ -336,15 +336,32 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
+        DB::table('reservation')->insert([
+            'startDate' => date('2025-03-26'),
+            'endDate' => date('2025-03-31'),
+            'user_id' => User::findOrfail(11)->id,
+            'bedroom_type_id' => BedroomType::all()->random()->id,
+            'price'=> number_format(254),
+            'status_id' => Status::all()->random()->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
         //PIVOT RESERVATION SERVICE********************************************************************************
         for ($i = 0; $i < 9; $i++) {
             DB::table('reservation_services')->insert([
                 'service_id' => Services::all()->random()->id,
-                'reservation_id' => Reservation::all()->random()->id,
+                'reservation_id' => Reservation::findOrfail(1)->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
+        DB::table('reservation_services')->insert([
+            'service_id' => Services::all()->random()->id,
+            'reservation_id' => Reservation::findOrfail(10)->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
         //STRONGEST*************************************************************************************************
 
         DB::table('strongest')->insert([

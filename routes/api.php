@@ -29,7 +29,7 @@ Route::controller(UserController::class)->group(function () {
 
     Route::get('/user', [UserController::class, 'allUsers']);
     Route::get('/user/{id}', [UserController::class, 'UserShowid']);
-    Route::post('/user', [UserController::class, 'PostUser'])->name('user.post');
+    Route::post('/user', [UserController::class, 'PostUser']);
     Route::put('/user/{id}', [UserController::class, 'UpdateUser']);
     Route::delete('/user/{id}', [UserController::class, 'DeleteUser']);
 });

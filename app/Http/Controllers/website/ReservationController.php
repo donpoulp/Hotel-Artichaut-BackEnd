@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\website;
 
+use App\Http\Controllers\MailController;
 use App\Models\Bedroom;
 use App\Models\BedroomType;
 use App\Models\Reservation;

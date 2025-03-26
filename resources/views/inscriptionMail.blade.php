@@ -5,7 +5,17 @@
     </header>
 
     <body>
-    <h1 class="text-center" >Merci pour votre inscription !</h1>
+    <h1>Merci {{$data ['firstname']}} de votre commande !</h1>
+    <br>
+
+    <div>
+        <h3>Debut de réservation :  {{$data ['startDate']}}</h3>
+        <h3>Fin de réservation   :  {{$data ['endDate']}}</h3>
+        <h3>Prix                 :  {{$data ['price']}},00€</h3>
+        <h3>Votre Chambre        :  {{$data ['bedroomType']}}</h3>
+    </div>
+    <br>
+
+    <h2>Toute l'équipe de l'hotel artichaut vous remercie !</h2>
     </body>
-
-
+</nav>
