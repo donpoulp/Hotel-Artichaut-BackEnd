@@ -107,6 +107,7 @@ Route::controller(ReservationController::class)->group(function () {
     Route::post('/reservation', [ReservationController::class, 'PostReservation']);
     Route::put('/reservation/{id}', [ReservationController::class, 'UpdateReservation']);
     Route::delete('/reservation/{id}', [ReservationController::class, 'DeleteReservation']);
+    Route::get('/reservations/user/{userId}', [ReservationController::class, 'getReservationsByUserId']);
 });
 //ROUTE SERVICES********************************************************************************************************
 Route::controller(ServicesController::class)->group(function () {
