@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Hero;
+use App\Models\Picture;
+use App\Traits\PictureTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class HeroController extends Controller
 {
+    use PictureTrait;
     public function allHero(): object{
         $picture = Hero::with('picture')->get();
         return response()->json($picture);
@@ -24,18 +28,33 @@ class HeroController extends Controller
     public function heroUpdate($id, Request $request)
     {
         $heroUpdate = $request->validate([
-            'titleEn' => 'nullable',
-            'titleFr' => 'nullable',
-            'descriptionEn' => 'nullable',
-            'descriptionFr' => 'nullable',
-            'image' => 'nullable',
+            'titleEn' => 'nullable|string',
+            'titleFr' => 'nullable|string',
+            'descriptionEn' => 'nullable|string',
+            'descriptionFr' => 'nullable|string',
+            'picture' => 'nullable',
         ]);
 
         $hero = Hero::findOrFail($id);
+
+        if (isset($heroUpdate['picture'])) {
+            $oldPicture = $hero->picture()->first();
+            if ($oldPicture) {
+                if (Storage::exists($oldPicture->picturePath)) {
+                    Storage::delete($oldPicture->picturePath);
+                }
+                $oldPicture->delete();
+            }
+            $imagePath = $this->saveImage($heroUpdate['picture']);
+            $newPicture = new Picture();
+            $newPicture->picturePath = "http://127.0.0.1:8000/storage/".$imagePath;
+            $newPicture->hero_id = $id;
+            $hero->picture()->save($newPicture);
+        }
+
         $hero->update($heroUpdate);
 
         return response()->json($heroUpdate);
-
     }
     public function PostHero(Request $request)
     {
