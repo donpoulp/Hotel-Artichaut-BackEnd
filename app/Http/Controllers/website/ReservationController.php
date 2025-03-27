@@ -96,4 +96,14 @@ class ReservationController extends Controller
         $deleteReservation->delete();
         return response()->json(Reservation::all());
     }
+
+    public function getReservationsByUserId(string $userId): \Illuminate\Http\JsonResponse
+    {
+        // Récupérer toutes les réservations associées à l'utilisateur avec l'ID donné
+        $reservations = Reservation::with('services')
+            ->where('user_id', $userId)
+            ->get();
+
+        return response()->json($reservations);
+    }
 }
