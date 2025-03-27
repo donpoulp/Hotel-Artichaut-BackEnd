@@ -79,6 +79,8 @@ class ReservationController extends Controller
                 }
 
                 return response()->json("Reservation crée avec succes");
+
+
             }else{
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
             }

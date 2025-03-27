@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('bedroom_type_id');
             $table->foreignId('status_id');
-            $table->integer('price');
             $table->timestamps();
         });
     }
