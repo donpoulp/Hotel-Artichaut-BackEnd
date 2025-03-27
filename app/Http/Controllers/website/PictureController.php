@@ -40,7 +40,16 @@ class PictureController extends Controller
     {
         try {
             $validate = $request->validate([
-                'picturePath' => 'required|string|max:20',
+                'name' => 'nullable',
+                'picturePath' => 'nullable|string',
+                'hero_id' => 'nullable',
+                'bedroom_id' => 'nullable',
+                'bedroom_type_id' => 'nullable',
+                'news_id' => 'nullable',
+                'services_id' => 'nullable',
+                'about_section_id' => 'nullable',
+                'about_description_id' => 'nullable',
+                'teams_id' => 'nullable',
             ]);
 
             $postPicture = new Picture($validate);
