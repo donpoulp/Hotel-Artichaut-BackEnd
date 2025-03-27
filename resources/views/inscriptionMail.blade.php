@@ -25,5 +25,10 @@
     <br>
 
     <h2>Toute l'équipe de l'hotel artichaut vous remercie !</h2>
+
+    <h3>Retour page d'accueil</h3>
+
+    <img src="{!!$message->embedData(QrCode::format('png')->size(150)->generate('https://tristan-chadeuf.fr/'), 'QrCode.png', 'image/png')!!}" alt="qr code">
+
     </body>
 </nav>

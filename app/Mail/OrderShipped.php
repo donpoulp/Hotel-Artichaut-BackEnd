@@ -27,7 +27,7 @@ class  OrderShipped  extends  Mailable
     /**
      * Obtenir l'enveloppe du message.
      */
-    public  function  envelope ( ): Envelope
+    public  function  envelope (): Envelope
     {
         return  new  Envelope (
             from: new  Address ( 'tristan.chadeuf@gmail.com' , 'Hotel Artichaut' ),
