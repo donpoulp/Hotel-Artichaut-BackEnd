@@ -18,18 +18,16 @@ class ReservationController extends Controller
     use ReservationTrait;
     public function allReservation(): object
     {
-        $reservation = Reservation::with('services')->get();
+        $reservation = Reservation::with('services', 'bedroomType')->get();
         return response()->json($reservation);
 
     }
 
     public function ReservationShowid(Request $request, string $id): object
     {
-        $validated = $request->validate([
+        $reservation = Reservation::with('services')->findOrFail($id);
 
-            $ReservationId = Reservation::findOrFail($id)]);
-
-        return response()->json([$ReservationId]);
+        return response()->json([$reservation]);
     }
 
     public function UpdateReservation($id, Request $request)
@@ -44,6 +42,50 @@ class ReservationController extends Controller
 
         return response()->json($updateReservation);
 
+    }
+
+    public function UpdateReservationFromBo($id, Request $request)
+    {
+        try {
+            $validate = $request->validate([
+                'bedroom_type_id' => 'required',
+                'user_id' => 'required|numeric',
+                'services' => 'nullable|array',
+                'startDate' => 'required|date',
+                'endDate' => 'required|date',
+                'state' => 'required|numeric',
+            ]);
+
+            $reservation = Reservation::findOrFail($id);
+
+            if($this->checkBedroom($validate)){
+                $price = $this->checkPrice($validate['bedroom_type_id'], $validate['services']);
+
+                $reservation ->update([
+                    'startDate' => $validate['startDate'],
+                    'endDate' => $validate['endDate'],
+                    'price' => $price,
+                    'status_id' => $validate['state'],
+                    'bedroom_type_id' => $validate['bedroom_type_id'],
+                    'user_id' => $validate['user_id'],
+                ]);
+
+                if (!empty($validate['services'])) {
+                    $serviceIds = Services::whereIn('nameEn', $validate['services'])
+                        ->orWhereIn('nameFr', $validate['services'])
+                        ->pluck('id')->toArray();
+
+                    $reservation->services()->sync($serviceIds);
+                }else{
+                    $reservation->services()->detach();
+                }
+                return response()->json("Reservation crée avec succes");
+            }else{
+                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
+            }
+        } catch (ValidationException $exception) {
+            return response()->json($exception->getMessage());
+        }
     }
 
     public function PostReservation(Request $request)
@@ -81,6 +123,45 @@ class ReservationController extends Controller
                 return response()->json("Reservation crée avec succes");
 
 
+            }else{
+                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
+            }
+
+        } catch (ValidationException $exception) {
+            return response()->json($exception->getMessage());
+        }
+    }
+
+    public function PostReservationFromBo(Request $request){
+        try {
+            $validate = $request->validate([
+                'bedroom_type_id' => 'required',
+                'user_id' => 'required|numeric',
+                'services' => 'nullable|array',
+                'startDate' => 'required|date',
+                'endDate' => 'required|date',
+                'state' => 'required|numeric',
+            ]);
+
+            if($this->checkBedroom($validate)){
+                $price = $this->checkPrice($validate['bedroom_type_id'], $validate['services']);
+
+                $newReservation = Reservation::create([
+                    'startDate' => $validate['startDate'],
+                    'endDate' => $validate['endDate'],
+                    'price' => $price,
+                    'status_id' => $validate['state'],
+                    'bedroom_type_id' => $validate['bedroom_type_id'],
+                    'user_id' => $validate['user_id'],
+                ]);
+
+                if (!empty($validate['services'])) {
+                    $serviceIds = Services::whereIn('nameEn', $validate['services'])
+                        ->orWhereIn('nameFr', $validate['services'])
+                        ->pluck('id')->toArray();
+
+                    $newReservation->services()->attach($serviceIds);                }
+                return response()->json("Reservation crée avec succes");
             }else{
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
             }

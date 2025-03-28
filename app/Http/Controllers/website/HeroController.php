@@ -43,13 +43,12 @@ class HeroController extends Controller
                 if (Storage::exists($oldPicture->picturePath)) {
                     Storage::delete($oldPicture->picturePath);
                 }
-                $oldPicture->delete();
+
+                $imagePath = $this->saveImage($heroUpdate['picture']);
+
+                $oldPicture->picturePath = "http://127.0.0.1:8000/storage/".$imagePath;
+                $oldPicture->save();
             }
-            $imagePath = $this->saveImage($heroUpdate['picture']);
-            $newPicture = new Picture();
-            $newPicture->picturePath = "http://127.0.0.1:8000/storage/".$imagePath;
-            $newPicture->hero_id = $id;
-            $hero->picture()->save($newPicture);
         }
 
         $hero->update($heroUpdate);
