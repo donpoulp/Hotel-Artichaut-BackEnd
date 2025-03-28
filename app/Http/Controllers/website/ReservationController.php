@@ -78,15 +78,15 @@ class ReservationController extends Controller
                     $newReservation->services()->attach($validate['services']);
                 }
 
-                return response()->json("Reservation crée avec succes");
+                return response()->json("Reservation crée avec succes", 201);
 
 
             }else{
-                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
+                return response()->json("Aucune chambre de disponible pour le type de chambre selectionner", 406);
             }
 
         } catch (ValidationException $exception) {
-            return response()->json($exception->getMessage());
+            return response()->json($exception->getMessage(), 400);
         }
     }
 
