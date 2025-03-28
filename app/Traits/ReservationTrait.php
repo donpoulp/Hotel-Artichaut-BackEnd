@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Bedroom;
 use App\Models\Reservation;
+use App\Models\Services;
 use Exception;
 
 trait ReservationTrait
@@ -29,5 +30,19 @@ trait ReservationTrait
         } else {
             return true;
         }
+    }
+
+    public function checkPrice($bedroom_type_id, $service){
+        $totalPrice = 0;
+
+        $bedroom_type_price = Bedroom::findOrFail($bedroom_type_id)->price;
+
+        $service_price = Services::whereIn('nameEn', $service)
+            ->orWhereIn('nameFr', $service)
+            ->sum('price');
+
+        $totalPrice = $service_price + $bedroom_type_price;
+
+        return $totalPrice;
     }
 }

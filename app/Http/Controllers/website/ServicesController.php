@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\website;
 
 use App\Models\Services;
+use App\Traits\PictureTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class ServicesController extends Controller
 {
+    use PictureTrait;
     public function allServices(): object{
         $picture = Services::with('picture')->get();
         return response()->json($picture);
@@ -37,9 +40,25 @@ class ServicesController extends Controller
             'backgroundText_opacity_1'=> 'nullable',
             'backgroundText_color_2'=> 'nullable',
             'backgroundText_opacity_2'=> 'nullable',
+            'picture' => 'nullable',
         ]);
 
         $Services = Services::findOrFail($id);
+
+        if (isset($updateServices['picture'])) {
+            $oldPicture = $Services->picture()->first();
+            if ($oldPicture) {
+                if (Storage::exists($oldPicture->picturePath)) {
+                    Storage::delete($oldPicture->picturePath);
+                }
+
+                $imagePath = $this->saveImage($updateServices['picture']);
+
+                $oldPicture->picturePath = "http://127.0.0.1:8000/storage/" . $imagePath;
+                $oldPicture->save();
+            }
+        }
+
         $Services->update($updateServices);
 
         return response()->json($updateServices);

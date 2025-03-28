@@ -40,9 +40,6 @@ class Picture extends Model
     public function services():BelongsTo{
         return $this->belongsTo(Services::class);
     }
-    public function bedroom():BelongsTo{
-        return $this->belongsTo(Bedroom::class);
-    }
     public function about_section():BelongsTo{
         return $this->belongsTo(AboutSection::class);
     }
