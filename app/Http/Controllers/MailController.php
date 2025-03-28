@@ -5,9 +5,8 @@ namespace  App\Http\Controllers ;
 use App\Mail\OrderShipped;
 use App\Models\BedroomType;
 use App\Models\Reservation;
-use App\Models\Services;
 use App\Models\User;
-use http\Env\Request;
+
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 
