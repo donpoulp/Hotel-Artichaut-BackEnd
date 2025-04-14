@@ -105,7 +105,9 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation', [ReservationController::class, 'allReservation']);
     Route::get('/reservation/{id}', [ReservationController::class, 'ReservationShowid']);
     Route::post('/reservation', [ReservationController::class, 'PostReservation']);
+    Route::post('/reservation-from-bo', [ReservationController::class, 'PostReservationFromBo']);
     Route::put('/reservation/{id}', [ReservationController::class, 'UpdateReservation']);
+    Route::put('/reservation-from-bo/{id}', [ReservationController::class, 'UpdateReservationFromBo']);
     Route::delete('/reservation/{id}', [ReservationController::class, 'DeleteReservation']);
     Route::get('/dates', [ReservationController::class, 'checkReservation']);
     Route::post('/calculPrice', [ReservationController::class, 'CalculPrice']);

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('picturePath');
             $table->foreignId('hero_id')->nullable();
-            $table->foreignId('bedroom_id')->nullable();
             $table->foreignId('bedroomtype_id')->nullable();
             $table->foreignId('news_id')->nullable();
             $table->foreignId('services_id')->nullable();
