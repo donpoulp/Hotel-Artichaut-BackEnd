@@ -2,15 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_allUsers(): void
     {
         $response = $this->get('/api/user');
@@ -25,14 +22,36 @@ class UserTest extends TestCase
 
     public function test_UpdateUser(): void
     {
-        $response = $this->put('/api/user/2');
+        $user = User::factory()->create();
+        $updateData = [
+            'firstName' => 'NewFirstName',
+            'lastName' => 'NewLastName',
+            'email' => 'newemail@example.com',
+        ];
+        $response = $this->put("/api/user/{$user->id}", $updateData);
         $response->assertStatus(200);
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'firstName' => 'NewFirstName',
+            'lastName' => 'NewLastName',
+            'email' => 'newemail@example.com',
+        ]);
     }
 
     public function test_PostUser(): void
     {
-        $response = $this->post('/api/user');
-        $response->assertStatus(200);
+        $userData = [
+            'firstName' => 'John',
+            'lastName' => 'Dounia',
+            'email' => 'john.douniav@example.com',
+            'password' => 'password123',
+            'phone' => '1234567890',
+        ];
+        $response = $this->post('/api/user', $userData);
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('users', [
+            'email' => 'john.douniav@example.com',
+        ]);
     }
 
     public function test_DeleteUser(): void

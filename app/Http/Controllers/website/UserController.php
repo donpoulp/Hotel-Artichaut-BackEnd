@@ -83,8 +83,10 @@ namespace App\Http\Controllers\website;
              }
              $postcustomer = new User($validate);
              $postcustomer->save();
+
+             return response()->json($postcustomer, 201);
          } catch (ValidationException $exception) {
-             return response()->json($exception->getMessage());
+             return response()->json(['error' => $exception->getMessage()], 422);
          }
      }
 
