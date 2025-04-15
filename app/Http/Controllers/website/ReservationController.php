@@ -79,7 +79,7 @@ class ReservationController extends Controller
                 }else{
                     $reservation->services()->detach();
                 }
-                return response()->json("Reservation crée avec succes");
+                return response()->json(['message' => 'Reservation mise a jour avec succes']);
             }else{
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
             }
@@ -161,9 +161,10 @@ class ReservationController extends Controller
                         ->orWhereIn('nameFr', $validate['services'])
                         ->pluck('id')->toArray();
 
-                    $newReservation->services()->attach($serviceIds);                }
-                return response()->json("Reservation crée avec succes");
-            }else{
+                    $newReservation->services()->attach($serviceIds);
+                }
+                return response()->json(['message' => 'Reservation crée avec succes'], 201);
+            } else {
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
             }
 

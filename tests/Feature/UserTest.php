@@ -8,15 +8,25 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_allUsers(): void
     {
+        User::factory()->count(3)->create();
         $response = $this->get('/api/user');
         $response->assertStatus(200);
     }
 
     public function test_UserShowid(): void
     {
-        $response = $this->get('/api/user/2');
+        $user = User::factory()->create();
+        $response = $this->get("/api/user/$user->id");
+        $response->assertStatus(200);
+    }
+
+    public function test_DeleteUser(): void
+    {
+        $user = User::factory()->create();
+        $response = $this->delete("/api/user/$user->id");
         $response->assertStatus(200);
     }
 
@@ -28,7 +38,7 @@ class UserTest extends TestCase
             'lastName' => 'NewLastName',
             'email' => 'newemail@example.com',
         ];
-        $response = $this->put("/api/user/{$user->id}", $updateData);
+        $response = $this->put("/api/user/$user->id", $updateData);
         $response->assertStatus(200);
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
@@ -52,11 +62,5 @@ class UserTest extends TestCase
         $this->assertDatabaseHas('users', [
             'email' => 'john.douniav@example.com',
         ]);
-    }
-
-    public function test_DeleteUser(): void
-    {
-        $response = $this->delete('/api/user/5');
-        $response->assertStatus(200);
     }
 }

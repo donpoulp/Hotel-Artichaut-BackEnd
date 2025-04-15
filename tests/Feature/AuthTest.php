@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class AuthTest extends TestCase
 {
+    use RefreshDatabase;
     public function test_register(): void
     {
         // test ok
@@ -25,7 +26,7 @@ class AuthTest extends TestCase
                 'token_type',
             ]);
 
-        // données invalides (email)
+        // test ko (same email)
         $response = $this->post('/api/register', [
             'firstName' => 'registerko',
             'email' => 'register@example.com',
