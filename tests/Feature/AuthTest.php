@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -73,28 +74,29 @@ class AuthTest extends TestCase
             ]);
     }
 
-//    public function test_logout(): void
-//    {
-//        User::factory()->create([
-//            'email' => 'logout@example.com',
-//            'password' => 'password123',
-//            'is_admin' => '0',
-//        ]);
-//
-//        $loginResponse = $this->post('/api/login', [
-//            'email' => 'logout@example.com',
-//            'password' => 'password123',
-//        ]);
-//
-//        $token = $loginResponse->json('access_token');
-//
-//        $response = $this->post('/api/logout', [], [
-//            'Authorization' => 'Bearer ' . $token
-//        ]);
-//
-//        $response->assertStatus(200)
-//            ->assertJson([
-//                'message' => 'Successfully logged out',
-//            ]);
-//    }
+    public function test_logout(): void
+    {
+        $user = User::factory()->create([
+            'email' => 'logout@example.com',
+            'password' => bcrypt('password123'),
+            'is_admin' => '0',
+        ]);
+
+        $loginResponse = $this->post('/api/login', [
+            'email' => 'logout@example.com',
+            'password' => 'password123',
+        ]);
+
+        $token = $loginResponse->json('access_token');
+        Sanctum::actingAs($user, ['*']);
+
+        $response = $this->post('/api/logout', [], [
+            'Authorization' => 'Bearer ' . $token
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'message' => 'Successfully logged out',
+            ]);
+    }
 }

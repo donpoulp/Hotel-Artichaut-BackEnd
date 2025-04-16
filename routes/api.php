@@ -20,6 +20,7 @@ use App\Http\Controllers\website\StatusController;
 use App\Http\Controllers\website\StrongestController;
 use App\Http\Controllers\website\StrongestSectionController;
 use App\Http\Controllers\website\UserController;
+use App\Http\Middleware\AdminUser;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 //ROUTE API USERS*******************************************************************************************************
 Route::controller(UserController::class)->group(function () {
 
-    Route::get('/user', [UserController::class, 'allUsers']);
+    Route::get('/user', [UserController::class, 'allUsers'])->middleware(AdminUser::class);;
     Route::get('/user/{id}', [UserController::class, 'UserShowid']);
     Route::post('/user', [UserController::class, 'PostUser']);
     Route::put('/user/{id}', [UserController::class, 'UpdateUser']);
@@ -36,22 +37,25 @@ Route::controller(UserController::class)->group(function () {
 
 //ROUTE API BEDROOM*****************************************************************************************************
 Route::controller(BedroomController::class)->group(function () {
-
     Route::get('/bedroom', [BedroomController::class, 'allBedroom']);
     Route::get('/bedroom/{id}', [BedroomController::class, 'bedroomShowid']);
-    Route::post('/bedroom', [BedroomController::class, 'PostBedroom']);
-    Route::put('/bedroom/{id}', [BedroomController::class, 'UpdateBedroom']);
-    Route::delete('/bedroom/{id}', [BedroomController::class, 'DeleteBedroom']);
+
+    Route::middleware([AdminUser::class])->group(function () {
+        Route::post('/bedroom', [BedroomController::class, 'PostBedroom']);
+        Route::put('/bedroom/{id}', [BedroomController::class, 'UpdateBedroom']);
+        Route::delete('/bedroom/{id}', [BedroomController::class, 'DeleteBedroom']);
+    });
 });
+
 //ROUTE API HEADER******************************************************************************************************
 Route::controller(HeaderController::class)->group(function () {
-
     Route::get('/header', [HeaderController::class, 'allHeader']);
     Route::get('/header/{id}', [HeaderController::class, 'headerShowid']);
     Route::post('/header', [HeaderController::class, 'PostHeader']);
     Route::put('/header/{id}', [HeaderController::class, 'headerUpdate']);
     Route::delete('/header/{id}', [HeaderController::class, 'DeleteHeader']);
 });
+
 //ROUTE API FOOTER******************************************************************************************************
 Route::controller(FooterController::class)->group(function () {
     Route::get('/footer', [FooterController::class, 'allFooter']);
@@ -60,14 +64,19 @@ Route::controller(FooterController::class)->group(function () {
     Route::put('/footer/{id}', [FooterController::class, 'footerUpdate']);
     Route::delete('/footer/{id}', [FooterController::class, 'DeleteFooter']);
 });
+
 //ROUTE API BEDROOM TYPE************************************************************************************************
 Route::controller(BedroomTypeController::class)->group(function () {
     Route::get('/bedroomType', [BedroomTypeController::class, 'allBedroomType']);
     Route::get('/bedroomType/{id}', [BedroomTypeController::class, 'bedroomTypeShowid']);
-    Route::post('/bedroomType', [BedroomTypeController::class, 'PostBedroomType']);
-    Route::put('/bedroomType/{id}', [BedroomTypeController::class, 'UpdateBedroomType']);
-    Route::delete('/bedroomType/{id}', [BedroomTypeController::class, 'DeleteBedroomType']);
+
+    Route::middleware([AdminUser::class])->group(function () {
+        Route::post('/bedroomType', [BedroomTypeController::class, 'PostBedroomType']);
+        Route::put('/bedroomType/{id}', [BedroomTypeController::class, 'UpdateBedroomType']);
+        Route::delete('/bedroomType/{id}', [BedroomTypeController::class, 'DeleteBedroomType']);
+    });
 });
+
 //ROUTE API HERO********************************************************************************************************
 Route::controller(HeroController::class)->group(function () {
     Route::get('/hero', [HeroController::class, 'allHero']);
@@ -76,6 +85,7 @@ Route::controller(HeroController::class)->group(function () {
     Route::put('/hero/{id}', [HeroController::class, 'heroUpdate']);
     Route::delete('/hero/{id}', [HeroController::class, 'DeleteHero']);
 });
+
 //ROUTE HERO BTN********************************************************************************************************
 Route::controller(HeroBtnController::class)->group(function () {
     Route::get('/heroBtn', [HeroBtnController::class, 'allHeroBtn']);
@@ -84,6 +94,7 @@ Route::controller(HeroBtnController::class)->group(function () {
     Route::put('/heroBtn/{id}', [HeroBtnController::class, 'heroBtnUpdate']);
     Route::delete('/heroBtn/{id}', [HeroBtnController::class, 'DeleteHeroBtn']);
 });
+
 //ROUTE HOTEL***********************************************************************************************************
 Route::controller(HotelController::class)->group(function () {
     Route::get('/hotel', [HotelController::class, 'allHotel']);
@@ -92,6 +103,7 @@ Route::controller(HotelController::class)->group(function () {
     Route::put('/hotel/{id}', [HotelController::class, 'hotelUpdate']);
     Route::delete('/hotel/{id}', [HotelController::class, 'DeleteHotel']);
 });
+
 //ROUTE NEWS************************************************************************************************************
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', [NewsController::class, 'allNews']);
@@ -100,20 +112,25 @@ Route::controller(NewsController::class)->group(function () {
     Route::put('/news/{id}', [NewsController::class, 'newsUpdate']);
     Route::delete('/news/{id}', [NewsController::class, 'DeleteNews']);
 });
+
 //ROUTE RESERVATION*****************************************************************************************************
 Route::controller(ReservationController::class)->group(function () {
     Route::get('/reservation', [ReservationController::class, 'allReservation']);
     Route::get('/reservation/{id}', [ReservationController::class, 'ReservationShowid']);
     Route::post('/reservation', [ReservationController::class, 'PostReservation']);
-    Route::post('/reservation-from-bo', [ReservationController::class, 'PostReservationFromBo']);
     Route::put('/reservation/{id}', [ReservationController::class, 'UpdateReservation']);
-    Route::put('/reservation-from-bo/{id}', [ReservationController::class, 'UpdateReservationFromBo']);
     Route::delete('/reservation/{id}', [ReservationController::class, 'DeleteReservation']);
     Route::get('/dates', [ReservationController::class, 'checkReservation']);
     Route::post('/calculPrice', [ReservationController::class, 'CalculPrice']);
     Route::post('/checkBedroom/{id}/{userId}',[ReservationController::class, 'checkBedroom']);
     Route::get('/reservations/user/{userId}', [ReservationController::class, 'getReservationsByUserId']);
+
+    Route::middleware([AdminUser::class])->group(function () {
+        Route::post('/reservation-from-bo', [ReservationController::class, 'PostReservationFromBo']);
+        Route::put('/reservation-from-bo/{id}', [ReservationController::class, 'UpdateReservationFromBo']);
+    });
 });
+
 //ROUTE SERVICES********************************************************************************************************
 Route::controller(ServicesController::class)->group(function () {
     Route::get('/services', [ServicesController::class, 'allServices']);
@@ -122,6 +139,7 @@ Route::controller(ServicesController::class)->group(function () {
     Route::put('/services/{id}', [ServicesController::class, 'UpdateServices']);
     Route::delete('/services/{id}', [ServicesController::class, 'DeleteServices']);
 });
+
 //ROUTE STRONGEST_SECTION*******************************************************************************************************
 Route::controller(StrongestSectionController::class)->group(function () {
     Route::get('/strongest_section', [StrongestSectionController::class, 'allStrongestSection']);
@@ -130,6 +148,7 @@ Route::controller(StrongestSectionController::class)->group(function () {
     Route::put('/strongest_section/{id}', [StrongestSectionController::class, 'UpdateStrongestSection']);
     Route::delete('/strongest_section/{id}', [StrongestSectionController::class, 'DeleteStrongestSection']);
 });
+
 //ROUTE STRONGEST*******************************************************************************************************
 Route::controller(StrongestController::class)->group(function () {
     Route::get('/strongest', [StrongestController::class, 'allStrongest']);
@@ -138,6 +157,7 @@ Route::controller(StrongestController::class)->group(function () {
     Route::put('/strongest/{id}', [StrongestController::class, 'UpdateStrongest']);
     Route::delete('/strongest/{id}', [StrongestController::class, 'DeleteStrongest']);
 });
+
 //ROUTE PICTURE*********************************************************************************************************
 Route::controller(PictureController::class)->group(function (){
     Route::get('/picture', [PictureController::class, 'allpicture']);
@@ -146,6 +166,7 @@ Route::controller(PictureController::class)->group(function (){
     Route::put('/picture/{id}', [PictureController::class, 'UpdatePicture']);
     Route::delete('/picture/{id}', [PictureController::class, 'DeletePicture']);
 });
+
 //ROUTE STATUS**********************************************************************************************************
 Route::controller(StatusController::class)->group(function () {
     Route::get('/status', [StatusController::class, 'allStatuses']);
@@ -182,7 +203,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 //ROUTE ICON************************************************************************************************************
 Route::controller(iconController::class)->group(function () {
-
     Route::get('/icon', [IconController::class, 'allIcon']);
     Route::get('/icon/{id}', [IconController::class, 'iconShowid']);
     Route::post('/icon', [IconController::class, 'postIcon']);
