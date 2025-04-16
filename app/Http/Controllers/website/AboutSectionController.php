@@ -18,8 +18,8 @@ class AboutSectionController
 
     public function putAboutSection(int $id, Request $request): object{
         $about_section_update = $request->validate([
-            'titleEn' => 'nullable',
-            'titleFr' => 'nullable',
+            'titleEn' => 'nullable|string|max:255|regex:/^[^<>{}]+$/',
+            'titleFr' => 'nullable|string|max:255|regex:/^[^<>{}]+$/',
             'picture' => 'nullable',
         ]);
 

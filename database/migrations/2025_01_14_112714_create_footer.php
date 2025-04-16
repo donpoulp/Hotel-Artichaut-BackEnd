@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('titleEn');
             $table->string('textFr');
             $table->string('textEn');
-            $table->string('titleReseau');
-            $table->string('iconReseau');
-            $table->string('linkReseau');
             $table->string('background_color');
             $table->string('background_opacity');
             $table->timestamps();

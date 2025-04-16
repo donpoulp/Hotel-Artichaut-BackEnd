@@ -25,12 +25,12 @@ class AboutDescriptionController
 
     public function putAboutDescription(int $id, Request $request):object{
         $aboutUpdate = $request->validate([
-            'titleEn' => 'nullable',
-            'titleFr' => 'nullable',
-            'descriptionEn' => 'nullable',
-            'descriptionFr' => 'nullable',
-            'background_color' => 'nullable',
-            'background_opacity' => 'nullable',
+            'titleEn' => 'nullable|string|max:255|regex:/^[^<>{}]+$/',
+            'titleFr' => 'nullable|string|max:255|regex:/^[^<>{}]+$//',
+            'descriptionEn' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+            'descriptionFr' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+            'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity' => 'nullable|integer|between:0,100',
             'picture1' => 'nullable',
             'picture2' => 'nullable',
             'picture3' => 'nullable',

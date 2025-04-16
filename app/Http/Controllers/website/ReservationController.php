@@ -48,12 +48,13 @@ class ReservationController extends Controller
     {
         try {
             $validate = $request->validate([
-                'bedroom_type_id' => 'required',
-                'user_id' => 'required|numeric',
+                'bedroom_type_id' => 'required|integer|exists:bedroom_types,id',
+                'user_id' => 'required|integer|exists:users,id',
                 'services' => 'nullable|array',
-                'startDate' => 'required|date',
-                'endDate' => 'required|date',
-                'state' => 'required|numeric',
+                'services.*' => 'integer|exists:services,id',
+                'startDate' => 'required|date|after_or_equal:today',
+                'endDate' => 'required|date|after:startDate',
+                'state' => 'required|integer|between:0,5',
             ]);
 
             $reservation = Reservation::findOrFail($id);
@@ -88,16 +89,16 @@ class ReservationController extends Controller
         }
     }
 
-    public function PostReservation(Request $request)
+    public function PostReservation(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
             $validate = $request->validate([
-                'startDate' => 'required|date',
-                'endDate' => 'required|date',
-                'price' => 'required|numeric',
-                'status_id' => 'required|numeric',
-                'bedroom_type_id' => 'required',
-                'user_id' => 'required|numeric',
+                'startDate' => 'required',
+                'endDate' => 'required',
+                'price' => 'required|numeric|min:0',
+                'status_id' => 'required|integer',
+                'bedroom_type_id' => 'required|integer',
+                'user_id' => 'required|integer',
                 'services' => 'nullable|array',
             ]);
 
@@ -135,12 +136,13 @@ class ReservationController extends Controller
     public function PostReservationFromBo(Request $request){
         try {
             $validate = $request->validate([
-                'bedroom_type_id' => 'required',
-                'user_id' => 'required|numeric',
+                'bedroom_type_id' => 'required|integer|exists:bedroom_types,id',
+                'user_id' => 'required|integer|exists:users,id',
                 'services' => 'nullable|array',
-                'startDate' => 'required|date',
-                'endDate' => 'required|date',
-                'state' => 'required|numeric',
+                'services.*' => 'integer|exists:services,id',
+                'startDate' => 'required|date|after_or_equal:today',
+                'endDate' => 'required|date|after:startDate',
+                'state' => 'required|integer|between:0,5',
             ]);
 
             if($this->checkBedroom($validate)){
@@ -186,5 +188,12 @@ class ReservationController extends Controller
             ->get();
 
         return response()->json($reservations);
+    }
+
+    public function getAllReservationsByUserId($user_id): \Illuminate\Http\JsonResponse
+    {
+        $reservation = Reservation::with(['services', 'bedroomType'])->where('user_id', $user_id)->get();
+
+        return response()->json($reservation);
     }
 }

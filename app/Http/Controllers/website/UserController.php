@@ -48,14 +48,14 @@ namespace App\Http\Controllers\website;
      public function UpdateUser($id, Request $request)
      {
          $updatecustomer = $request->validate([
-             'firstName' => 'nullable',
-             'lastName' => 'nullable',
-             'email' => 'nullable',
-             'emailBis' => 'nullable',
-             'password' => 'nullable',
-             'phone' => 'nullable',
-             'phoneBis' => 'nullable',
-             'role' => 'nullable',
+             'firstName' => ['required', 'regex:/^[^<>{}]+$/', 'max:20'],
+             'lastName' => ['nullable', 'regex:/^[^<>{}]+$/', 'max:20'],
+             'email' => 'required|email:rfc,dns|max:70|unique:users,email',
+             'emailBis' => 'nullable|email|max:70',
+             'password' => 'required|string|min:8|max:20',
+             'phone' => 'required|digits:10',
+             'phoneBis' => 'nullable|digits:10',
+             'role' => 'nullable|integer|between:0,2',
          ]);
 
          $user = User::findOrFail($id);
@@ -68,14 +68,14 @@ namespace App\Http\Controllers\website;
      {
          try {
              $validate = $request->validate([
-                 'firstName' => 'required|string|max:20',
-                 'lastName' => 'required|string|max:20',
-                 'email' => 'required|string|email|max:70',
-                 'emailBis' => 'nullable|string|email|max:70',
-                 'password' => 'required|string|max:20',
-                 'phone' => 'required|string|max:10',
-                 'phoneBis' => 'nullable|string|max:10',
-                 'role' => 'nullable|int|max:15',
+                 'firstName' => ['required', 'regex:/^[^<>{}]+$/', 'max:20'],
+                 'lastName' => ['nullable', 'regex:/^[^<>{}]+$/', 'max:20'],
+                 'email' => 'required|email:rfc,dns|max:70|unique:users,email',
+                 'emailBis' => 'nullable|email|max:70',
+                 'password' => 'required|string|min:8|max:20',
+                 'phone' => 'required|digits:10',
+                 'phoneBis' => 'nullable|digits:10',
+                 'role' => 'nullable|integer|between:0,2',
              ]);
 
              if (!isset($validate['role'])){

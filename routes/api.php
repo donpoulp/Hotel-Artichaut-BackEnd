@@ -112,6 +112,7 @@ Route::controller(ReservationController::class)->group(function () {
     Route::get('/dates', [ReservationController::class, 'checkReservation']);
     Route::post('/calculPrice', [ReservationController::class, 'CalculPrice']);
     Route::post('/checkBedroom/{id}/{userId}',[ReservationController::class, 'checkBedroom']);
+    Route::get('/reservations/user/{user_id}',[ReservationController::class, 'getAllReservationsByUserId']);
 });
 //ROUTE SERVICES********************************************************************************************************
 Route::controller(ServicesController::class)->group(function () {

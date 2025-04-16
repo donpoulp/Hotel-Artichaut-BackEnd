@@ -24,12 +24,12 @@ class HotelController extends Controller
     public function hotelUpdate($id, Request $request)
     {
         $hotelUpdate = $request->validate([
-            'name' => 'nullable',
-            'address' => 'nullable',
-            'description' => 'nullable',
-            'phone' => 'nullable',
-            'email' => 'nullable',
-            'postalCode' => 'nullable',
+            'name' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'address' => 'nullable|string|regex:/^[^<>{}]+$/|max:500',
+            'description' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'phone' => 'nullable|string|regex:/^\+?\d{10,15}$/',
+            'email' => 'nullable|email|max:255',
+            'postalCode' => 'nullable|string|regex:/^\d{5,10}$/',
         ]);
 
         $hotel = Hotel::findOrFail($id);
@@ -42,12 +42,12 @@ class HotelController extends Controller
     {
         try {
             $validate = $request->validate([
-                'name' => 'required|string|max:255',
-                'address' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
-                'phone' => 'required|string|max:255',
-                'email' => 'required|string|max:255',
-                'postalCode' => 'required|string|max:255',
+                'name' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'address' => 'nullable|string|regex:/^[^<>{}]+$/|max:500',
+                'description' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'phone' => 'nullable|string|regex:/^\+?\d{10,15}$/',
+                'email' => 'nullable|email|max:255',
+                'postalCode' => 'nullable|string|regex:/^\d{5,10}$/',
             ]);
 
 
