@@ -9,47 +9,61 @@ use Illuminate\Validation\ValidationException;
 
 class FooterController extends Controller
 {
-    public function allFooter(): object{
-        $icon=Footer::with('icon')->get();
+    public function allFooter(): object
+    {
+        $icon = Footer::with('icon')->get();
+
         return response()->json($icon);
     }
-    public function footerShowid(Request $request , string $id): object
+    public function footerShowid(string $id): object
     {
-        $validated = $request->validate([
+        $footerId = Footer::with('icon')->findOrFail($id);
 
-            $footerId = Footer::findOrFail($id)]);
-
-        return response()->json([$footerId]);
+        return response()->json($footerId);
     }
     public function footerUpdate($id, Request $request)
     {
         $footerUpdate = $request->validate([
-            'title' => 'nullable',
-            'text' => 'nullable',
-            'titleReseau' => 'nullable',
-            'iconReseau' => 'nullable',
-            'linkReseau' => 'nullable',
-            'background_color'=>'nullable',
-            'background_opacity'=>'nullable',
+            'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'textEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'textFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity' => 'nullable|integer|between:0,100',
+            'icon' => 'nullable|array',
         ]);
 
         $footer = Footer::findOrFail($id);
         $footer->update($footerUpdate);
 
-        return response()->json($footerUpdate);
+        if (!empty($footerUpdate['icon'])) {
+            foreach ($footerUpdate['icon'] as $iconData) {
+                if (isset($iconData['id'])) {
+                    $icon = $footer->icon()->find($iconData['id']);
+                    if ($icon) {
+                        $icon->update([
+                            'name' => $iconData['name'] ?? '',
+                            'link' => $iconData['link'] ?? '',
+                            'iconPath' => $iconData['iconPath'] ?? '',
+                        ]);
+                    }
+                }
+            }
+        }
+
+        return response()->json($footer->load('icon'));
 
     }
     public function PostFooter(Request $request)
     {
         try {
             $validate = $request->validate([
-                'title' => 'required|string|max:255',
-                'text' => 'required|string|max:255',
-                'titleReseau' => 'required|string|max:255',
-                'iconReseau' => 'required|string|max:255',
-                'linkReseau' => 'required|string|max:255',
-                'background_color'=>'nullable',
-                'background_opacity'=>'nullable',
+                'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'textEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'textFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity' => 'nullable|integer|between:0,100',
             ]);
 
 

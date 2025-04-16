@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CleanInputMiddleware;
 use App\Http\Middleware\XSS;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -11,10 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware) {
+    )->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(CleanInputMiddleware::class);
         $middleware->append(XSS::class);
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
+    })->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

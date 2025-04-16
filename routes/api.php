@@ -87,13 +87,13 @@ Route::controller(HeroController::class)->group(function () {
 });
 
 //ROUTE HERO BTN********************************************************************************************************
-Route::controller(HeroBtnController::class)->group(function () {
+/*Route::controller(HeroBtnController::class)->group(function () {
     Route::get('/heroBtn', [HeroBtnController::class, 'allHeroBtn']);
     Route::get('/heroBtn/{id}', [HeroBtnController::class, 'heroBtnShowid']);
     Route::post('/heroBtn', [HeroBtnController::class, 'PostHeroBtn']);
     Route::put('/heroBtn/{id}', [HeroBtnController::class, 'heroBtnUpdate']);
     Route::delete('/heroBtn/{id}', [HeroBtnController::class, 'DeleteHeroBtn']);
-});
+});*/
 
 //ROUTE HOTEL***********************************************************************************************************
 Route::controller(HotelController::class)->group(function () {

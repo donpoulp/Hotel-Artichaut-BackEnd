@@ -25,9 +25,9 @@ class StrongestSectionController extends Controller
     public function UpdateStrongestSection($id, Request $request)
     {
         $updatestrongest = $request->validate([
-            'icon' => 'nullable',
-            'textEn' => 'nullable',
-            'textFr' => 'nullable',
+            'icon' => ['nullable', 'string', 'max:100'],
+            'textEn' => ['nullable', 'string', 'max:500', 'regex:/^[^<>{}]+$/'],
+            'textFr' => ['nullable', 'string', 'max:500', 'regex:/^[^<>{}]+$/'],
         ]);
 
         $strongest = StrongestSection::findOrFail($id);
@@ -40,8 +40,9 @@ class StrongestSectionController extends Controller
     {
         try {
             $validate = $request->validate([
-                'icon' => 'nullable',
-                'text' => 'nullable',
+                'icon' => ['nullable', 'string', 'max:100'],
+                'textEn' => ['nullable', 'string', 'max:500', 'regex:/^[^<>{}]+$/'],
+                'textFr' => ['nullable', 'string', 'max:500', 'regex:/^[^<>{}]+$/'],
             ]);
 
 
