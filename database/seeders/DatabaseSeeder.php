@@ -42,6 +42,18 @@ class DatabaseSeeder extends Seeder
             'created_at' => fake()->dateTime,
             'updated_at' => fake()->dateTime,
         ]);
+        DB::table('users')->insert([
+            'firstname' => Str('Bast'),
+            'lastname' => Str('b'),
+            'email' => Str('bastien.pelletier74@gmail.com'),
+            'emailBis' => Str('rien@gmail.com'),
+            'password' => Hash::make('bast123456'),
+            'phone' => fake()->phoneNumber,
+            'phoneBis' => fake()->phoneNumber,
+            'is_admin' => 1,
+            'created_at' => fake()->dateTime,
+            'updated_at' => fake()->dateTime,
+        ]);
         //BEDROOM TYPE**************************************************************************************************
         DB::table('bedroom_type')->insert([
             'nameFr' => Str('Suite Royale'),
