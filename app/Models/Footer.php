@@ -19,8 +19,6 @@ class Footer extends Model
         'titleEn',
         'textFr',
         'textEn',
-        'iconReseau',
-        'linkReseau',
         'background_color',
         'background_opacity',
     ];

@@ -21,11 +21,12 @@ class StrongestController
     public function UpdateStrongest($id, Request $request)
     {
         $updatestrongest = $request->validate([
-            'background_color_1' => 'nullable',
-            'background_opacity_1' => 'nullable',
-            'background_color_2' => 'nullable',
-            'background_opacity_2' => 'nullable'
+            'background_color_1'   => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity_1' => 'nullable|integer|between:0,100',
+            'background_color_2'   => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity_2' => 'nullable|integer|between:0,100',
         ]);
+
         $strongest = Strongest::findOrFail($id);
         $strongest->update($updatestrongest);
 
@@ -36,10 +37,10 @@ class StrongestController
     {
         try {
             $validate = $request->validate([
-                'background_color_1' => 'nullable',
-                'background_opacity_1' => 'nullable',
-                'background_color_2' => 'nullable',
-                'background_opacity_2' => 'nullable'
+                'background_color_1'   => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity_1' => 'nullable|integer|between:0,100',
+                'background_color_2'   => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity_2' => 'nullable|integer|between:0,100',
             ]);
 
 

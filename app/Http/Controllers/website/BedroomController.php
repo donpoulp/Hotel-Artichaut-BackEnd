@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 class BedroomController extends Controller
 {
     public function allBedroom(): object{
-        $picture = Bedroom::with('bedroom_type','picture')->get();
+        $picture = Bedroom::with('bedroom_type')->get();
         return response()->json($picture);
     }
     public function bedroomShowid(Request $request , string $id): object
@@ -24,8 +24,8 @@ class BedroomController extends Controller
     public function UpdateBedroom($id, Request $request)
     {
         $updatebedroom = $request->validate([
-            'number' => 'required|string|max:255',
-            'bedroom_type_id' => 'required|int',
+            'number' => 'required|string|unique:bedroom|max:255',
+            'bedroom_type_id' => 'required|integer|exists:bedroom_type,id',
         ]);
 
         $bedroom = Bedroom::findOrFail($id);
@@ -38,7 +38,7 @@ class BedroomController extends Controller
     {
         $validate = $request->validate([
             'number' => 'required|string|unique:bedroom|max:255',
-            'bedroom_type_id' => 'required|int',
+            'bedroom_type_id' => 'required|integer|exists:bedroom_type,id',
         ]);
 
         $postBedroom = new Bedroom($validate);

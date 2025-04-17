@@ -28,10 +28,10 @@ class HeroController extends Controller
     public function heroUpdate($id, Request $request)
     {
         $heroUpdate = $request->validate([
-            'titleEn' => 'nullable|string',
-            'titleFr' => 'nullable|string',
-            'descriptionEn' => 'nullable|string',
-            'descriptionFr' => 'nullable|string',
+            'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
             'picture' => 'nullable',
         ]);
 
@@ -43,13 +43,12 @@ class HeroController extends Controller
                 if (Storage::exists($oldPicture->picturePath)) {
                     Storage::delete($oldPicture->picturePath);
                 }
-                $oldPicture->delete();
+
+                $imagePath = $this->saveImage($heroUpdate['picture']);
+
+                $oldPicture->picturePath = "http://127.0.0.1:8000/storage/".$imagePath;
+                $oldPicture->save();
             }
-            $imagePath = $this->saveImage($heroUpdate['picture']);
-            $newPicture = new Picture();
-            $newPicture->picturePath = "http://127.0.0.1:8000/storage/".$imagePath;
-            $newPicture->hero_id = $id;
-            $hero->picture()->save($newPicture);
         }
 
         $hero->update($heroUpdate);
@@ -60,9 +59,11 @@ class HeroController extends Controller
     {
         try {
             $validate = $request->validate([
-                'title' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
-                'image' => 'required|string|max:255',
+                'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'picture' => 'nullable',
             ]);
 
 

@@ -16,8 +16,8 @@ class AboutController extends Controller
     public function aboutUpdate($id, Request $request): object
     {
         $aboutUpdate = $request->validate([
-            'background_color' => 'nullable',
-            'background_opacity' => 'nullable',
+            'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity' => 'nullable|integer|between:0,100',
         ]);
 
         $about = About::findOrFail($id);
