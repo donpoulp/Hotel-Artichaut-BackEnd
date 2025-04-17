@@ -8,7 +8,6 @@ use App\Http\Controllers\website\BedroomController;
 use App\Http\Controllers\website\BedroomTypeController;
 use App\Http\Controllers\website\FooterController;
 use App\Http\Controllers\website\HeaderController;
-use App\Http\Controllers\website\HeroBtnController;
 use App\Http\Controllers\website\HeroController;
 use App\Http\Controllers\website\HotelController;
 use App\Http\Controllers\website\IconController;
@@ -28,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 //ROUTE API USERS*******************************************************************************************************
 Route::controller(UserController::class)->group(function () {
 
-    Route::get('/user', [UserController::class, 'allUsers'])->middleware(AdminUser::class);;
+    Route::get('/user', [UserController::class, 'allUsers']);
     Route::get('/user/{id}', [UserController::class, 'UserShowid']);
     Route::post('/user', [UserController::class, 'PostUser']);
     Route::put('/user/{id}', [UserController::class, 'UpdateUser']);
@@ -40,11 +39,11 @@ Route::controller(BedroomController::class)->group(function () {
     Route::get('/bedroom', [BedroomController::class, 'allBedroom']);
     Route::get('/bedroom/{id}', [BedroomController::class, 'bedroomShowid']);
 
-    Route::middleware([AdminUser::class])->group(function () {
+//    Route::middleware([AdminUser::class])->group(function () {
         Route::post('/bedroom', [BedroomController::class, 'PostBedroom']);
         Route::put('/bedroom/{id}', [BedroomController::class, 'UpdateBedroom']);
         Route::delete('/bedroom/{id}', [BedroomController::class, 'DeleteBedroom']);
-    });
+//    });
 });
 
 //ROUTE API HEADER******************************************************************************************************
@@ -70,11 +69,11 @@ Route::controller(BedroomTypeController::class)->group(function () {
     Route::get('/bedroomType', [BedroomTypeController::class, 'allBedroomType']);
     Route::get('/bedroomType/{id}', [BedroomTypeController::class, 'bedroomTypeShowid']);
 
-    Route::middleware([AdminUser::class])->group(function () {
+//    Route::middleware([AdminUser::class])->group(function () {
         Route::post('/bedroomType', [BedroomTypeController::class, 'PostBedroomType']);
         Route::put('/bedroomType/{id}', [BedroomTypeController::class, 'UpdateBedroomType']);
         Route::delete('/bedroomType/{id}', [BedroomTypeController::class, 'DeleteBedroomType']);
-    });
+//    });
 });
 
 //ROUTE API HERO********************************************************************************************************
@@ -125,10 +124,10 @@ Route::controller(ReservationController::class)->group(function () {
     Route::post('/checkBedroom/{id}/{userId}',[ReservationController::class, 'checkBedroom']);
     Route::get('/reservations/user/{userId}', [ReservationController::class, 'getReservationsByUserId']);
 
-    Route::middleware([AdminUser::class])->group(function () {
+    //Route::middleware([AdminUser::class])->group(function () {
         Route::post('/reservation-from-bo', [ReservationController::class, 'PostReservationFromBo']);
         Route::put('/reservation-from-bo/{id}', [ReservationController::class, 'UpdateReservationFromBo']);
-    });
+    //});
 });
 
 //ROUTE SERVICES********************************************************************************************************
