@@ -23,7 +23,6 @@ class  MailController  extends  Controller
         $firstNameReservation = User::all()->where('id', '=', $firstName)->first()->firstName;
         $mail = User::all()->where('id', '=', $firstName)->first()->email;
 
-
         Mail::to($mail)->send(new OrderShipped ([
             'title' => 'Merci de votre commande',
             'firstname' => $firstNameReservation,
@@ -32,6 +31,5 @@ class  MailController  extends  Controller
             'price' => Reservation::findOrfail($id)->price,
             'bedroomType' => $bedroomTypeName,
         ]));
-
     }
 }

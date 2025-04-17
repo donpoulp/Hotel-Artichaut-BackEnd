@@ -15,9 +15,9 @@ class AuthController extends Controller
     public function register(Request $request){
         try {
             $validatedData = $request->validate([
-                'firstName' => 'required',
-                'email' => 'required|unique:users',
-                'password' => 'required|min:8',
+                'firstName' => 'required|string|min:2|max:50|regex:/^[\pL\s\-]+$/u',
+                'email' => 'required|email:rfc,dns|unique:users,email|max:100',
+                'password' => 'required|string|min:8|max:64|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
             ], [
                 'email.unique' => 'Cet email est déjà utilisé. Veuillez en choisir un autre.',
                 'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'password' => $validatedData['password'],
                 'phone' => $request->input('phone'),
                 'phoneBis' => $request->input('phoneBis'),
-                'is_admin' => $request->input('is_admin'),
+                'is_admin' => $request->input('is_admin') ?? 0,
             ]);
 
             $token = $user->createToken('auth_token')->plainTextToken;
@@ -48,18 +48,23 @@ class AuthController extends Controller
             ], 422);
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Une erreur est survenue lors de l’inscription.',
+                'message' => 'Une erreur est survenue lors de l’inscription.' . $e,
             ], 500);
         }
     }
 
     public function login(Request $request)
     {
-        if(!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['message' => 'Invalid login details'], 401);
+        $validated = $request->validate([
+            'email' => 'required|email:rfc,dns|max:100',
+            'password' => 'required|string|min:8|max:64',
+        ]);
+
+        if (!Auth::attempt($validated)) {
+            return response()->json(['message' => 'Identifiants invalides'], 401);
         }
 
-        $user = User::where('email', $request['email'])->firstOrFail();
+        $user = User::where('email', $validated['email'])->firstOrFail();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

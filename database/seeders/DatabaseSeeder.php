@@ -9,6 +9,7 @@ use App\Models\BedroomType;
 use App\Models\Footer;
 use App\Models\Header;
 use App\Models\Hero;
+use App\Models\Icon;
 use App\Models\News;
 use App\Models\Reservation;
 use App\Models\Services;
@@ -48,6 +49,18 @@ class DatabaseSeeder extends Seeder
             'email' => Str('bastien.pelletier74@gmail.com'),
             'emailBis' => Str('rien@gmail.com'),
             'password' => Hash::make('bast123456'),
+            'phone' => fake()->phoneNumber,
+            'phoneBis' => fake()->phoneNumber,
+            'is_admin' => 1,
+            'created_at' => fake()->dateTime,
+            'updated_at' => fake()->dateTime,
+        ]);
+        DB::table('users')->insert([
+            'firstname' => Str('Raphael'),
+            'lastname' => Str('Petrozzi'),
+            'email' => Str('raphael.petrozzi@gmail.com'),
+            'emailBis' => Str(''),
+            'password' => Hash::make('123456789'),
             'phone' => fake()->phoneNumber,
             'phoneBis' => fake()->phoneNumber,
             'is_admin' => 1,
@@ -128,12 +141,9 @@ class DatabaseSeeder extends Seeder
             'titleEn' => Str('Hostel Artichoke'),
             'textFr' => Str('En esperant bientot vous rencontrez'),
             'textEn' => Str('Hoping to meet you soon'),
-            'titleReseau' => Str('Reseau'),
-            'iconReseau' => Str('/data/images/footer.png'),
-            'linkReseau' => Str('https://github.com/tristan/tristan'),
-            'background_color'=>Str('0D5649'),
-            'background_opacity'=>Str('072527'),
-             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'background_color'=>Str('#0D5649'),
+            'background_opacity'=>Str('100'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         //HEADER****************************************************************************************************
@@ -153,12 +163,8 @@ class DatabaseSeeder extends Seeder
         DB::table('hero')->insert([
             'titleFr'=>Str("Bienvenue à l'Hotel Artichaut"),
             'titleEn' => Str('Welcome to Hostel Artichoke'),
-            'descriptionFr' => Str("
-               Implanté au coeur d'un site exceptionnel dans l'environnement idyllique de la ville d’Annecy,
-                l’Impérial Palace, hôtel 4 étoiles, offre une vue imprenable sur le lac d’Annecy. "),
-            'descriptionEn'=>Str("
-              Located in the heart of an exceptional site in the idyllic environment of the city of Annecy,
-              the Impérial Palace, a 4-star hotel, offers a breathtaking view of Lake Annecy."),
+            'descriptionFr' => Str("Implanté au coeur d'un site exceptionnel dans l'environnement idyllique de la ville d’Annecy, l’Impérial Palace, hôtel 4 étoiles, offre une vue imprenable sur le lac d’Annecy. "),
+            'descriptionEn'=>Str("Located in the heart of an exceptional site in the idyllic environment of the city of Annecy, the Impérial Palace, a 4-star hotel, offers a breathtaking view of Lake Annecy."),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -1254,7 +1260,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('facebook'),
-            'iconPath'=>Str('http://127.0.0.1:8000/storage/facebook.png'),
+            'iconPath'=>Str('ic:baseline-facebook'),
             'link'=>Str('https://www.facebook.com'),
             'footer_id'=> Footer::findOrfail(1)->id,
             'header_id'=>null,
@@ -1276,7 +1282,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('Instagram'),
-            'iconPath'=>Str('http://127.0.0.1:8000/storage/Instagram.png'),
+            'iconPath'=>Str('ri:instagram-fill'),
             'link'=>Str('https://www.instagram.com/'),
             'footer_id'=> Footer::findOrfail(1)->id,
             'header_id'=>null,
@@ -1320,7 +1326,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('X'),
-            'iconPath'=>Str('http://127.0.0.1:8000/storage/X.png'),
+            'iconPath'=>Str('hugeicons:new-twitter'),
             'link'=>Str('https://x.com'),
             'footer_id'=> Footer::findOrfail(1)->id,
             'header_id'=>null,

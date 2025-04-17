@@ -26,20 +26,24 @@ class ServicesController extends Controller
     public function UpdateServices($id, Request $request)
     {
         $updateServices = $request->validate([
-            'nameEn' => 'nullable',
-            'nameFr' => 'nullable',
-            'descriptionEn' => 'nullable',
-            'descriptionFr' => 'nullable',
-            'duration' => 'nullable',
-            'price' => 'nullable',
-            'time' => 'nullable',
-            'quantity' => 'nullable',
-            'background_color_1'=> 'nullable',
-            'background_opacity_1'=> 'nullable',
-            'backgroundText_color_1'=> 'nullable',
-            'backgroundText_opacity_1'=> 'nullable',
-            'backgroundText_color_2'=> 'nullable',
-            'backgroundText_opacity_2'=> 'nullable',
+            'nameEn' => 'nullable|string|max:100|regex:/^[^<>{}]+$/',
+            'nameFr' => 'nullable|string|max:100|regex:/^[^<>{}]+$/',
+            'descriptionEn' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+            'descriptionFr' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+            'duration' => 'nullable|integer|min:1|max:1000',
+            'price' => 'nullable|numeric|min:0|max:999999.99',
+            'time' => 'nullable|string|max:50',
+            'quantity' => 'nullable|integer|min:1|max:10000',
+
+            'background_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity_1' => 'nullable|integer|between:0,100',
+
+            'backgroundText_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'backgroundText_opacity_1' => 'nullable|integer|between:0,100',
+
+            'backgroundText_color_2' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'backgroundText_opacity_2' => 'nullable|integer|between:0,100',
+
             'picture' => 'nullable',
         ]);
 
@@ -68,18 +72,25 @@ class ServicesController extends Controller
     {
         try {
             $validate = $request->validate([
-                'nameEn' => 'nullable|string|max:22',
-                'nameFr' => 'nullable|string|max:22',
-                'descriptionEn' => 'nullable|string',
-                'descriptionFr' => 'nullable|string',
-                'duration' => 'required|int|max:20',
-                'price' => 'required|int|max:200',
-                'time' => 'required|int|max:20',
-                'quantity' => 'required|int|max:20',
-                'backgroundText_color_1'=> 'nullable',
-                'backgroundText_opacity_1'=> 'nullable',
-                'backgroundText_color_2'=> 'nullable',
-                'backgroundText_opacity_2'=> 'nullable',
+                'nameEn' => 'nullable|string|max:100|regex:/^[^<>{}]+$/',
+                'nameFr' => 'nullable|string|max:100|regex:/^[^<>{}]+$/',
+                'descriptionEn' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+                'descriptionFr' => 'nullable|string|max:1000|regex:/^[^<>{}]+$/',
+                'duration' => 'nullable|integer|min:1|max:1000',
+                'price' => 'nullable|numeric|min:0|max:999999.99',
+                'time' => 'nullable|string|max:50',
+                'quantity' => 'nullable|integer|min:1|max:10000',
+
+                'background_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity_1' => 'nullable|integer|between:0,100',
+
+                'backgroundText_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'backgroundText_opacity_1' => 'nullable|integer|between:0,100',
+
+                'backgroundText_color_2' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'backgroundText_opacity_2' => 'nullable|integer|between:0,100',
+
+                'picture' => 'nullable',
             ]);
 
             $postServices = new Services($validate);

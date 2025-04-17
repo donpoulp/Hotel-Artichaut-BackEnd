@@ -27,13 +27,13 @@ class BedroomTypeController extends Controller
     public function UpdateBedroomType($id, Request $request)
     {
         $updatebedroomType = $request->validate([
-            'nameEn' => 'nullable',
-            'descriptionEn' => 'nullable',
-            'nameFr' => 'nullable',
-            'descriptionFr' => 'nullable',
-            'price' => 'nullable',
-            'background_color' => 'nullable',
-            'background_opacity' => 'nullable',
+            'nameEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'nameFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'price' => 'nullable|numeric|min:0|max:999999.99',
+            'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity' => 'nullable|integer|between:0,100',
             'picture1' => 'nullable',
             'picture2' => 'nullable',
             'picture3' => 'nullable',
@@ -65,9 +65,16 @@ class BedroomTypeController extends Controller
     {
         try {
             $validate = $request->validate([
-                'name' => 'required|string|max:255',
-                'description' => 'required|longtext',
-                'price' => 'required|string|max:255',
+                'nameEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'nameFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'price' => 'nullable|numeric|min:0|max:999999.99',
+                'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity' => 'nullable|integer|between:0,100',
+                'picture1' => 'nullable',
+                'picture2' => 'nullable',
+                'picture3' => 'nullable',
             ]);
 
 

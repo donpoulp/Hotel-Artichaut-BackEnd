@@ -28,12 +28,12 @@ class NewsController extends Controller
     public function newsUpdate($id, Request $request)
     {
         $newsUpdate = $request->validate([
-            'titleEn' => 'nullable',
-            'descriptionEn' => 'nullable',
-            'titleFr' => 'nullable',
-            'descriptionFr' => 'nullable',
-            'background_color'=>'nullable',
-            'background_opacity'=>'nullable',
+            'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity' => 'nullable|integer|between:0,100',
             'picture1' => 'nullable',
             'picture2' => 'nullable',
         ]);
@@ -66,12 +66,14 @@ class NewsController extends Controller
     {
         try {
             $validate = $request->validate([
-                'title' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
-                'content' => 'required|string|max:255',
-                'picture_id' => 'nullable',
-                'background_color'=>'nullable',
-                'background_opacity'=>'nullable',
+                'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'background_color' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity' => 'nullable|integer|between:0,100',
+                'picture1' => 'nullable',
+                'picture2' => 'nullable',
             ]);
 
 

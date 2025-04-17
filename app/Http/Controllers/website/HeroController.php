@@ -28,10 +28,10 @@ class HeroController extends Controller
     public function heroUpdate($id, Request $request)
     {
         $heroUpdate = $request->validate([
-            'titleEn' => 'nullable|string',
-            'titleFr' => 'nullable|string',
-            'descriptionEn' => 'nullable|string',
-            'descriptionFr' => 'nullable|string',
+            'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+            'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+            'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
             'picture' => 'nullable',
         ]);
 
@@ -59,9 +59,11 @@ class HeroController extends Controller
     {
         try {
             $validate = $request->validate([
-                'title' => 'required|string|max:255',
-                'description' => 'required|string|max:255',
-                'image' => 'required|string|max:255',
+                'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'titleFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
+                'descriptionEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'descriptionFr' => 'nullable|string|regex:/^[^<>{}]+$/|max:1000',
+                'picture' => 'nullable',
             ]);
 
 

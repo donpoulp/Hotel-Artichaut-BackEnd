@@ -26,10 +26,10 @@ class HeaderController extends Controller
         $headerUpdate = $request->validate([
             'logo' => 'nullable',
             'icone' => 'nullable',
-            'background_color_1'=>'nullable',
-            'background_opacity_1'=>'nullable',
-            'fondus_color_2'=>'nullable',
-            'fondus_opacity_2'=>'nullable'
+            'background_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'background_opacity_1' => 'nullable|integer|between:0,100',
+            'fondus_color_2' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+            'fondus_opacity_2' => 'nullable|integer|between:0,100',
         ]);
 
         $header = Header::findOrFail($id);
@@ -44,11 +44,10 @@ class HeaderController extends Controller
             $validate = $request->validate([
                 'logo' => 'nullable',
                 'icone' => 'nullable',
-                'background_color_1'=>'nullable',
-                'background_opacity_1'=>'nullable',
-                'fondus_color_2'=>'nullable',
-                'fondus_opacity_2'=>'nullable'
-
+                'background_color_1' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'background_opacity_1' => 'nullable|integer|between:0,100',
+                'fondus_color_2' => 'nullable|string|regex:/^#[0-9a-fA-F]{3,6}$/',
+                'fondus_opacity_2' => 'nullable|integer|between:0,100',
             ]);
 
 

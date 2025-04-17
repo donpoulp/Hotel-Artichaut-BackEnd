@@ -26,14 +26,13 @@ class IconController extends Controller
     public function iconUpdate($id, Request $request)
     {
         $iconUpdate = $request->validate([
-            'name' => 'nullable',
-            'iconPath' => 'nullable',
-            'link' => 'nullable',
-            'footer_id'=>'nullable',
-            'header_id'=>'nullable',
-            'bedroomtype_id'=>'nullable',
-            'strongestype_id'=>'nullable',
-
+            'name' => 'nullable|string|regex:/^[^<>{}]+$/|max:100',
+            'iconPath' => 'nullable|string|max:255',
+            'link' => 'nullable|url|max:255',
+            'footer_id' => 'nullable|integer',
+            'header_id' => 'nullable|integer',
+            'bedroomtype_id' => 'nullable|integer',
+            'strongestype_id' => 'nullable|integer',
         ]);
 
         $icon = Icon::findOrFail($id);
@@ -46,13 +45,13 @@ class IconController extends Controller
     {
         try {
             $validate = $request->validate([
-                'name' => 'required|string|max:255',
-                'iconPath' => 'required|string|max:255',
-                'link' => 'string|max:255',
-                'footer_id'=>'string|max:255',
-                'header_id'=>'string|max:255',
-                'bedroomtype_id'=>'string|max:255',
-                'strongestype_id'=>'string|max:255',
+                'name' => 'nullable|string|regex:/^[^<>{}]+$/|max:100',
+                'iconPath' => 'nullable|string|max:255',
+                'link' => 'nullable|url|max:255',
+                'footer_id' => 'nullable|integer',
+                'header_id' => 'nullable|integer',
+                'bedroomtype_id' => 'nullable|integer',
+                'strongestype_id' => 'nullable|integer',
             ]);
 
 
