@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-green-800 flex items-center justify-center min-h-screen">
+<body class=" flex items-center justify-center min-h-screen">
 <div class="w-full max-w-2xl">
 
     <div id="payment-container">
 
-        <div class="text-lg font-semibold text-white mb-4 text-center">
+        <div class="text-lg font-semibold text-black-50 mb-4 text-center">
             <p>Votre montant à regler : {{$montant}},00€ </p>
         </div>
         <!-- Payment form container -->
@@ -20,9 +20,14 @@
                 @csrf
 
                 <div class="mb-4">
+                    <div class="information user">
+
+                    </div>
                     <div class="text-lg font-medium mb-2">
                         <label for="card-element">Entrer votre coordonnée bancaire : </label>
                     </div>
+                    <input class=" m-2 text-lg font-medium mb-2" placeholder="Prénom...">
+                    <input class="m-2 text-lg font-medium mb-2" placeholder="Nom...">
                     <div class="border rounded p-4" id="card-element">
 
                     </div>
@@ -38,7 +43,7 @@
                         type="submit"
                         data-secret="{{ $intent }}"
                     >
-                        Pay
+                        Payer
                     </button>
                 </div>
             </form>
@@ -108,5 +113,8 @@
             });
     });
 </script>
+<style>
+
+</style>
 </body>
 </html>
