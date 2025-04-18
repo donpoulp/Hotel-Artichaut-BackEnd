@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Code Shotcut - Stripe Payment</title>
+    <title>Hôtel Artichaut</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class=" flex items-center justify-center min-h-screen">
+<body class=" flex flex-col items-center justify-between min-h-screen">
+<div class="bg-green-800 w-full
+ p-2">
+    <div class="flex justify-center">
+        <img src="{{ asset('storage/Logo.png') }}" alt="Logo Hotel Artichaut">
+    </div>
+</div>
 <div class="w-full max-w-2xl">
-
-    <div id="payment-container">
-
+    <div  id="payment-container">
         <div class="text-lg font-semibold text-black-50 mb-4 text-center">
-            <p>Votre montant à regler : {{$montant}},00€ </p>
+            <p>Votre montant à régler : {{$montant}},00€ </p>
         </div>
         <!-- Payment form container -->
         <div class="bg-white shadow-md rounded-lg p-6">
@@ -24,10 +28,10 @@
 
                     </div>
                     <div class="text-lg font-medium mb-2">
-                        <label for="card-element">Entrer votre coordonnée bancaire : </label>
+                        <label for="card-element">Entrer vos coordonnées bancaires : </label>
                     </div>
-                    <input class=" m-2 text-lg font-medium mb-2" placeholder="Prénom...">
-                    <input class="m-2 text-lg font-medium mb-2" placeholder="Nom...">
+                    <input class=" m-2 text-lg font-medium mb-2" placeholder="Nom...">
+                    <input class="m-2 text-lg font-medium mb-2" placeholder="Prénom...">
                     <div class="border rounded p-4" id="card-element">
 
                     </div>
@@ -59,7 +63,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     // Define style for Stripe elements
-    var style = {
+    let style = {
         base: {
             color: '#32325d',
             lineHeight: '18px',
@@ -116,5 +120,6 @@
 <style>
 
 </style>
+<div class="bg-green-700 w-full"></div>
 </body>
 </html>
