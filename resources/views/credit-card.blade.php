@@ -46,6 +46,12 @@
                         class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900"
                         type="submit"
                         data-secret="{{ $intent }}"
+                        onclick= "function closePage() {
+                        setTimeout(function (){
+                            window.close();
+                        },3000);
+                        }
+                        closePage()"
                     >
                         Payer
                     </button>
@@ -57,6 +63,7 @@
     <div id="success-container" class="hidden bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded">
         <h2 class="text-xl font-semibold">Paiement reussi!</h2>
         <p class="mt-2">Merci pour votre paiement.</p>
+
     </div>
 </div>
 <!-- Stripe JS library -->
