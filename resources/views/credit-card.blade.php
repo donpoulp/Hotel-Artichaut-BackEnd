@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title>Hôtel Artichaut</title>
     <meta charset="utf-8">
@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class=" flex flex-col items-center justify-between min-h-screen">
-<div class="bg-green-800 w-full
+<div class="bg-green-900 w-full
  p-2">
     <div class="flex justify-center">
-        <img src="{{ asset('storage/Logo.png') }}" alt="Logo Hotel Artichaut">
+        <img src="{{ asset('storage/Logo.png')}}" alt="Logo Hotel Artichaut">
     </div>
 </div>
 <div class="w-full max-w-2xl">
@@ -46,7 +46,7 @@
                         class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900"
                         type="submit"
                         data-secret="{{ $intent }}"
-                        onclick= "function closePage() {
+                        onclick= "function closePage(){
                         setTimeout(function (){
                             window.close();
                         },3000);
@@ -63,7 +63,6 @@
     <div id="success-container" class="hidden bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded">
         <h2 class="text-xl font-semibold">Paiement reussi!</h2>
         <p class="mt-2">Merci pour votre paiement.</p>
-
     </div>
 </div>
 <!-- Stripe JS library -->
