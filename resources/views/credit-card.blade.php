@@ -46,7 +46,8 @@
                         class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900"
                         type="submit"
                         data-secret="{{ $intent }}"
-                        onclick= "function closePage(){
+                        onclick= "
+                        function closePage(){
                         setTimeout(function (){
                             window.close();
                         },3000);
