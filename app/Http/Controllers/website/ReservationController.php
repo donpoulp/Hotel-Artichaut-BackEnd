@@ -48,12 +48,12 @@ class ReservationController extends Controller
     {
         try {
             $validate = $request->validate([
-                'bedroom_type_id' => 'required|integer|exists:bedroom_types,id',
-                'user_id' => 'required|integer|exists:users,id',
+                'bedroom_type_id' => 'required|integer',
+                'user_id' => 'required|integer',
                 'services' => 'nullable|array',
-                'services.*' => 'integer|exists:services,id',
-                'startDate' => 'required|date|after_or_equal:today',
-                'endDate' => 'required|date|after:startDate',
+                'services.*' => 'nullable|string',
+                'startDate' => 'required|date',
+                'endDate' => 'required|date',
                 'state' => 'required|integer|between:0,5',
             ]);
 
@@ -137,10 +137,10 @@ class ReservationController extends Controller
     public function PostReservationFromBo(Request $request){
         try {
             $validate = $request->validate([
-                'bedroom_type_id' => 'required|integer|exists:bedroom_types,id',
-                'user_id' => 'required|integer|exists:users,id',
+                'bedroom_type_id' => 'required|integer',
+                'user_id' => 'required|integer',
                 'services' => 'nullable|array',
-                'services.*' => 'integer|exists:services,id',
+                'services.*' => 'nullable|string',
                 'startDate' => 'required|date|after_or_equal:today',
                 'endDate' => 'required|date|after:startDate',
                 'state' => 'required|integer|between:0,5',
@@ -184,7 +184,6 @@ class ReservationController extends Controller
 
     public function getReservationsByUserId(string $userId): \Illuminate\Http\JsonResponse
     {
-        // Récupérer toutes les réservations associées à l'utilisateur avec l'ID donné
         $reservations = Reservation::with('services')
             ->where('user_id', $userId)
             ->get();

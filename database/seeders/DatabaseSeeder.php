@@ -67,6 +67,25 @@ class DatabaseSeeder extends Seeder
             'created_at' => fake()->dateTime,
             'updated_at' => fake()->dateTime,
         ]);
+        $start = Carbon::now()->startOfMonth();
+        $end = Carbon::now();
+
+        for ($i = 0; $i < 20; $i++) {
+            $createdAt = fake()->dateTimeBetween($start, $end);
+
+            DB::table('users')->insert([
+                'firstname' => fake()->firstName,
+                'lastname' => fake()->lastName,
+                'email' => fake()->unique()->safeEmail,
+                'emailBis' => fake()->unique()->safeEmail,
+                'password' => Hash::make('password'),
+                'phone' => fake()->phoneNumber,
+                'phoneBis' => fake()->phoneNumber,
+                'is_admin' => 0,
+                'created_at' => $createdAt,
+                'updated_at' => $createdAt,
+            ]);
+        }
         //BEDROOM TYPE**************************************************************************************************
         DB::table('bedroom_type')->insert([
             'nameFr' => Str('Suite Royale'),
@@ -341,7 +360,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //RESERVATION*******************************************************************************************
-
         for ($i = 0; $i < 9; $i++) {
             $user = User::all()->random();
             DB::table('reservation')->insert([
@@ -355,16 +373,25 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
-        DB::table('reservation')->insert([
-            'startDate' => date('2025-03-26'),
-            'endDate' => date('2025-03-31'),
-            'user_id' => User::findOrfail(11)->id,
-            'bedroom_type_id' => BedroomType::all()->random()->id,
-            'price'=> number_format(254),
-            'status_id' => Status::all()->random()->id,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now();
+        for ($i = 0; $i < 15; $i++) {
+            $user = User::all()->random();
+            $randomStartDate = Carbon::createFromTimestamp(mt_rand($startOfMonth->timestamp, $endOfMonth->timestamp));
+            $randomEndDate = $randomStartDate->copy()->addDay();
+
+            DB::table('reservation')->insert([
+                'startDate' => $randomStartDate->format('Y-m-d'),
+                'endDate' => $randomEndDate->format('Y-m-d'),
+                'user_id' => $user->id,
+                'bedroom_type_id' => BedroomType::all()->random()->id,
+                'status_id' => Status::all()->random()->id,
+                'price' => number_format(25),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+        };
+
         //PIVOT RESERVATION SERVICE********************************************************************************
         for ($i = 0; $i < 9; $i++) {
             DB::table('reservation_services')->insert([
