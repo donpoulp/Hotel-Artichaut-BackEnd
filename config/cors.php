@@ -15,17 +15,17 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'checkout/*' ,'broadcasting/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'checkout/*', 'broadcasting/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins' => ['http://127.0.0.1:8000', 'http://localhost:8000', 'http://localhost:3000', 'http://127.0.0.1:3000'],  // Corrige les origins ici
 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['XSRF-TOKEN'],  // Important pour exposer le cookie XSRF-TOKEN
 
     'max_age' => 0,
 

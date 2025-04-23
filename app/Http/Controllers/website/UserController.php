@@ -50,13 +50,14 @@ namespace App\Http\Controllers\website;
          $updatecustomer = $request->validate([
              'firstName' => ['required', 'regex:/^[^<>{}]+$/', 'max:20'],
              'lastName' => ['nullable', 'regex:/^[^<>{}]+$/', 'max:20'],
-             'email' => 'required|email:rfc,dns|max:70|unique:users,email',
+             'email' => 'required|max:70',
              'emailBis' => 'nullable|email|max:70',
-             'password' => 'required|string|min:8|max:20',
-             'phone' => 'required|digits:10',
-             'phoneBis' => 'nullable|digits:10',
+             'phone' => 'required',
+             'phoneBis' => 'nullable',
              'role' => 'nullable|integer|between:0,2',
          ]);
+
+
 
          $user = User::findOrFail($id);
          $user->update($updatecustomer);

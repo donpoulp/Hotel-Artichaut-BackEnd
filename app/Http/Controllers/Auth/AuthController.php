@@ -34,12 +34,9 @@ class AuthController extends Controller
                 'is_admin' => $request->input('is_admin') ?? 0,
             ]);
 
-            $token = $user->createToken('auth_token')->plainTextToken;
-
             return response()->json([
+                'message' => 'Enregistrement réussie',
                 'user' => $user,
-                'access_token' => $token,
-                'token_type' => 'Bearer',
             ], 201);
         }catch (ValidationException $e) {
             return response()->json([
@@ -66,12 +63,9 @@ class AuthController extends Controller
 
         $user = User::where('email', $validated['email'])->firstOrFail();
 
-        $token = $user->createToken('auth_token')->plainTextToken;
-
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user,
+            'message' => 'Authentification réussie',
+            'user' => $user
         ]);
     }
 
