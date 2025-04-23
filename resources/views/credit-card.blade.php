@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <title>Code Shotcut - Stripe Payment</title>
+    <title>Hôtel Artichaut</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-green-800 flex items-center justify-center min-h-screen">
+<body class=" flex flex-col items-center justify-between min-h-screen">
+<div class="bg-green-900 w-full
+ p-2">
+    <div class="flex justify-center">
+        <img src="{{ asset('storage/Logo.png')}}" alt="Logo Hotel Artichaut">
+    </div>
+</div>
 <div class="w-full max-w-2xl">
-
-    <div id="payment-container">
-
-        <div class="text-lg font-semibold text-white mb-4 text-center">
-            <p>Votre montant à regler : {{$montant}},00€ </p>
+    <div  id="payment-container">
+        <div class="text-lg font-semibold text-black-50 mb-4 text-center">
+            <p>Votre montant à régler : {{$montant}},00€ </p>
         </div>
         <!-- Payment form container -->
         <div class="bg-white shadow-md rounded-lg p-6">
@@ -20,9 +24,14 @@
                 @csrf
 
                 <div class="mb-4">
-                    <div class="text-lg font-medium mb-2">
-                        <label for="card-element">Entrer votre coordonnée bancaire : </label>
+                    <div class="information user">
+
                     </div>
+                    <div class="text-lg font-medium mb-2">
+                        <label for="card-element">Entrer vos coordonnées bancaires : </label>
+                    </div>
+                    <input class=" m-2 text-lg font-medium mb-2" placeholder="Nom...">
+                    <input class="m-2 text-lg font-medium mb-2" placeholder="Prénom...">
                     <div class="border rounded p-4" id="card-element">
 
                     </div>
@@ -37,8 +46,15 @@
                         class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900"
                         type="submit"
                         data-secret="{{ $intent }}"
+                        onclick= "
+                        function closePage(){
+                        setTimeout(function (){
+                            window.close();
+                        },3000);
+                        }
+                        closePage()"
                     >
-                        Pay
+                        Payer
                     </button>
                 </div>
             </form>
@@ -54,7 +70,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     // Define style for Stripe elements
-    var style = {
+    let style = {
         base: {
             color: '#32325d',
             lineHeight: '18px',
@@ -108,5 +124,9 @@
             });
     });
 </script>
+<style>
+
+</style>
+<div class="bg-green-700 w-full"></div>
 </body>
 </html>
