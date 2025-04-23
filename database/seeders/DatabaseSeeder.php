@@ -767,7 +767,7 @@ class DatabaseSeeder extends Seeder
         //PICTURE***************************************************************************************************************
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroom1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroom1.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(4)->id,
             'news_id' => null,
@@ -780,7 +780,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroom2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroom2.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(4)->id,
             'news_id' => null,
@@ -792,7 +792,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroom3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroom3.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(4)->id,
             'news_id' => null,
@@ -804,7 +804,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomArtichaut1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomArtichaut1.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(2)->id,
             'news_id' => null,
@@ -816,7 +816,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomArtichaut2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomArtichaut2.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(2)->id,
             'news_id' => null,
@@ -828,7 +828,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomArtichaut3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomArtichaut3.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(2)->id,
             'news_id' => null,
@@ -840,7 +840,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomRoyal1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomRoyal1.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(1)->id,
             'news_id' => null,
@@ -852,7 +852,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomRoyal2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomRoyal2.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(1)->id,
             'news_id' => null,
@@ -864,7 +864,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomRoyal3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomRoyal3.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(1)->id,
             'news_id' => null,
@@ -876,7 +876,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomX1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomX1.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(3)->id,
             'news_id' => null,
@@ -888,7 +888,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomX2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomX2.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(3)->id,
             'news_id' => null,
@@ -900,7 +900,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageBedroomX3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageBedroomX3.png'),
             'hero_id' => null,
             'bedroomtype_id' => BedroomType::findOrFail(3)->id,
             'news_id' => null,
@@ -912,7 +912,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageConciergerie.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageConciergerie.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -924,7 +924,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageFibre.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageFibre.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -937,7 +937,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageHeroHotel.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageHeroHotel.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -950,7 +950,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageHeroRestaurant.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageHeroRestaurant.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -963,7 +963,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageHeroSpa.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageHeroSpa.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -976,7 +976,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageHotelPresentation.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageHotelPresentation.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -989,7 +989,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageNews1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageNews1.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(1)->id,
@@ -1002,7 +1002,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageNews2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageNews2.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(2)->id,
@@ -1015,7 +1015,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageNews3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageNews3.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(3)->id,
@@ -1028,7 +1028,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageOpenNews1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageOpenNews1.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(1)->id,
@@ -1041,7 +1041,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageOpenNews2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageOpenNews2.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(2)->id,
@@ -1054,7 +1054,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageOpenNews3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageOpenNews3.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => News::findOrFail(3)->id,
@@ -1067,7 +1067,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageNews1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageNews1.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1080,7 +1080,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imagePackTechnologie.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imagePackTechnologie.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1093,7 +1093,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imagePageAccueil.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imagePageAccueil.png'),
             'hero_id' => Hero::findOrFail(1)->id,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1106,7 +1106,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imagePressing.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imagePressing.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1119,7 +1119,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageRestaurant.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageRestaurant.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1132,7 +1132,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageSpa1.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageSpa1.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1145,7 +1145,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageSpa2.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageSpa2.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1158,7 +1158,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imageSpa3.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imageSpa3.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1171,7 +1171,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/imagevoiturier.png'),
+            'picturePath' => Str('http://localhost:8000/storage/imagevoiturier.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1184,7 +1184,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/Tristan.png'),
+            'picturePath' => Str('http://localhost:8000/storage/Tristan.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1197,7 +1197,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/Moumen.png'),
+            'picturePath' => Str('http://localhost:8000/storage/Moumen.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1210,7 +1210,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/Raph.png'),
+            'picturePath' => Str('http://localhost:8000/storage/Raph.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1223,7 +1223,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pictures')->insert([
-            'picturePath' => Str('http://163.172.156.97:8000/storage/Bastien.png'),
+            'picturePath' => Str('http://localhost:8000/storage/Bastien.png'),
             'hero_id' => null,
             'bedroomtype_id' => null,
             'news_id' => null,
@@ -1238,7 +1238,7 @@ class DatabaseSeeder extends Seeder
         //ICONS*************************************************************************************************************
         DB::table('icon')->insert([
             'name'=>Str('Petit Bonhomme header'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/contacts_product.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/contacts_product.png'),
             'link'=>Str('X'),
             'footer_id'=> null,
             'header_id'=>Header::findOrfail(1)->id,
@@ -1249,7 +1249,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('Calendrier'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/calendar.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/calendar.png'),
             'link'=>Str('X'),
             'footer_id'=> null,
             'header_id'=>null,
@@ -1271,7 +1271,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('Strongest en forme de maison'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/home_app_logo.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/home_app_logo.png'),
             'link'=>Str('X'),
             'footer_id'=> null,
             'header_id'=>null,
@@ -1293,7 +1293,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('room service'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/room_service.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/room_service.png'),
             'link'=>Str('X'),
             'footer_id'=>null,
             'header_id'=>null,
@@ -1304,7 +1304,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('Icone strongest en forme de porte'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/sensor_door.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/sensor_door.png'),
             'link'=>Str('X'),
             'footer_id'=>null,
             'header_id'=>null,
@@ -1315,7 +1315,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('icon')->insert([
             'name'=>Str('Shopping bag'),
-            'iconPath'=>Str('http://163.172.156.97:8000/storage/shopping_bag.png'),
+            'iconPath'=>Str('http://localhost:8000/storage/shopping_bag.png'),
             'link'=>Str('X'),
             'footer_id'=>null,
             'header_id'=>Header::findOrfail(1)->id,
