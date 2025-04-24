@@ -13,11 +13,11 @@ services:
             - 'dbdata:/var/lib/mysql'
         ports:
             - '3307:3306' # exposé sur port 3307(machine), expédié par 3306
+        networks:
+            - artichaut-net
 
     app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: test-raf:latest
         container_name: artichaut_back
         ports:
             - "8000:80"
@@ -28,5 +28,12 @@ services:
             DB_DATABASE: "artichoke"
             DB_USERNAME: "bastos"
             DB_PASSWORD: "password"
+        networks:
+            - artichaut-net
+
 volumes:
     dbdata:
+
+networks:
+    artichaut-net:
+        external: true

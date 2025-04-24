@@ -51,6 +51,6 @@ RUN composer install --ignore-platform-reqs
 
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 9000
+EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisor.conf"]
