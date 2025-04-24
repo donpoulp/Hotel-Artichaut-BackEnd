@@ -5,8 +5,6 @@ namespace App\Http\Controllers\website;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
 /**
@@ -87,27 +85,8 @@ class UserController extends Controller
      *     )
      * )
      */
-    public function UpdateUser($id, Request $request) {
-        $updatecustomer = $request->validate([
-            'firstName' => ['required', 'regex:/^[^<>{}]+$/', 'max:20'],
-            'lastName' => ['nullable', 'regex:/^[^<>{}]+$/', 'max:20'],
-            'email' => 'required|email:rfc,dns|max:70|unique:users,email',
-            'emailBis' => 'nullable|email|max:70',
-            'password' => 'required|string|min:8|max:20',
-            'phone' => 'required|digits:10',
-            'phoneBis' => 'nullable|digits:10',
-            'role' => 'nullable|integer|between:0,2',
-        ]);
 
 
-     public function UserShowid(Request $request , string $id): object
-     {
-         $validated = $request->validate([
-
-             $userId = User::findOrFail($id)]);
-
-         return response()->json([$userId]);
-     }
      public function UpdateUser($id, Request $request)
      {
          $updatecustomer = $request->validate([
@@ -119,8 +98,6 @@ class UserController extends Controller
              'phoneBis' => 'nullable',
              'role' => 'nullable|integer|between:0,2',
          ]);
-
-
 
          $user = User::findOrFail($id);
          $user->update($updatecustomer);
