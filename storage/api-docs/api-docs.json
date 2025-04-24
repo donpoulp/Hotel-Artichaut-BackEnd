@@ -1,0 +1,2160 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Hôtel Artichaut",
+        "version": "1.0"
+    },
+    "paths": {
+        "api/checkout/{id}": {
+            "get": {
+                "tags": [
+                    "Paiement"
+                ],
+                "summary": "Créer une intention de paiement Stripe",
+                "operationId": "0fb10f2288707a4cf1c01c8503b79a05",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la réservation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Intention de paiement créée"
+                    },
+                    "404": {
+                        "description": "Réservation non trouvée"
+                    }
+                }
+            }
+        },
+        "/inscription/{id}": {
+            "get": {
+                "tags": [
+                    "Mail"
+                ],
+                "summary": "Envoie un mail",
+                "operationId": "e7eeaf7a77e26a45b471655368649812",
+                "responses": {
+                    "200": {
+                        "description": "Envoie un mail à l'utilisateur"
+                    }
+                }
+            }
+        },
+        "/api/bedroom": {
+            "get": {
+                "tags": [
+                    "Bedroom"
+                ],
+                "summary": "Liste des chambres avec type",
+                "operationId": "bf03b98b040a9852797cdba675b01918",
+                "responses": {
+                    "200": {
+                        "description": "Liste des chambres",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Bedroom"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bedroom"
+                ],
+                "summary": "Créer une chambre",
+                "operationId": "e924880fb639ad41ad46d87b2b5244d6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "number",
+                                    "bedroom_type_id"
+                                ],
+                                "properties": {
+                                    "number": {
+                                        "type": "string",
+                                        "example": "B202"
+                                    },
+                                    "bedroom_type_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Chambre créée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bedroom"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bedroom/{id}": {
+            "get": {
+                "tags": [
+                    "Bedroom"
+                ],
+                "summary": "Afficher une chambre par ID",
+                "operationId": "59dca8a7055c9e2f7ce61afed512b792",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chambre trouvée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bedroom"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bedroom"
+                ],
+                "summary": "Mettre à jour une chambre",
+                "operationId": "5faa24d334902422c4a56b087923cc0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "number",
+                                    "bedroom_type_id"
+                                ],
+                                "properties": {
+                                    "number": {
+                                        "type": "string",
+                                        "example": "B202"
+                                    },
+                                    "bedroom_type_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Chambre mise à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Bedroom"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bedroom"
+                ],
+                "summary": "Supprimer une chambre",
+                "operationId": "fccdf6cc8b3c2a12c7e844aa3da523d7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chambre supprimée, retourne la liste restante",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Bedroom"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/footer": {
+            "get": {
+                "tags": [
+                    "Footer"
+                ],
+                "summary": "Liste tous les footers avec leurs icônes",
+                "operationId": "25066da68a04c63eb76c86c069e1a7a8",
+                "responses": {
+                    "200": {
+                        "description": "Liste des footers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Footer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Footer"
+                ],
+                "summary": "Créer un footer",
+                "operationId": "517b6eabd39945def3636c862576b9b5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Footer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Footer créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Footer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/footer/{id}": {
+            "get": {
+                "tags": [
+                    "Footer"
+                ],
+                "summary": "Afficher un footer par ID",
+                "operationId": "86380a70e97941db9b44c371ad0c06da",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Footer trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Footer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Footer"
+                ],
+                "summary": "Mettre à jour un footer",
+                "operationId": "e2d2a2284f669a5e27810dde9eb75dbb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Footer"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Footer mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Footer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/header": {
+            "get": {
+                "tags": [
+                    "Header"
+                ],
+                "summary": "Liste tous les headers avec leurs icônes",
+                "operationId": "66b81621bf6ab7a515ebd12b7ff3a2c7",
+                "responses": {
+                    "200": {
+                        "description": "Liste des headers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Header"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Header"
+                ],
+                "summary": "Créer un nouveau header",
+                "operationId": "b153c1cd451a7cba14921e776abf74d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Header"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Header créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Header"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/header/{id}": {
+            "get": {
+                "tags": [
+                    "Header"
+                ],
+                "summary": "Afficher un header par ID",
+                "operationId": "8dc075e61109c418fecc9cbeab7836db",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Header trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Header"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Header"
+                ],
+                "summary": "Mettre à jour un header",
+                "operationId": "d6889bfd03a8086f94aa4cb6f4a78eba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Header"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Header mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Header"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Header"
+                ],
+                "summary": "Supprimer un header",
+                "operationId": "ba0a375581660600afbd41976b3a10c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Header supprimé, retourne tous les headers restants",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Header"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/hero": {
+            "get": {
+                "tags": [
+                    "Hero"
+                ],
+                "summary": "Récupère tous les héros avec leurs images",
+                "operationId": "335a75cc0eb21cd0a4c80323b312a836",
+                "responses": {
+                    "200": {
+                        "description": "Liste des héros",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Hero"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hero"
+                ],
+                "summary": "Crée un hero",
+                "operationId": "4cd9cbd91874f730b7735c28f9279325",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Hero"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Héros créé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Hero"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/hero/{id}": {
+            "get": {
+                "tags": [
+                    "Hero"
+                ],
+                "summary": "Récupère le hero par ID",
+                "operationId": "382d0864f474bcba9274180b1aa9288d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Héros trouvé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Hero"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Hero"
+                ],
+                "summary": "Met à jour le hero",
+                "operationId": "e3bc78faf69606a713e06dd59683cc43",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Hero"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Héros mis à jour",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Hero"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hero"
+                ],
+                "summary": "Supprime un hero",
+                "operationId": "d20b15a6dde10b681a0d314a5bad8f90",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Héros supprimé et liste restante retournée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Hero"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/hotel": {
+            "get": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Récupère tous les hôtels",
+                "description": "}",
+                "operationId": "914377204210c74ce6e2a828ad37b992",
+                "responses": {
+                    "200": {
+                        "description": "Liste des hôtels"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Crée un nouvel hôtel",
+                "operationId": "faa8ff1e5631d5557916c3108463c0fa",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Hôtel créé"
+                    }
+                }
+            }
+        },
+        "/api/hotel/{id}": {
+            "get": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Récupère un hôtel par son ID",
+                "operationId": "412a78e040d3884a7c79c84e75555ec5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de l'hôtel",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Hôtel trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Met à jour un hôtel",
+                "operationId": "a32d9344db3330fd12d2d61e07119c6b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Hôtel mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Supprime un hôtel",
+                "operationId": "b2ac18a80e77b296d24be1ca93a7c44b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Hôtel supprimé, liste restante retournée"
+                    }
+                }
+            }
+        },
+        "/api/icons": {
+            "get": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Liste toutes les icônes",
+                "operationId": "e570f65e486c2352fddd792592da3df1",
+                "responses": {
+                    "200": {
+                        "description": "Liste des icônes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Crée une nouvelle icône",
+                "operationId": "a5468a4e83d3ad2a82fa438cfb64b933",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Icône créée"
+                    }
+                }
+            }
+        },
+        "/api/icons/{id}": {
+            "get": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Affiche une icône par ID",
+                "operationId": "605d5119c4b301bfeb7d1db51a8b6ebe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Icône trouvée"
+                    },
+                    "404": {
+                        "description": "Icône non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Met à jour une icône",
+                "operationId": "d71f5994baf591193a26c26d5e537191",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Icône mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Icons"
+                ],
+                "summary": "Supprime une icône",
+                "operationId": "c2e9cc482599e9b7b31883864574724a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Icône supprimée, retourne la liste restante"
+                    }
+                }
+            }
+        },
+        "/api/news": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Récupère toutes les actualités avec leurs images associées",
+                "operationId": "0f89a3d3bc3165bab8a281f34c8f0572",
+                "responses": {
+                    "200": {
+                        "description": "Liste des actualités"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Créer une nouvelle actualité",
+                "operationId": "f91074abbccd4ad7bd0da02c34cf698a",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Actualité créée"
+                    }
+                }
+            }
+        },
+        "/api/news/{id}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Récupère une actualité par ID",
+                "operationId": "58953da8763347b72ab3c815f880b31d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Actualité trouvée"
+                    },
+                    "404": {
+                        "description": "Actualité non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Met à jour une actualité et ses images",
+                "operationId": "3838c965e0dcb839d2bf0b6b75264a81",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Actualité mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Supprime une actualité",
+                "operationId": "23d1860d71f97e16574efa35712d56a9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Actualité supprimée, retourne la liste restante"
+                    }
+                }
+            }
+        },
+        "/api/picture": {
+            "get": {
+                "tags": [
+                    "Pictures"
+                ],
+                "summary": "Récupère toutes les images",
+                "operationId": "9b9def0cab46e1ec73eb1e725b7786c0",
+                "responses": {
+                    "200": {
+                        "description": "Liste des images"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pictures"
+                ],
+                "summary": "Créer une nouvelle image",
+                "operationId": "892c48d6aa9c91f64365c16ce1346cf7",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Image créée"
+                    }
+                }
+            }
+        },
+        "/api/picture/{id}": {
+            "get": {
+                "tags": [
+                    "Pictures"
+                ],
+                "summary": "Récupère une image par son ID",
+                "operationId": "9e248e4720f07505342876686f5a0834",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Image trouvée"
+                    },
+                    "404": {
+                        "description": "Image non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Pictures"
+                ],
+                "summary": "Met à jour une image existante",
+                "operationId": "4ee8b395edcb288c163ee34d9e3ad50f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Image mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pictures"
+                ],
+                "summary": "Supprime une image",
+                "operationId": "ed4b14fc6fbf548e75f64f6954d1df55",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Image supprimée, retourne la liste des images restantes"
+                    }
+                }
+            }
+        },
+        "api/reservation": {
+            "get": {
+                "tags": [
+                    "Réservations"
+                ],
+                "summary": "Afficher toutes les réservations",
+                "operationId": "6585b4c23bfa3e95685dbe054aa8d984",
+                "responses": {
+                    "200": {
+                        "description": "Liste des réservations"
+                    }
+                }
+            }
+        },
+        "api/reservation/{id}": {
+            "get": {
+                "tags": [
+                    "Réservations"
+                ],
+                "summary": "Afficher une réseravtion par ID",
+                "operationId": "3f1635e080531a12db03f217ab9defeb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la réseravtion",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détail de la réservation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Réservations"
+                ],
+                "summary": "Modifier une réservation existant",
+                "operationId": "d7040c82cb732d9b7eca75e922ed76b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la réservation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "startDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025/05/01"
+                                    },
+                                    "endDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025/05/03"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "254"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Réservation mis à jour"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Réservations"
+                ],
+                "summary": "Modifier une réservation existant",
+                "operationId": "2e057d8c210ab30b94001c699581c666",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la réservation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "startDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025/05/01"
+                                    },
+                                    "endDate": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025/05/03"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "254"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Réservation mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Réservations"
+                ],
+                "summary": "Supprimer une réservation",
+                "operationId": "369de45e8ffaf63600544046591afec2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la réseravtion à supprimer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Réservation supprimé"
+                    }
+                }
+            }
+        },
+        "api/services": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Liste de tous les services",
+                "operationId": "c04bb270dc8c31124168bdc7e7c9562f",
+                "responses": {
+                    "200": {
+                        "description": "Liste des services"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Créer un nouveau service",
+                "operationId": "d52c666656a4835a04faee124f1cb08d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nameEn": {
+                                        "type": "string",
+                                        "example": "Deep Tissue Massage"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "59.99"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service créé"
+                    }
+                }
+            }
+        },
+        "api/services/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Afficher un service par ID",
+                "operationId": "71c980fc30310f5d9096626aa5169261",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du service",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détail du service"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Modifier un service existant",
+                "operationId": "0fbc51674606c4536499511812c58242",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du service",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nameFr": {
+                                        "type": "string",
+                                        "example": "Massage détente"
+                                    },
+                                    "descriptionFr": {
+                                        "type": "string",
+                                        "example": "Massage complet du corps..."
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": "49.99"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Service mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Supprimer un service",
+                "operationId": "738ecdf77b9ec3aa93332f489050134e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du service à supprimer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service supprimé"
+                    }
+                }
+            }
+        },
+        "api/status": {
+            "get": {
+                "tags": [
+                    "Status"
+                ],
+                "summary": "Récupérer tous les statuts",
+                "operationId": "7983b3bb74408e4c70b96c5114ce6fb9",
+                "responses": {
+                    "200": {
+                        "description": "Liste des statuts"
+                    }
+                }
+            }
+        },
+        "api/strongest": {
+            "get": {
+                "tags": [
+                    "Strongest"
+                ],
+                "summary": "Afficher tous les éléments Strongest",
+                "operationId": "109058b692eb90cf2f9c2c8de7397fe8",
+                "responses": {
+                    "200": {
+                        "description": "Liste des éléments Strongest"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Strongest"
+                ],
+                "summary": "Créer un élément Strongest",
+                "operationId": "b65177b8acc7a185a175c030647da6d9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "background_color_1": {
+                                        "type": "string",
+                                        "example": "#FF0000"
+                                    },
+                                    "background_opacity_1": {
+                                        "type": "integer",
+                                        "example": 80
+                                    },
+                                    "background_color_2": {
+                                        "type": "string",
+                                        "example": "#00FF00"
+                                    },
+                                    "background_opacity_2": {
+                                        "type": "integer",
+                                        "example": 60
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Élément Strongest créé"
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    }
+                }
+            }
+        },
+        "api/strongest/{id}": {
+            "get": {
+                "tags": [
+                    "Strongest"
+                ],
+                "summary": "Afficher un élément Strongest par ID",
+                "operationId": "2445e9c8377006a49bb9dcc640cba81f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails de l'élément Strongest"
+                    },
+                    "404": {
+                        "description": "Élément non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Strongest"
+                ],
+                "summary": "Mettre à jour un élément Strongest",
+                "operationId": "fa4f305ca31fe6314c4a6dd1f8aac725",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "background_color_1": {
+                                        "type": "string",
+                                        "example": "#FF0000"
+                                    },
+                                    "background_opacity_1": {
+                                        "type": "integer",
+                                        "example": 80
+                                    },
+                                    "background_color_2": {
+                                        "type": "string",
+                                        "example": "#00FF00"
+                                    },
+                                    "background_opacity_2": {
+                                        "type": "integer",
+                                        "example": 60
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Élément Strongest mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Strongest"
+                ],
+                "summary": "Supprimer un élément Strongest",
+                "operationId": "5640c6cfb7154a9f9fe719f4c9f755de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Élément supprimé"
+                    },
+                    "404": {
+                        "description": "Élément non trouvé"
+                    }
+                }
+            }
+        },
+        "api/strongest_section": {
+            "get": {
+                "tags": [
+                    "StrongestSection"
+                ],
+                "summary": "Récupère toutes les sections Strongest",
+                "operationId": "4c7ffb72066c04d38ea0a9b11ea87c1f",
+                "responses": {
+                    "200": {
+                        "description": "Liste des sections Strongest"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "StrongestSection"
+                ],
+                "summary": "Créer une nouvelle section Strongest",
+                "operationId": "5b58d7feb3faf5ae73d955de7adaeb67",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "icon": {
+                                        "type": "string",
+                                        "example": "icon-class"
+                                    },
+                                    "textEn": {
+                                        "type": "string",
+                                        "example": "English description"
+                                    },
+                                    "textFr": {
+                                        "type": "string",
+                                        "example": "Description française"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Section créée"
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    }
+                }
+            }
+        },
+        "api/strongest_section/{id}": {
+            "get": {
+                "tags": [
+                    "StrongestSection"
+                ],
+                "summary": "Afficher une section Strongest par ID",
+                "operationId": "db1bd4fcb33ff42624a29e00dec7c6a3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails de la section"
+                    },
+                    "404": {
+                        "description": "Section non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "StrongestSection"
+                ],
+                "summary": "Mettre à jour une section Strongest",
+                "operationId": "495c4e43cf2b5d9fb80c0d3372cff2ac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "icon": {
+                                        "type": "string",
+                                        "example": "icon-class"
+                                    },
+                                    "textEn": {
+                                        "type": "string",
+                                        "example": "English description"
+                                    },
+                                    "textFr": {
+                                        "type": "string",
+                                        "example": "Description française"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Section mise à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "StrongestSection"
+                ],
+                "summary": "Supprimer une section Strongest",
+                "operationId": "0840e378a50a96c4433aa5344ad0a3a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Section supprimée"
+                    },
+                    "404": {
+                        "description": "Section non trouvée"
+                    }
+                }
+            }
+        },
+        "api/user": {
+            "get": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Afficher tous les utilisateurs",
+                "operationId": "2c54654f7409a9b71065e0a53fd95671",
+                "responses": {
+                    "200": {
+                        "description": "Liste des utilisateurs"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Créer un nouvel utilisateur",
+                "operationId": "5d7c0fda78d3186150f7d4fa7182f7f9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "firstName",
+                                    "email",
+                                    "password",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string",
+                                        "maxLength": 20
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "maxLength": 20
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "emailBis": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "phoneBis": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "integer",
+                                        "maximum": 2,
+                                        "minimum": 0
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Utilisateur créé"
+                    },
+                    "422": {
+                        "description": "Erreur de validation"
+                    }
+                }
+            }
+        },
+        "api/user/{id}": {
+            "get": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Afficher un utilisateur par ID",
+                "operationId": "5ca97d73e49b988e6f6c8f9d921082b7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails de l'utilisateur"
+                    },
+                    "404": {
+                        "description": "Utilisateur non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Mettre à jour un utilisateur",
+                "operationId": "920a079a12b7def8208422e5c4e518bb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "firstName",
+                                    "email",
+                                    "password",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string",
+                                        "maxLength": 20
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "maxLength": 20
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "emailBis": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "phoneBis": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "integer",
+                                        "maximum": 2,
+                                        "minimum": 0
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Utilisateur mis à jour"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Utilisateurs"
+                ],
+                "summary": "Supprimer un utilisateur",
+                "operationId": "c23411da8fb9c574e7ef85bf1638fec2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Utilisateur supprimé"
+                    },
+                    "404": {
+                        "description": "Utilisateur non trouvé"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Bedroom": {
+                "title": "Bedroom",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "number": {
+                        "type": "string",
+                        "example": "A101"
+                    },
+                    "bedroom_type_id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "bedroom_type": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": 2
+                            },
+                            "name": {
+                                "type": "string",
+                                "example": "Suite"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Footer": {
+                "title": "Footer",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "titleEn": {
+                        "type": "string",
+                        "example": "Contact Us"
+                    },
+                    "titleFr": {
+                        "type": "string",
+                        "example": "Contactez-nous"
+                    },
+                    "textEn": {
+                        "type": "string",
+                        "example": "Some footer text"
+                    },
+                    "textFr": {
+                        "type": "string",
+                        "example": "Du texte dans le pied de page"
+                    },
+                    "background_color": {
+                        "type": "string",
+                        "example": "#ffffff"
+                    },
+                    "background_opacity": {
+                        "type": "integer",
+                        "example": 80
+                    },
+                    "icon": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "example": 2
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "Instagram"
+                                },
+                                "link": {
+                                    "type": "string",
+                                    "example": "https://instagram.com/example"
+                                },
+                                "iconPath": {
+                                    "type": "string",
+                                    "example": "/icons/instagram.svg"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Header": {
+                "title": "Header",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "logo": {
+                        "type": "string",
+                        "example": "logo.png"
+                    },
+                    "icone": {
+                        "type": "string",
+                        "example": "icon.png"
+                    },
+                    "background_color_1": {
+                        "type": "string",
+                        "example": "#ffffff"
+                    },
+                    "background_opacity_1": {
+                        "type": "integer",
+                        "example": 80
+                    },
+                    "fondus_color_2": {
+                        "type": "string",
+                        "example": "#000000"
+                    },
+                    "fondus_opacity_2": {
+                        "type": "integer",
+                        "example": 50
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Hero": {
+                "title": "Hero",
+                "required": [],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "titleEn": {
+                        "type": "string",
+                        "example": "Welcome to our hotel"
+                    },
+                    "titleFr": {
+                        "type": "string",
+                        "example": "Bienvenue dans notre hôtel"
+                    },
+                    "descriptionEn": {
+                        "type": "string",
+                        "example": "Experience comfort like never before"
+                    },
+                    "descriptionFr": {
+                        "type": "string",
+                        "example": "Vivez le confort comme jamais auparavant"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-04-24T12:00:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Mail",
+            "description": "Gestion des mails"
+        },
+        {
+            "name": "News",
+            "description": "Gestion des news"
+        },
+        {
+            "name": "Pictures",
+            "description": "Gestion des images"
+        },
+        {
+            "name": "Services",
+            "description": "Gestion des services"
+        },
+        {
+            "name": "Status",
+            "description": "Gestion des statuts"
+        },
+        {
+            "name": "Strongest",
+            "description": "Gestion des éléments Strongest"
+        },
+        {
+            "name": "StrongestSection",
+            "description": "Gestion des sections Strongest"
+        },
+        {
+            "name": "Utilisateurs",
+            "description": "Gestion des utilisateurs"
+        },
+        {
+            "name": "Paiement",
+            "description": "Paiement"
+        },
+        {
+            "name": "Bedroom",
+            "description": "Bedroom"
+        },
+        {
+            "name": "Footer",
+            "description": "Footer"
+        },
+        {
+            "name": "Header",
+            "description": "Header"
+        },
+        {
+            "name": "Hero",
+            "description": "Hero"
+        },
+        {
+            "name": "Hotels",
+            "description": "Hotels"
+        },
+        {
+            "name": "Icons",
+            "description": "Icons"
+        },
+        {
+            "name": "Réservations",
+            "description": "Réservations"
+        }
+    ]
+}
