@@ -10,8 +10,23 @@ use App\Models\User;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 
+
+/**
+ * @OA\Tag(name="Mail", description="Gestion des mails")
+ */
 class  MailController  extends  Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/inscription/{id}",
+     *     tags={"Mail"},
+     *     summary="Envoie un mail",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Envoie un mail à l'utilisateur"
+     *     )
+     * )
+     */
 
     public  function  sendMail($id): void
     {

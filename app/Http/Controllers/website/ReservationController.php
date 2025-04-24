@@ -2,27 +2,52 @@
 
 namespace App\Http\Controllers\website;
 
-use App\Models\Bedroom;
-use App\Models\BedroomType;
 use App\Models\Reservation;
 use App\Models\Services;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Traits\ReservationTrait;
 
+/**
+ * @OA\Tag(name="Réservation", description="Gestion des réservations")
+ */
 class ReservationController extends Controller
 {
     use ReservationTrait;
+
+    /**
+     * @OA\Get(
+     *     path="api/reservation",
+     *     tags={"Réservations"},
+     *     summary="Afficher toutes les réservations",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Liste des réservations"
+     *     )
+     * )
+     */
     public function allReservation(): object
     {
         $reservation = Reservation::with('services', 'bedroomType')->get();
         return response()->json($reservation);
 
     }
-
+    /**
+     * @OA\Get(
+     *     path="api/reservation/{id}",
+     *     tags={"Réservations"},
+     *     summary="Afficher une réseravtion par ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID de la réseravtion",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(response=200, description="Détail de la réservation")
+     * )
+     */
     public function ReservationShowid(Request $request, string $id): object
     {
         $reservation = Reservation::with('services')->findOrFail($id);
@@ -30,6 +55,30 @@ class ReservationController extends Controller
         return response()->json([$reservation]);
     }
 
+    /**
+     * @OA\Put(
+     *     path="api/reservation/{id}",
+     *     tags={"Réservations"},
+     *     summary="Modifier une réservation existant",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID de la réservation",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="startDate", type="date", example="2025/05/01"),
+     *             @OA\Property(property="endDate", type="date", example="2025/05/03"),
+     *             @OA\Property(property="price", type="number", example="254")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Réservation mis à jour")
+     * )
+     */
     public function UpdateReservation($id, Request $request)
     {
         $updateReservation = $request->validate([
@@ -59,10 +108,10 @@ class ReservationController extends Controller
 
             $reservation = Reservation::findOrFail($id);
 
-            if($this->checkBedroom($validate)){
+            if ($this->checkBedroom($validate)) {
                 $price = $this->checkPrice($validate['bedroom_type_id'], $validate['services']);
 
-                $reservation ->update([
+                $reservation->update([
                     'startDate' => $validate['startDate'],
                     'endDate' => $validate['endDate'],
                     'price' => $price,
@@ -77,11 +126,11 @@ class ReservationController extends Controller
                         ->pluck('id')->toArray();
 
                     $reservation->services()->sync($serviceIds);
-                }else{
+                } else {
                     $reservation->services()->detach();
                 }
                 return response()->json(['message' => 'Reservation mise a jour avec succes']);
-            }else{
+            } else {
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner");
             }
         } catch (ValidationException $exception) {
@@ -89,6 +138,30 @@ class ReservationController extends Controller
         }
     }
 
+    /**
+     * @OA\Post(
+     *     path="api/reservation/{id}",
+     *     tags={"Réservations"},
+     *     summary="Modifier une réservation existant",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID de la réservation",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="startDate", type="date", example="2025/05/01"),
+     *             @OA\Property(property="endDate", type="date", example="2025/05/03"),
+     *             @OA\Property(property="price", type="number", example="254")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Réservation mis à jour")
+     * )
+     */
     public function PostReservation(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
@@ -102,7 +175,7 @@ class ReservationController extends Controller
                 'services' => 'nullable|array',
             ]);
 
-            if($this->checkBedroom($validate)){
+            if ($this->checkBedroom($validate)) {
                 $startDate = explode("T", $validate['startDate']);
                 $endDate = explode("T", $validate['endDate']);
                 $validate['startDate'] = $startDate[0];
@@ -125,7 +198,7 @@ class ReservationController extends Controller
                     'reservation' => $newReservation
                 ], 201);
 
-            }else{
+            } else {
                 return response()->json("Aucune chambre de disponible pour le type de chambre selectionner", 406);
             }
 
@@ -134,7 +207,8 @@ class ReservationController extends Controller
         }
     }
 
-    public function PostReservationFromBo(Request $request){
+    public function PostReservationFromBo(Request $request)
+    {
         try {
             $validate = $request->validate([
                 'bedroom_type_id' => 'required|integer|exists:bedroom_types,id',
@@ -146,7 +220,7 @@ class ReservationController extends Controller
                 'state' => 'required|integer|between:0,5',
             ]);
 
-            if($this->checkBedroom($validate)){
+            if ($this->checkBedroom($validate)) {
                 $price = $this->checkPrice($validate['bedroom_type_id'], $validate['services']);
 
                 $newReservation = Reservation::create([
@@ -174,7 +248,21 @@ class ReservationController extends Controller
             return response()->json($exception->getMessage());
         }
     }
-
+    /**
+     * @OA\Delete(
+     *     path="api/reservation/{id}",
+     *     tags={"Réservations"},
+     *     summary="Supprimer une réservation",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID de la réseravtion à supprimer",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(response=200, description="Réservation supprimé")
+     * )
+     */
     public function DeleteReservation(Request $request, $id)
     {
         $deleteReservation = Reservation::findOrFail($id);

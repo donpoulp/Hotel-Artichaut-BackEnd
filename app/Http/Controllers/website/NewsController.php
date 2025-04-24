@@ -9,14 +9,50 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @OA\Tag(name="News", description="Gestion des news")
+ */
 class NewsController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/news",
+     *     summary="Récupère toutes les actualités avec leurs images associées",
+     *     tags={"News"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Liste des actualités"
+     *     )
+     * )
+     */
     use PictureTrait;
+
     public function allNews(): object
     {
         $news = News::with('picture')->get();
         return response()->json($news);
     }
+    /**
+     * @OA\Get(
+     *     path="/api/news/{id}",
+     *     summary="Récupère une actualité par ID",
+     *     tags={"News"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Actualité trouvée",
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Actualité non trouvée"
+     *     )
+     * )
+     */
     public function newsShowid(Request $request , string $id): object
     {
         $validated = $request->validate([
@@ -25,7 +61,29 @@ class NewsController extends Controller
 
         return response()->json([$newsId]);
     }
-    public function newsUpdate($id, Request $request)
+    /**
+     * @OA\Put(
+     *     path="/api/news/{id}",
+     *     summary="Met à jour une actualité et ses images",
+     *     tags={"News"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Actualité mise à jour",
+
+     *     )
+     * )
+     */
+    public function newsUpdate($id, Request $request): \Illuminate\Http\JsonResponse
     {
         $newsUpdate = $request->validate([
             'titleEn' => 'nullable|string|regex:/^[^<>{}]+$/|max:255',
@@ -62,7 +120,22 @@ class NewsController extends Controller
         return response()->json($newsUpdate);
 
     }
-    public function PostNews(Request $request)
+    /**
+     * @OA\Post(
+     *     path="/api/news",
+     *     summary="Créer une nouvelle actualité",
+     *     tags={"News"},
+     *     @OA\RequestBody(
+     *         required=true,
+
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Actualité créée"
+     *     )
+     * )
+     */
+    public function PostNews(Request $request): \Illuminate\Http\JsonResponse
     {
         try {
             $validate = $request->validate([
@@ -85,7 +158,22 @@ class NewsController extends Controller
             return response()->json($exception->getMessage());
         }
     }
-
+    /**
+     * @OA\Delete(
+     *     path="/api/news/{id}",
+     *     summary="Supprime une actualité",
+     *     tags={"News"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Actualité supprimée, retourne la liste restante",
+     *     )
+     * )
+     */
     public function DeleteNews(Request $request, $id)
     {
         $deleteNews = News::findOrFail($id);
